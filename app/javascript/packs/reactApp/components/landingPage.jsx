@@ -17,10 +17,10 @@ class LandingPage extends React.Component {
 
     this.state = {
       activeTab: 1,
-      authenticated: false,
+      authenticated: true, // change this to false for prod
       password: '',
       incorrectPassword: false,
-      admin: false
+      admin: true // change this to false for prod
     };
   }
 
