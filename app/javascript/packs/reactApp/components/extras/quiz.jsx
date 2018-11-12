@@ -25,32 +25,32 @@ class QuizPage extends React.Component {
           6: "Which of the following kinds of fruit do you like best?",
           7: "How are you with driving directions?",
           8: "Which of the following activities would you prefer?",
-          9: "Choose your favorite cat from the list...",
-          10: "How often would you get a haircut?"
+          9: "How often would you get a haircut?",
+          10: "Choose your favorite cat from the list..."
         },
-        answers: {
-          1: {"Drown me in it!": 2, "Yes.": 1, "It's alright. I'll eat it sometimes": -2, "Not one bit": -1},
-          2: {"Emo rock music from the 90s": 2, "Happy pop music": 1, "Classical music": -1, "Indie folk music": -2},
-          3: {"Anything, I'm so HUNGRY!!": 2, "Eggs, bacon, and biscuits and gravy mmmmm": 1, "Pancakes. but only after 10am.": -1, "Just coffee. I need that caffeine... Gimmeeee it!": -2},
-          4: {"eats shoots, and leaves": 1, "eats shoots and leaves": 2, "eats, shoots and leaves": -1, "eats, shoots, and leaves": -2},
-          5: {"New Zealand": 1, "Italy": 2, "Taiwan": 0, "Japan": -1},
-          6: {"Grapes?": -1, "Exotic Fruits from Southeast Asia (E.g. Cherimoya)": 2, "Stone Fruit (Peaches, Nectarines, etc..)": 1, "Melons": -2},
-          7: {"Yes.": 1, "Amazing. I can show you the way~": 2, "Eh. I know the general directions": -1, "Like a fish out of water": -2},
-          8: {"Reading a book": 1, "Watching your favorite tv show": 0, "Gardening": 0, "Playing video games": -2, "Arts and Crafts!": 2, "Sports": -1},
-          9: {"Toby": -1, "Eve": 1, "Shami": 0, "Autumn": 0, "Mini": 0, "The cat in the hat": 0},
-          10: {"Twice a year": 1, "Every 4 years, or just in front of the mirror once in a while": 2, "When the moon is full": -1, "Every 3rd month": -2},
+        answers: { // scoring is [Tiffany, Eugene]
+          1: {"Drown me in it!": [2, -1], "Yes.": [1, 0], "It's alright. I'll eat it sometimes": [-1, 2], "Not one bit": [-2, 1]},
+          2: {"Emo rock music from the 90s": [2, 1], "Happy pop music": [1, -1], "Classical music": [0, 1], "Indie folk music": [1, 2]},
+          3: {"Anything, I'm so HUNGRY!!": [2, -2], "Eggs, bacon, and biscuits and gravy mmmmm": [1, -1], "Pancakes. but only after 10am.": [0, 1], "Just coffee. I need that caffeine... Gimmeeee it!": [-2, 2]},
+          4: {"eats shoots, and leaves": [1, 0], "eats shoots and leaves": [2, 0], "eats, shoots and leaves": [-1 ,1], "eats, shoots, and leaves": [-2, 2]},
+          5: {"New Zealand": [1, -1], "Italy": [2, 1], "Taiwan": [2, 1], "Japan": [1, 2]},
+          6: {"Grapes?": [2, 1], "Exotic Fruits from Southeast Asia (E.g. Cherimoya)": [2, 0], "Stone Fruit (Peaches, Nectarines, etc..)": [2, 1], "Melons": [0, 2], "None. I don't like fruit": [-2, -1]},
+          7: {"Yes.": [1, 1], "Amazing. I can show you the way~": [2, -2], "Eh. I know the general directions": [-2, 2], "Like a fish out of water": [-2, 2]},
+          8: {"Reading a book": [1, -2], "Watching your favorite tv show": [1, 2], "Gardening": [1, 1], "Playing video games": [0, 2], "Arts and Crafts!": [2, -2], "Sports": [-1, 1]},
+          9: {"Twice a year": [1, -1], "Every 4 years, or just in front of the mirror once in a while": [2, -1], "When the moon is full": [-1, 1], "Every 3rd month": [-2, 2]},
+          10: {"Toby": [2, 2], "Eve": [2, 2], "Shami": [1, 1], "Autumn": [1, 1], "Mini": [1, 1], "The cat in the hat": [0, 0]},
         },
         categories: {
-          1: "chocolate",
-          2: "music",
-          3: "breakfast",
-          4: "grammar",
-          5: "travel",
-          6: "fruit",
-          7: "sense of direction",
-          8: "activities",
-          9: "cat",
-          10: "hair"
+          1: "Chocolate",
+          2: "Music",
+          3: "Breakfast",
+          4: "Grammar",
+          5: "Travel",
+          6: "Fruit",
+          7: "Sense of direction",
+          8: "Activities",
+          9: "Hair",
+          10: "Cats"
         }
 
       }
@@ -78,6 +78,10 @@ class QuizPage extends React.Component {
   }
 
   __answerClick(answer) {
+    $('.answer-button').map((i, button) => {
+      button.blur();
+    });
+
     const {
       gameData,
       currentQuestionNumber,
@@ -86,28 +90,33 @@ class QuizPage extends React.Component {
       userTiffanyAnswers,
       userEugeneAnswers
     } = this.state;
-    const { answers } = gameData;
+    const { answers, categories } = gameData;
 
     const currentAnswer = answers[currentQuestionNumber];
     const answerValue = currentAnswer[answer];
+    const category = categories[currentQuestionNumber];
 
-    if (answerValue > 0.0) {
+    this.setState({
+      tiffanyScore: tiffanyScore + answerValue[0],
+      eugeneScore: eugeneScore + answerValue[1],
+      currentQuestionNumber: currentQuestionNumber + 1
+    });
+
+    if (answerValue[0] > 0) {
+      userTiffanyAnswers.push(category);
+
       this.setState({
-        tiffanyScore: tiffanyScore + answerValue,
-        currentQuestionNumber: currentQuestionNumber + 1,
-        userTiffanyAnswers: userTiffanyAnswers.push()
-      });
-    } else {
-      this.setState({
-        eugeneScore: eugeneScore + answerValue,
-        currentQuestionNumber: currentQuestionNumber + 1,
-        userEugeneAnswers: userEugeneAnswers
+        userTiffanyAnswers: userTiffanyAnswers
       });
     }
 
-    $('.answer-button').map((i, button) => {
-      button.blur();
-    });
+    if (answerValue[1] > 0) {
+      userEugeneAnswers.push(category);
+      
+      this.setState({
+        userEugeneAnswers: userEugeneAnswers
+      });
+    }
   }
 
   __quizDescription() {
@@ -121,9 +130,9 @@ class QuizPage extends React.Component {
     )
   }
 
-  __quizAnswers(currentAnswerChoice) {
+  __quizAnswers(currentAnswerChoice, index) {
     return (
-      <tr>
+      <tr key={index}>
         <td>
           <div className="answer">
             <Button className="answer-button" onClick={this.__answerClick.bind(this, currentAnswerChoice)} block>{currentAnswerChoice}</Button>
@@ -143,8 +152,8 @@ class QuizPage extends React.Component {
         <div className="answers container" style={{width: "80%"}}>
           <Table bordered>
             <tbody>
-            {currentAnswerChoices.map(currentAnswerChoice => {
-              return this.__quizAnswers(currentAnswerChoice)
+            {currentAnswerChoices.map((currentAnswerChoice, index) => {
+              return this.__quizAnswers(currentAnswerChoice, index)
             })}
             </tbody>
           </Table>
@@ -191,7 +200,7 @@ class QuizPage extends React.Component {
 
   __progress() {
     const {tiffanyScore, eugeneScore} = this.state;
-    let leftScorePercent = eugeneScore * -6.0;
+    let leftScorePercent = eugeneScore * 6.0;
     let rightScorePercent = tiffanyScore * 6.0;
 
     return (
@@ -215,29 +224,54 @@ class QuizPage extends React.Component {
     )
   }
 
+  __commonCategories(category, index) {
+    return (
+      <li key={index}>
+        {category}
+      </li>
+    )
+  }
+
   __quizFinish() {
-    const { tiffanyScore, eugeneScore } = this.state;
+    const { tiffanyScore, eugeneScore, userTiffanyAnswers, userEugeneAnswers } = this.state;
     let message;
     let imageUrl;
+    let commonCategories = [];
 
-    if (tiffanyScore > (eugeneScore * -1)) {
+    if (tiffanyScore > eugeneScore) {
       message = "Congratulations! You are a 'Tiffany'!";
       imageUrl = "tiffany_win";
-    } else if (tiffanyScore == (eugeneScore * -1)) {
+      commonCategories = userTiffanyAnswers;
+    } else if (tiffanyScore == eugeneScore) {
       message = "Wow! You are equal parts Eugene and Tiffany! ";
       imageUrl = "equal_win"
     } else {
       message = "Congratulations! You are a 'Eugene'!";
       imageUrl = "eugene_win";
+      commonCategories = userEugeneAnswers;
     }
 
+
+    debugger;
     return (
       <div className="quiz-finish container">
-        <div>
-          {message}
+        <div className="container" style={{float: "left", width: "40%"}}>
+          <div>
+            {message}
+          </div>
+          <div>
+            <img src={require(`./../../assets/images/${imageUrl}.jpg`)} height="400px"/>
+          </div>
         </div>
-        <div>
-          <img src={require(`./../../assets/images/${imageUrl}.jpg`)} height="400px"/>
+        <div className="container" style={{float: "left", width: "40%"}}>
+          <div>
+            Things you have in common:
+          </div>
+          <div>
+            {commonCategories.map((category, index) => {
+              return this.__commonCategories(category, index)
+            })}
+          </div>
         </div>
       </div>
     )
