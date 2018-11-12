@@ -41,19 +41,19 @@ class ExtrasPage extends React.Component {
 
           <Panel className="extras-panel" bsStyle="primary">
             <Panel.Heading style={{height: "75px"}}>
-              <Panel.Title style={{textAlign: "center"}} componentClass="h4">
+              <Panel.Title className="extras-panel-title" componentClass="h4">
                 The "Are you a Eugene or a Tiffany? Who knows? Do you? Let's find out!" Game
               </Panel.Title>
             </Panel.Heading>
-            <img src={require('./../../assets/images/eugene_vs_tiffany_cropped.jpg')} style={{width: "100%", height: "60%"}}/>
             <Panel.Body>
+              <img src={require('./../../assets/images/eugene_vs_tiffany_cropped.jpg')} style={{width: "100%", height: "80%"}}/>
               <Button block onClick={this.__click.bind(this, "quiz")}>Play</Button>
             </Panel.Body>
           </Panel>
 
           <Panel className="extras-panel" bsStyle="primary">
             <Panel.Heading style={{height: "75px"}}>
-              <Panel.Title style={{textAlign: "center"}} componentClass="h4">
+              <Panel.Title className="extras-panel-title" componentClass="h4">
                 Toby or Not Toby? - That is the Question.
               </Panel.Title>
             </Panel.Heading>
@@ -64,7 +64,7 @@ class ExtrasPage extends React.Component {
 
           <Panel className="extras-panel" bsStyle="primary">
             <Panel.Heading style={{height: "75px"}}>
-              <Panel.Title style={{textAlign: "center"}} componentClass="h4">
+              <Panel.Title className="extras-panel-title" componentClass="h4">
                 Another Game.
               </Panel.Title>
             </Panel.Heading>

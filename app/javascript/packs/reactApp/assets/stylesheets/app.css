@@ -5,10 +5,15 @@
     background-color: lightskyblue !important;
 }
 
+.extras-panel-title {
+    text-align: center;
+    font-weight: 400;
+}
+
 .extras-panel {
     width: 30%;
     float: left;
-    height: 340px;
+    height: 400px;
     margin-right: 10px;
     box-shadow: 3px 3px 4px lightgrey !important;
 }
