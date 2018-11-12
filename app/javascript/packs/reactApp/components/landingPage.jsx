@@ -20,7 +20,7 @@ class LandingPage extends React.Component {
       authenticated: true, // change this to false for prod
       password: '',
       incorrectPassword: false,
-      admin: true // change this to false for prod
+      admin: true, // change this to false for prod,
     };
   }
 

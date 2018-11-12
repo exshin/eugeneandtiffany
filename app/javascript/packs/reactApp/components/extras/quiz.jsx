@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, Table, Row, Col } from 'react-bootstrap'
+import { Button, Table, Row, Col, Panel, Glyphicon, ProgressBar } from 'react-bootstrap'
 
 import $ from 'jquery'
 
@@ -8,7 +8,7 @@ class QuizPage extends React.Component {
     super(props);
 
     this.state = {
-      quizStart: false,
+      quizStart: true,
       currentQuestionNumber: 1,
       score: 0.0,
       gameData: {
@@ -81,7 +81,7 @@ class QuizPage extends React.Component {
   __quizDescription() {
     return (
       <div className="quiz-description container">
-        <h4>The "Are you a Eugene or Tiffany? Who knows? Do you? Let's find out!" Game</h4>
+        <h4>The "Are you a Eugene or a Tiffany? Who knows? Do you? Let's find out!" Game</h4>
         <div>
           <Button onClick={this.__gameStartClick.bind(this)}>Play</Button>
         </div>
@@ -110,18 +110,66 @@ class QuizPage extends React.Component {
 
     return (
       <div className="quiz-game container">
-        <div className="questions container" style={{width: "50%", fontSize: "x-large", fontWeight: 500}}>
-          {currentQuestion}
+        <Panel style={{width: "90%", background: "aliceblue"}}>
+          <Panel.Heading style={{background: "lightsteelblue"}}>
+            <Panel.Title componentClass="h3" style={{textAlign: "center"}}>The "Are you a Eugene or Tiffany? Who knows? Do you? Let's find out!" Game</Panel.Title>
+          </Panel.Heading>
+          <br/>
+          <Panel.Body>
+            <div>
+              {this.__progress()}
+            </div>
+            <br/>
+            <div className="questions container" style={{width: "80%", fontSize: "large", fontWeight: 500, textAlign: "center"}}>
+              {currentQuestion}
+            </div>
+            <br/>
+            <div className="answers container" style={{width: "80%"}}>
+              <Table bordered>
+                <tbody>
+                {currentAnswerChoices.map(currentAnswerChoice => {
+                  return this.__quizAnswers(currentAnswerChoice)
+                })}
+                </tbody>
+              </Table>
+            </div>
+            <br/>
+          </Panel.Body>
+        </Panel>
+      </div>
+    )
+  }
+
+  __progress() {
+    const {score} = this.state;
+    let leftScorePercent = 0;
+    let rightScorePercent = 0;
+
+    if (score > 0.0) {
+      rightScorePercent = score * 5.0;
+    } else if (score < 0.0) {
+      leftScorePercent = score * -5.0;
+    } else {
+      leftScorePercent = 0;
+      rightScorePercent = 0;
+    }
+
+    return (
+      <div className="container" style={{textAlign: "center"}}>
+        <div className="container" style={{float: "left", width: "10%", padding: "0px"}}>
+          <img src={require('./../../assets/images/eugene_vs_headshot.jpg')} height="50px"/>
         </div>
-        <br/>
-        <div className="answers container" style={{width: "50%"}}>
-          <Table bordered>
-            <tbody>
-            {currentAnswerChoices.map(currentAnswerChoice => {
-              return this.__quizAnswers(currentAnswerChoice)
-            })}
-            </tbody>
-          </Table>
+        <div className="container" style={{float: "left", width: "30%", padding: "0px"}}>
+          <ProgressBar bsStyle="warning" className="right" now={leftScorePercent}/>
+        </div>
+        <div className="container" style={{float: "left", width: "5%", padding: "0px"}}>
+          <Glyphicon glyph="star" />
+        </div>
+        <div className="container" style={{float: "left", width: "30%", padding: "0px"}}>
+          <ProgressBar now={rightScorePercent} />
+        </div>
+        <div className="container" style={{float: "left", width: "10%", padding: "0px"}}>
+          <img src={require('./../../assets/images/tiffany_vs_headshot.jpg')} height="50px"/>
         </div>
       </div>
     )
@@ -140,6 +188,9 @@ class QuizPage extends React.Component {
     return (
       <div className="quiz-finish container">
         Congratulations. You are a {person}!
+        <Button>
+          Retry?
+        </Button>
       </div>
     )
   }

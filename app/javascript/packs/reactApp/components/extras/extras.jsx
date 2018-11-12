@@ -17,7 +17,6 @@ class ExtrasPage extends React.Component {
     this.setState({
       game: game
     });
-    debugger;
   }
 
   render() {
@@ -39,13 +38,41 @@ class ExtrasPage extends React.Component {
     return(
       <div className="extras-page container">
         <div className="index container" hidden={!showIndex}>
-          <Panel onClick={this.__click.bind(this, "quiz")}>
-            <Panel.Body>The "Are you a Eugene or Tiffany? Who knows? Do you? Let's find out!" Game</Panel.Body>
-            <Panel.Body><Button>Play</Button></Panel.Body>
+
+          <Panel className="extras-panel" bsStyle="primary">
+            <Panel.Heading style={{height: "75px"}}>
+              <Panel.Title style={{textAlign: "center"}} componentClass="h4">
+                The "Are you a Eugene or a Tiffany? Who knows? Do you? Let's find out!" Game
+              </Panel.Title>
+            </Panel.Heading>
+            <img src={require('./../../assets/images/eugene_vs_tiffany_cropped.jpg')} style={{width: "100%", height: "60%"}}/>
+            <Panel.Body>
+              <Button block onClick={this.__click.bind(this, "quiz")}>Play</Button>
+            </Panel.Body>
           </Panel>
-          <Panel onClick={this.__click.bind(this, "toby")}>
-            <Panel.Body>Toby or Not Toby? - That is the Question.</Panel.Body>
+
+          <Panel className="extras-panel" bsStyle="primary">
+            <Panel.Heading style={{height: "75px"}}>
+              <Panel.Title style={{textAlign: "center"}} componentClass="h4">
+                Toby or Not Toby? - That is the Question.
+              </Panel.Title>
+            </Panel.Heading>
+            <Panel.Body>
+              <Button block onClick={this.__click.bind(this, "toby")}>Play</Button>
+            </Panel.Body>
           </Panel>
+
+          <Panel className="extras-panel" bsStyle="primary">
+            <Panel.Heading style={{height: "75px"}}>
+              <Panel.Title style={{textAlign: "center"}} componentClass="h4">
+                Another Game.
+              </Panel.Title>
+            </Panel.Heading>
+            <Panel.Body>
+              <Button block onClick={this.__click.bind(this, "game")}>Play</Button>
+            </Panel.Body>
+          </Panel>
+
         </div>
         <div className="content container">
           {content}

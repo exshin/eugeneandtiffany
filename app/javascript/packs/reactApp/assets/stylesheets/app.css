@@ -1,0 +1,18 @@
+.progress.right .progress-bar {
+    float: right;
+}
+.progress.progress-blue {
+    background-color: lightskyblue !important;
+}
+
+.extras-panel {
+    width: 30%;
+    float: left;
+    height: 340px;
+    margin-right: 10px;
+    box-shadow: 3px 3px 4px lightgrey !important;
+}
+
+.answer-button {
+    box-shadow: 3px 3px 4px lightgrey;
+}
