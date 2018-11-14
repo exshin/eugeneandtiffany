@@ -7,4 +7,9 @@ Rails.application.routes.draw do
   namespace :required_password do
     get :password
   end
+
+  namespace :quiz do
+    post :score
+    get :high_scores
+  end
 end

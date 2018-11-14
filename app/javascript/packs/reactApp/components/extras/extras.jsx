@@ -46,7 +46,7 @@ class ExtrasPage extends React.Component {
               </Panel.Title>
             </Panel.Heading>
             <Panel.Body>
-              <img src={require('./../../assets/images/eugene_vs_tiffany_cropped.jpg')} style={{width: "100%", height: "80%"}}/>
+              <img src={require('./../../assets/images/eugene_vs_tiffany_cropped.jpg')} style={{width: "100%", height: "80%", border: "1px solid black"}}/>
               <Button block onClick={this.__click.bind(this, "quiz")}>Play</Button>
             </Panel.Body>
           </Panel>

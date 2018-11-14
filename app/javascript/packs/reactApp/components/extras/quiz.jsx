@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, Table, Row, Col, Panel, Glyphicon, ProgressBar } from 'react-bootstrap'
+import { Button, Table, Row, Col, Panel, Glyphicon, ProgressBar, FormGroup, FormControl, ControlLabel } from 'react-bootstrap'
 
 import $ from 'jquery'
 
@@ -15,6 +15,10 @@ class QuizPage extends React.Component {
       eugeneScore: 0.0,
       userTiffanyAnswers: [],
       userEugeneAnswers: [],
+      submitName: "",
+      showLeaderBoard: false,
+      tiffanyHighScores: [],
+      eugeneHighScores: [],
       gameData: {
         questions: {
           1: "How much do you like chocolate?",
@@ -29,15 +33,15 @@ class QuizPage extends React.Component {
           10: "Choose your favorite cat from the list..."
         },
         answers: { // scoring is [Tiffany, Eugene]
-          1: {"Drown me in it!": [2, -1], "Yes.": [1, 0], "It's alright. I'll eat it sometimes": [-1, 2], "Not one bit": [-2, 1]},
-          2: {"Emo rock music from the 90s": [2, 1], "Happy pop music": [1, -1], "Classical music": [0, 1], "Indie folk music": [1, 2]},
-          3: {"Anything, I'm so HUNGRY!!": [2, -2], "Eggs, bacon, and biscuits and gravy mmmmm": [1, -1], "Pancakes. but only after 10am.": [0, 1], "Just coffee. I need that caffeine... Gimmeeee it!": [-2, 2]},
-          4: {"eats shoots, and leaves": [1, 0], "eats shoots and leaves": [2, 0], "eats, shoots and leaves": [-1 ,1], "eats, shoots, and leaves": [-2, 2]},
-          5: {"New Zealand": [1, -1], "Italy": [2, 1], "Taiwan": [2, 1], "Japan": [1, 2]},
-          6: {"Grapes?": [2, 1], "Exotic Fruits from Southeast Asia (E.g. Cherimoya)": [2, 0], "Stone Fruit (Peaches, Nectarines, etc..)": [2, 1], "Melons": [0, 2], "None. I don't like fruit": [-2, -1]},
-          7: {"Yes.": [1, 1], "Amazing. I can show you the way~": [2, -2], "Eh. I know the general directions": [-2, 2], "Like a fish out of water": [-2, 2]},
-          8: {"Reading a book": [1, -2], "Watching your favorite tv show": [1, 2], "Gardening": [1, 1], "Playing video games": [0, 2], "Arts and Crafts!": [2, -2], "Sports": [-1, 1]},
-          9: {"Twice a year": [1, -1], "Every 4 years, or just in front of the mirror once in a while": [2, -1], "When the moon is full": [-1, 1], "Every 3rd month": [-2, 2]},
+          1: {"Drown me in it!": [2, 0], "Yes.": [1, 0], "It's alright. I'll eat it sometimes": [0, 2], "Not one bit": [0, 1]},
+          2: {"Emo rock music from the 90s": [2, 1], "Happy pop music": [1, 0], "Classical music": [0, 1], "Indie folk music": [1, 2]},
+          3: {"Anything, I'm so HUNGRY!!": [2, 0], "Eggs, bacon, and biscuits and gravy mmmmm": [1, 0], "Pancakes. but only after 10am.": [0, 1], "Just coffee. I need that caffeine... Gimmeeee it!": [0, 2]},
+          4: {"eats shoots, and leaves": [1, 0], "eats shoots and leaves": [2, 0], "eats, shoots and leaves": [0 ,1], "eats, shoots, and leaves": [0, 2]},
+          5: {"New Zealand": [1, 0], "Italy": [2, 1], "Taiwan": [2, 1], "Japan": [1, 2]},
+          6: {"Grapes?": [2, 1], "Exotic Fruits from Southeast Asia (E.g. Cherimoya)": [2, 0], "Stone Fruit (Peaches, Nectarines, etc..)": [2, 1], "Melons": [0, 2], "None. I don't like fruit": [0, 0]},
+          7: {"Yes.": [1, 1], "Amazing. I can show you the way~": [2, 0], "Eh. I know the general directions": [0, 2], "Like a fish out of water": [0, 2]},
+          8: {"Reading a book": [1, 0], "Watching your favorite tv show": [1, 2], "Gardening": [1, 1], "Playing video games": [0, 2], "Arts and Crafts!": [2, 0], "Sports": [0, 1]},
+          9: {"Twice a year": [1, 0], "Every 4 years, or just in front of the mirror once in a while": [2, 0], "When the moon is full": [0, 1], "Every 3rd month": [0, 2]},
           10: {"Toby": [2, 2], "Eve": [2, 2], "Shami": [1, 1], "Autumn": [1, 1], "Mini": [1, 1], "The cat in the hat": [0, 0]},
         },
         categories: {
@@ -58,7 +62,7 @@ class QuizPage extends React.Component {
   }
 
   componentDidMount() {
-    // Pull game data
+    // Pull game
   }
 
   shuffleArray(array) {
@@ -112,7 +116,7 @@ class QuizPage extends React.Component {
 
     if (answerValue[1] > 0) {
       userEugeneAnswers.push(category);
-      
+
       this.setState({
         userEugeneAnswers: userEugeneAnswers
       });
@@ -145,7 +149,7 @@ class QuizPage extends React.Component {
   __questions(currentQuestion, currentAnswerChoices) {
     return (
       <div>
-        <div className="questions container" style={{width: "80%", fontSize: "large", fontWeight: 500, textAlign: "center"}}>
+        <div className="questions container" style={{width: "80%", fontSize: "26px", fontWeight: 500, textAlign: "center"}}>
           {currentQuestion}
         </div>
         <br/>
@@ -182,7 +186,7 @@ class QuizPage extends React.Component {
       <div className="quiz-game container">
         <Panel style={{width: "90%", background: "aliceblue"}}>
           <Panel.Heading style={{background: "lightsteelblue"}}>
-            <Panel.Title componentClass="h3" style={{textAlign: "center"}}>The "Are you a Eugene or Tiffany? Who knows? Do you? Let's find out!" Game</Panel.Title>
+            <Panel.Title componentClass="h3" style={{textAlign: "center", color: "white", fontSize: "24px"}}>The "Are you a Eugene or Tiffany? Who knows? Do you? Let's find out!" Game</Panel.Title>
           </Panel.Heading>
           <br/>
           <Panel.Body>
@@ -200,8 +204,8 @@ class QuizPage extends React.Component {
 
   __progress() {
     const {tiffanyScore, eugeneScore} = this.state;
-    let leftScorePercent = eugeneScore * 6.0;
-    let rightScorePercent = tiffanyScore * 6.0;
+    let leftScorePercent = eugeneScore * 5.0;
+    let rightScorePercent = tiffanyScore * 5.0;
 
     return (
       <div className="container" style={{textAlign: "center"}}>
@@ -209,13 +213,13 @@ class QuizPage extends React.Component {
           <img src={require('./../../assets/images/eugene_vs_headshot.jpg')} height="50px"/>
         </div>
         <div className="container" style={{float: "left", width: "30%", padding: "0px"}}>
-          <ProgressBar bsStyle="warning" className="right" now={leftScorePercent}/>
+          <ProgressBar active={true} bsStyle="warning" className="right" now={leftScorePercent}/>
         </div>
         <div className="container" style={{float: "left", width: "5%", padding: "0px"}}>
           <Glyphicon glyph="star" />
         </div>
         <div className="container" style={{float: "left", width: "30%", padding: "0px"}}>
-          <ProgressBar now={rightScorePercent} />
+          <ProgressBar active={true} now={rightScorePercent} />
         </div>
         <div className="container" style={{float: "left", width: "10%", padding: "0px"}}>
           <img src={require('./../../assets/images/tiffany_vs_headshot.jpg')} height="50px"/>
@@ -229,6 +233,64 @@ class QuizPage extends React.Component {
       <li key={index}>
         {category}
       </li>
+    )
+  }
+
+  __submit(params) {
+    $.ajax({
+      type: "POST",
+      url: "/quiz/score",
+      data: params,
+      complete: this.__handleSuccess.bind(this)
+    });
+  }
+
+  __handleSuccess(result) {
+    this.__fetchHighScores();
+    this.setState({
+      showLeaderBoard: true
+    });
+  }
+
+  __handleSubmitScore() {
+    const { submitName, tiffanyScore, eugeneScore, userTiffanyAnswers, userEugeneAnswers } = this.state;
+    const params = {
+      name: submitName,
+      tiffany_score: tiffanyScore,
+      eugene_score: eugeneScore,
+      user_tiffany_answers: userTiffanyAnswers,
+      user_eugene_answers: userEugeneAnswers,
+    };
+    this.__submit(params);
+  }
+
+  __handleTextChange(e) {
+    this.setState({ submitName: e.target.value });
+  }
+
+  __submitScore() {
+    // allows user to submit their score to a leaderboard (as well as for admin viewing)
+    return (
+      <div>
+        <form>
+          <FormGroup controlId="formBasicText">
+            <ControlLabel>Enter your name to submit your score!</ControlLabel>
+            <FormControl
+              type="text"
+              value={this.state.value}
+              onChange={this.__handleTextChange.bind(this)}
+              onKeyPress={event => {
+                if (event.key === "Enter") {
+                  event.preventDefault();
+                  this.__handleSubmitScore();
+                }
+              }}
+            />
+            <FormControl.Feedback />
+          </FormGroup>
+        </form>
+        <Button bsStyle="primary" onClick={this.__handleSubmitScore.bind(this)}>Submit</Button>
+      </div>
     )
   }
 
@@ -251,8 +313,6 @@ class QuizPage extends React.Component {
       commonCategories = userEugeneAnswers;
     }
 
-
-    debugger;
     return (
       <div className="quiz-finish container">
         <div className="container" style={{float: "left", width: "40%"}}>
@@ -273,14 +333,115 @@ class QuizPage extends React.Component {
             })}
           </div>
         </div>
+        <div className="container"  style={{float: "left", width: "30%"}}>
+          {this.__submitScore()}
+        </div>
       </div>
     )
   }
 
+  __leaderBoard() {
+    const {tiffanyHighScores, eugeneHighScores} = this.state;
+
+    return (
+      <div className="container">
+
+        <div>
+          <h3>Leaderboard</h3>
+        </div>
+
+        <div className="container">
+          <div className="container" style={{float: "left", width: "40%"}}>
+            <h4>Top 10 "You Are A Tiffany" Scores</h4>
+            <Table bordered>
+              <thead>
+              <tr>
+                <th>Name</th>
+                <th>Score</th>
+              </tr>
+              </thead>
+              <tbody>
+              {tiffanyHighScores.map(highScore => {
+                return this.__leaderBoardEntries(highScore, "tiffany")
+              })}
+              </tbody>
+            </Table>
+          </div>
+
+          <div className="container" style={{float: "left", width: "40%"}}>
+            <h4>Top 10 "You Are A Eugene" Scores</h4>
+            <Table bordered>
+              <thead>
+              <tr>
+                <th>Name</th>
+                <th>Score</th>
+              </tr>
+              </thead>
+              <tbody>
+              {eugeneHighScores.map(highScore => {
+                return this.__leaderBoardEntries(highScore, "eugene")
+              })}
+              </tbody>
+            </Table>
+          </div>
+        </div>
+
+      </div>
+    )
+  }
+
+  __leaderBoardEntries(entry, leader) {
+    const score = leader === "tiffany" ? entry.tiffany_score : entry.eugene_score;
+
+    return (
+      <tr>
+        <td>
+          {entry.name}
+        </td>
+        <td>
+          {score * 5}%
+        </td>
+      </tr>
+    )
+  }
+
+  __fetchHighScores() {
+    $.ajax({
+      type: "GET",
+      url: "/quiz/high_scores",
+      data: {},
+      dataType: "json",
+      complete: this.__handleHighScoreSuccess.bind(this)
+    });
+  }
+
+  __handleHighScoreSuccess(result) {
+    if (result && result.responseJSON) {
+      this.setState({
+        tiffanyHighScores: result.responseJSON.tiffany_scores,
+        eugeneHighScores: result.responseJSON.eugene_scores
+      })
+    }
+  }
+
   render() {
+    const {showLeaderBoard} = this.state;
+
+    let content;
+    switch (showLeaderBoard) {
+      case true:
+        content = this.__leaderBoard();
+        break;
+      case false:
+        content = this.__quizGame();
+        break;
+      default:
+        break;
+    }
+
     return(
       <div className="quiz-page container">
-        {this.__quizGame()}
+        {content}
       </div>
     )
   }

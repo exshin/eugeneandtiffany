@@ -1,3 +1,7 @@
+body {
+    font-family: 'Trirong', serif !important;
+}
+
 .progress.right .progress-bar {
     float: right;
 }
@@ -20,4 +24,5 @@
 
 .answer-button {
     box-shadow: 3px 3px 4px lightgrey;
+    font-size: 18px !important;
 }
