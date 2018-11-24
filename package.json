@@ -11,7 +11,10 @@
     "react-bootstrap": "^0.32.4",
     "react-dom": "^16.6.0",
     "react-router-dom": "^4.4.0-beta.4",
-    "underscore": "^1.9.1"
+    "react-spring": "^6.1.8",
+    "underscore": "^1.9.1",
+    "popper.js": "^1.14.3",
+    "ajv": "^6.0.0"
   },
   "devDependencies": {
     "webpack-dev-server": "2.11.2"

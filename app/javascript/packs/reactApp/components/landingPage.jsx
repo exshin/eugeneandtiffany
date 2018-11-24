@@ -182,14 +182,11 @@ class LandingPage extends React.Component {
                   <NavItem className="nav-item nav-schedule" eventKey={3} href="#">
                     Schedule
                   </NavItem>
-                  <NavItem className="nav-item nav-photos" eventKey={4} href="#">
-                    Photos
-                  </NavItem>
                   <NavItem className="nav-item nav-rsvp" eventKey={5} href="#">
                     RSVP
                   </NavItem>
                   <NavItem className="nav-item nav-extras" eventKey={6} href="#">
-                    Extras
+                    Games
                   </NavItem>
                   {this.__navAdmin()}
                 </Nav>

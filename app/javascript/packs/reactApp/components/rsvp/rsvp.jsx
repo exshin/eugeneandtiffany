@@ -1,24 +1,29 @@
 import React from 'react';
-import { Button } from 'react-bootstrap'
+import { Button, Form, FormGroup, FormControl, ControlLabel } from 'react-bootstrap'
+
+import $ from 'jquery'
 
 class RsvpPage extends React.Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      rsvps: []
+      rsvps: [],
+      firstName: "",
+      lastName: "",
+      rsvpFetchFail: false
     }
   }
 
-  __click() {
-    debugger;
-  }
-
   __handleFindRSVP() {
+    event.preventDefault();
+    const first_name = event.target.children[0].children[1].value;
+    const last_name = event.target.children[1].children[1].value;
+
     $.ajax({
       type: "GET",
-      url: "/quiz/high_scores",
-      data: {},
+      url: "/rsvp/find_groups_by_name",
+      data: {first_name: first_name, last_name: last_name},
       dataType: "json",
       complete: this.__rsvpSuccess.bind(this)
     });
@@ -26,38 +31,81 @@ class RsvpPage extends React.Component {
 
   __rsvpSuccess(result) {
     if (result && result.responseJSON) {
-      this.setState({
-        rsvps: result.responseJSON.tiffany_scores
-      })
+      if (result.responseJSON.rsvps.length > 0) {
+        this.setState({
+          rsvps: result.responseJSON.rsvps,
+          rsvpFetchFail: false
+        })
+      } else {
+        this.setState({
+          rsvpFetchFail: true
+        })
+      }
     }
   }
 
-  __handleTextChange(e) {
-    this.setState({ submitName: e.target.value });
+  __rsvp(rsvp, index) {
+    const {first_name, last_name, email, dietary_restrictions, attending, updated_at} = rsvp;
+
+    return (
+      <div key={index} className="rsvp container">
+        <div>Name: {first_name} {last_name}</div>
+        <div>Email: {email}</div>
+        <div>Will You Be Attending? {attending}</div>
+        <div>Any Dietary Requirements? {dietary_restrictions}</div>
+        <br/>
+      </div>
+    )
+  }
+
+  __showRsvps() {
+    const {rsvps} = this.state;
+
+    return (
+      <div className="rsvps container">
+        {rsvps.map((rsvp, index) => {
+          return this.__rsvp(rsvp, index)
+        })}
+      </div>
+    )
+  }
+
+  __showFetchRsvpFail() {
+    return (
+      <div>
+        Sorry, we couldn't find your RSVP. Please try again or contact us.
+      </div>
+    )
   }
 
   render() {
+    const {rsvps, rsvpFetchFail} = this.state;
+    let content;
+
+    if (rsvps.length > 0) {
+      content = this.__showRsvps();
+    }
+
+    if (rsvpFetchFail) {
+      content = this.__showFetchRsvpFail();
+    }
+
     return(
       <div className="rsvp-page container">
         <h1>Find your RSVP</h1>
-        <form>
-          <FormGroup controlId="formBasicText">
-            <ControlLabel>Enter your name to find your RSVP</ControlLabel>
-            <FormControl
-              type="text"
-              value={this.state.value}
-              onChange={this.__handleTextChange.bind(this)}
-              onKeyPress={event => {
-                if (event.key === "Enter") {
-                  event.preventDefault();
-                  this.__handleFindRSVP();
-                }
-              }}
-            />
-            <FormControl.Feedback />
-          </FormGroup>
-        </form>
-        <Button bsStyle="primary" onClick={this.__handleFindRSVP.bind(this)}>Submit</Button>
+        <Form role="form" inline onSubmit={this.__handleFindRSVP.bind(this)}>
+          <FormGroup controlId="formInlineName">
+            <ControlLabel>First Name</ControlLabel>{' '}
+            <FormControl type="text" placeholder="" />
+          </FormGroup>{' '}
+          <FormGroup controlId="formInlineName">
+            <ControlLabel>Last Name</ControlLabel>{' '}
+            <FormControl type="text" placeholder="" />
+          </FormGroup>{' '}
+          <Button bsStyle="primary" type="submit">Submit</Button>
+        </Form>
+        <br/>
+        {content}
       </div>
     )
   }

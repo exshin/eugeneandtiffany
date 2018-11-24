@@ -30,7 +30,8 @@ class QuizPage extends React.Component {
           7: "How are you with driving directions?",
           8: "Which of the following activities would you prefer?",
           9: "How often would you get a haircut?",
-          10: "Choose your favorite cat from the list..."
+          10: "While traveling, rank the categories Nature, Food, and Culture in order of importance to you. (First being most important.)",
+          11: "Choose your favorite cat from the list..."
         },
         answers: { // scoring is [Tiffany, Eugene]
           1: {"Drown me in it!": [2, 0], "Yes.": [1, 0], "It's alright. I'll eat it sometimes": [0, 2], "Not one bit": [0, 1]},
@@ -42,7 +43,8 @@ class QuizPage extends React.Component {
           7: {"Yes.": [1, 1], "Amazing. I can show you the way~": [2, 0], "Eh. I know the general directions": [0, 2], "Like a fish out of water": [0, 2]},
           8: {"Reading a book": [1, 0], "Watching your favorite tv show": [1, 2], "Gardening": [1, 1], "Playing video games": [0, 2], "Arts and Crafts!": [2, 0], "Sports": [0, 1]},
           9: {"Twice a year": [1, 0], "Every 4 years, or just in front of the mirror once in a while": [2, 0], "When the moon is full": [0, 1], "Every 3rd month": [0, 2]},
-          10: {"Toby": [2, 2], "Eve": [2, 2], "Shami": [1, 1], "Autumn": [1, 1], "Mini": [1, 1], "The cat in the hat": [0, 0]},
+          10: {"Food, Nature, then Culture": [0, 1], "Food, Culture, then Nature": [0, 2], "Culture, Nature, then Food": [0, 0], "Culture, Food, then Nature": [0, 1], "Nature, Food, then Culture": [0, 0], "Nature, Culture, then Food": [0, 0]},
+          11: {"Toby": [2, 2], "Eve": [2, 2], "Shami": [1, 1], "Autumn": [1, 1], "Mini": [1, 1], "The cat in the hat": [0, 0]},
         },
         categories: {
           1: "Chocolate",
@@ -53,8 +55,9 @@ class QuizPage extends React.Component {
           6: "Fruit",
           7: "Sense of direction",
           8: "Activities",
-          9: "Hair",
-          10: "Cats"
+          9: "Hair Care",
+          10: "Travel",
+          11: "Cats"
         }
 
       }
@@ -106,17 +109,15 @@ class QuizPage extends React.Component {
       currentQuestionNumber: currentQuestionNumber + 1
     });
 
-    if (answerValue[0] > 0) {
+    if (answerValue[0] > 0 && !userTiffanyAnswers.includes(category)) {
       userTiffanyAnswers.push(category);
-
       this.setState({
         userTiffanyAnswers: userTiffanyAnswers
       });
     }
 
-    if (answerValue[1] > 0) {
+    if (answerValue[1] > 0 && !userEugeneAnswers.includes(category)) {
       userEugeneAnswers.push(category);
-
       this.setState({
         userEugeneAnswers: userEugeneAnswers
       });
@@ -146,11 +147,11 @@ class QuizPage extends React.Component {
     )
   }
 
-  __questions(currentQuestion, currentAnswerChoices) {
+  __questions(currentQuestion, currentAnswerChoices, currentQuestionNumber) {
     return (
       <div>
         <div className="questions container" style={{width: "80%", fontSize: "26px", fontWeight: 500, textAlign: "center"}}>
-          {currentQuestion}
+          {currentQuestionNumber}. {currentQuestion}
         </div>
         <br/>
         <div className="answers container" style={{width: "80%"}}>
@@ -179,7 +180,7 @@ class QuizPage extends React.Component {
     } else {
       const currentQuestion = questions[currentQuestionNumber];
       const currentAnswerChoices = this.shuffleArray(Object.keys(answers[currentQuestionNumber]));
-      content = this.__questions(currentQuestion, currentAnswerChoices);
+      content = this.__questions(currentQuestion, currentAnswerChoices, currentQuestionNumber);
     }
 
     return (
@@ -306,12 +307,15 @@ class QuizPage extends React.Component {
       commonCategories = userTiffanyAnswers;
     } else if (tiffanyScore == eugeneScore) {
       message = "Wow! You are equal parts Eugene and Tiffany! ";
-      imageUrl = "equal_win"
+      imageUrl = "";
+      commonCategories = userTiffanyAnswers.concat(userEugeneAnswers);
     } else {
       message = "Congratulations! You are a 'Eugene'!";
       imageUrl = "eugene_win";
       commonCategories = userEugeneAnswers;
     }
+
+    const uniqueCommonCategories = [...new Set(commonCategories)];
 
     return (
       <div className="quiz-finish container">
@@ -328,7 +332,7 @@ class QuizPage extends React.Component {
             Things you have in common:
           </div>
           <div>
-            {commonCategories.map((category, index) => {
+            {uniqueCommonCategories.map((category, index) => {
               return this.__commonCategories(category, index)
             })}
           </div>
@@ -361,8 +365,8 @@ class QuizPage extends React.Component {
               </tr>
               </thead>
               <tbody>
-              {tiffanyHighScores.map(highScore => {
-                return this.__leaderBoardEntries(highScore, "tiffany")
+              {tiffanyHighScores.map((highScore, index) => {
+                return this.__leaderBoardEntries(highScore, "tiffany", index)
               })}
               </tbody>
             </Table>
@@ -378,8 +382,8 @@ class QuizPage extends React.Component {
               </tr>
               </thead>
               <tbody>
-              {eugeneHighScores.map(highScore => {
-                return this.__leaderBoardEntries(highScore, "eugene")
+              {eugeneHighScores.map((highScore, index) => {
+                return this.__leaderBoardEntries(highScore, "eugene", index)
               })}
               </tbody>
             </Table>
@@ -390,11 +394,11 @@ class QuizPage extends React.Component {
     )
   }
 
-  __leaderBoardEntries(entry, leader) {
+  __leaderBoardEntries(entry, leader, index) {
     const score = leader === "tiffany" ? entry.tiffany_score : entry.eugene_score;
 
     return (
-      <tr>
+      <tr key={index}>
         <td>
           {entry.name}
         </td>

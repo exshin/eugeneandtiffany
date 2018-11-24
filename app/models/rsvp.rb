@@ -8,7 +8,10 @@
 #  email                :string
 #  attending            :boolean
 #  dietary_restrictions :text
+#  rsvp_group_id        :integer
+#  updated_at           :datetime
 #
 
 class Rsvp < ApplicationRecord
+  belongs_to :rsvp_group
 end

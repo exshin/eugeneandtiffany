@@ -12,4 +12,8 @@ Rails.application.routes.draw do
     post :score
     get :high_scores
   end
+
+  namespace :rsvp do
+    get :find_groups_by_name
+  end
 end
