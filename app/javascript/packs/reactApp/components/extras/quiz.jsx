@@ -307,7 +307,7 @@ class QuizPage extends React.Component {
       commonCategories = userTiffanyAnswers;
     } else if (tiffanyScore == eugeneScore) {
       message = "Wow! You are equal parts Eugene and Tiffany! ";
-      imageUrl = "";
+      imageUrl = "tie_win";
       commonCategories = userTiffanyAnswers.concat(userEugeneAnswers);
     } else {
       message = "Congratulations! You are a 'Eugene'!";

@@ -51,10 +51,19 @@ class LandingPage extends React.Component {
   }
 
   __handleSelect(eventKey, event) {
+    const { activeTab } = this.state;
     event.preventDefault();
+
+    if (activeTab === eventKey) {
+      this.setState({
+        activeTab: 1
+      });
+    }
+
     this.setState({
       activeTab: eventKey
     });
+
   }
 
   __handlePasswordChange(e) {
@@ -127,6 +136,8 @@ class LandingPage extends React.Component {
   render() {
     const { activeTab, authenticated } = this.state;
 
+    const uniqueId = new Date().toISOString();
+
     if (!authenticated) {
       return (
         <div id="landing-page">
@@ -137,25 +148,25 @@ class LandingPage extends React.Component {
       let content;
       switch (activeTab) {
         case 1:
-          content = <HomePage/>;
+          content = <HomePage key={uniqueId}/>;
           break;
         case 2:
-          content = <TravelPage/>;
+          content = <TravelPage key={uniqueId}/>;
           break;
         case 3:
-          content = <SchedulePage/>;
+          content = <SchedulePage key={uniqueId}/>;
           break;
         case 4:
-          content = <PhotosPage/>;
+          content = <PhotosPage key={uniqueId}/>;
           break;
         case 5:
-          content = <RsvpPage/>;
+          content = <RsvpPage key={uniqueId}/>;
           break;
         case 6:
-          content = <ExtrasPage/>;
+          content = <ExtrasPage key={uniqueId}/>;
           break;
         case 7:
-          content = <AdminPage/>;
+          content = <AdminPage key={uniqueId}/>;
           break;
         default:
           break;
