@@ -12,4 +12,21 @@ class RsvpController < ActionController::Base
 
     render json: {rsvps: rsvps}
   end
+
+  def submit_rsvps
+    begin
+      params.each do |id, updates|
+        rsvp = Rsvp.find_by(id: id)
+        next unless rsvp
+
+        rsvp.attending = updates['attending'] if updates['attending']
+        rsvp.dietary_restrictions = updates['dietary_restrictions'] if updates['dietary_restrictions']
+
+        rsvp.save!
+      end
+      render json: {result: 'success'}
+    rescue => e
+      render json: {result: 'fail', error: e}
+    end
+  end
 end
