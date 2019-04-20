@@ -175,7 +175,7 @@ class LandingPage extends React.Component {
       return(
         <div id="landing-page">
           <div className="navbar">
-            <Navbar collapseOnSelect>
+            <Navbar collapseOnSelect fixedTop>
               <Navbar.Header>
                 <Navbar.Toggle />
               </Navbar.Header>

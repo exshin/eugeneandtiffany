@@ -37,3 +37,24 @@ body {
 .navbar .navbar-collapse {
     text-align: center;
 }
+
+.rsvpPanelBG {
+    background-image: url("./../../assets/images/rsvp_flowers2.png");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.div-center {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.gold-line {
+    width: 60%;
+    border-top-color: #e0c530;
+    border-top-width: 2px;
+    float: left;
+    margin-top: 9px;
+}
