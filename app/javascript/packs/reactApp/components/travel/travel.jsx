@@ -11,6 +11,19 @@ class TravelPage extends React.Component {
       <div className="travel-page container">
         <h1>Travel Page!</h1>
         <Button onClick={this.__click.bind(this)}>Check</Button>
+
+        <div>
+          Hotel Info here
+        </div>
+
+        <div>
+          Info on Airports and proximity to the venue
+        </div>
+
+        <div>
+          Things to do in the area here
+        </div>
+
       </div>
     )
   }

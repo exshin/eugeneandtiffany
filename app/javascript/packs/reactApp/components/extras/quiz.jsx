@@ -29,22 +29,20 @@ class QuizPage extends React.Component {
           6: "Which of the following kinds of fruit do you like best?",
           7: "How are you with driving directions?",
           8: "Which of the following activities would you prefer?",
-          9: "How often would you get a haircut?",
-          10: "While traveling, rank the categories Nature, Food, and Culture in order of importance to you. (First being most important.)",
-          11: "Choose your favorite cat from the list..."
+          9: "While traveling, rank the categories Nature, Food, and Culture in order of importance to you. (First being most important.)",
+          10: "Choose your favorite cat from the list..."
         },
         answers: { // scoring is [Tiffany, Eugene]
           1: {"Drown me in it!": [2, 0], "Yes.": [1, 0], "It's alright. I'll eat it sometimes": [0, 2], "Not one bit": [0, 1]},
-          2: {"Emo rock music from the 90s": [2, 1], "Happy pop music": [1, 0], "Classical music": [0, 1], "Indie folk music": [1, 2]},
-          3: {"Anything, I'm so HUNGRY!!": [2, 0], "Eggs, bacon, and biscuits and gravy mmmmm": [1, 0], "Pancakes. but only after 10am.": [0, 1], "Just coffee. I need that caffeine... Gimmeeee it!": [0, 2]},
-          4: {"eats shoots, and leaves": [1, 0], "eats shoots and leaves": [2, 0], "eats, shoots and leaves": [0 ,1], "eats, shoots, and leaves": [0, 2]},
+          2: {"Emo rock music from the 90s": [2, 1], "Happy pop music": [1, 0], "Classical music": [0, 1], "Indie folk music": [1, 2], "Foreign (e.g. kpop)": [0, 1], "EDM": [0, 1]},
+          3: {"Anything, I'm so HUNGRY!!": [2, 0], "Eggs, bacon, and biscuits and gravy mmmmm": [1, 0], "Pancakes. but only after 10am.": [0, 1], "Just coffee. I need that caffeine... Gimmeeee it!": [0, 2], "None of these": [0, 0]},
+          4: {"eats shoots, and leaves": [0, 1], "eats shoots and leaves": [2, 0], "eats, shoots and leaves": [0 ,1], "eats, shoots, and leaves": [0, 2]},
           5: {"New Zealand": [1, 0], "Italy": [2, 1], "Taiwan": [2, 1], "Japan": [1, 2]},
           6: {"Grapes?": [2, 1], "Exotic Fruits from Southeast Asia (E.g. Cherimoya)": [2, 0], "Stone Fruit (Peaches, Nectarines, etc..)": [2, 1], "Melons": [0, 2], "None. I don't like fruit": [0, 0]},
           7: {"Yes.": [1, 1], "Amazing. I can show you the way~": [2, 0], "Eh. I know the general directions": [0, 2], "Like a fish out of water": [0, 2]},
-          8: {"Reading a book": [1, 0], "Watching your favorite tv show": [1, 2], "Gardening": [1, 1], "Playing video games": [0, 2], "Arts and Crafts!": [2, 0], "Sports": [0, 1]},
-          9: {"Twice a year": [1, 0], "Every 4 years, or just in front of the mirror once in a while": [2, 0], "When the moon is full": [0, 1], "Every 3rd month": [0, 2]},
-          10: {"Food, Nature, then Culture": [0, 1], "Food, Culture, then Nature": [0, 2], "Culture, Nature, then Food": [0, 0], "Culture, Food, then Nature": [0, 1], "Nature, Food, then Culture": [0, 0], "Nature, Culture, then Food": [0, 0]},
-          11: {"Toby": [2, 2], "Eve": [2, 2], "Shami": [1, 1], "Autumn": [1, 1], "Mini": [1, 1], "The cat in the hat": [0, 0]},
+          8: {"Reading a book": [1, 0], "Watching your favorite TV show": [1, 2], "Gardening": [1, 1], "Playing video games": [0, 2], "Arts and Crafts!": [2, 0], "Sports": [0, 1]},
+          9: {"Food, Nature, then Culture": [2, 1], "Food, Culture, then Nature": [1, 2], "Culture, Nature, then Food": [0, 0], "Culture, Food, then Nature": [0, 1], "Nature, Food, then Culture": [2, 0], "Nature, Culture, then Food": [0, 0]},
+          10: {"Toby": [2, 2], "Eve": [2, 2], "Shami": [1, 1], "Autumn": [1, 1], "Mini": [1, 1], "The cat in the hat": [0, 0]},
         },
         categories: {
           1: "Chocolate",
@@ -55,9 +53,8 @@ class QuizPage extends React.Component {
           6: "Fruit",
           7: "Sense of direction",
           8: "Activities",
-          9: "Hair Care",
-          10: "Travel",
-          11: "Cats"
+          9: "Travel",
+          10: "Cats"
         }
 
       }

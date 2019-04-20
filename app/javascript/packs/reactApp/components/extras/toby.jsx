@@ -9,13 +9,13 @@ class TobyPage extends React.Component {
 
     this.state = {
       quizStart: false,
-      currentQuestionNumber: 1,
+      currentQuestionNumber: 0,
       score: 0.0,
       gameData: {
         options: [
-          ['toby_1.jpg', 'fake_cat_1.jpg', 'fake_cat_2.jpg'],
-          ['toby_2.jpg', 'fake_cat_3.jpg', 'fake_cat_4.jpg'],
-          ['toby_3.jpg', 'fake_cat_5.jpg', 'fake_cat_6.jpg'],
+          ['toby_1.jpg', 'fake_cat_1.jpg'],
+          ['toby_2.jpg', 'fake_cat_3.jpg'],
+          ['toby_3.jpg', 'fake_cat_5.jpg'],
         ],
         answers: [
           'toby_1.jpg',
@@ -51,10 +51,15 @@ class TobyPage extends React.Component {
     const { answers } = gameData;
 
     const currentAnswer = answers[currentQuestionNumber];
-    const answerValue = currentAnswer[answer];
+    const correctAnswer = answers[currentQuestionNumber];
+
+    if (currentAnswer === correctAnswer) {
+      this.setState({
+        score: score + 1,
+      });
+    }
 
     this.setState({
-      score: score + answerValue,
       currentQuestionNumber: currentQuestionNumber + 1
     });
 
@@ -64,14 +69,13 @@ class TobyPage extends React.Component {
   }
 
   __quizAnswers(currentOption) {
+    // TODO: Need to implement button images with the currentOption as the image name
     return (
-      <tr>
-        <td>
-          <div className="answer">
-            <Button className="answer-button" onClick={this.__answerClick.bind(this, currentOption)} block>{currentOption}</Button>
-          </div>
-        </td>
-      </tr>
+      <td key={currentOption}>
+        <div className="answer">
+          <Button className="answer-button" onClick={this.__answerClick.bind(this, currentOption)} block>{currentOption}</Button>
+        </div>
+      </td>
     )
   }
 
@@ -94,13 +98,13 @@ class TobyPage extends React.Component {
 
   __quizGame() {
     const { gameData, currentQuestionNumber, quizStart } = this.state;
-    const { options, answers } = gameData;
+    const { options } = gameData;
 
-    const currentOptions = this.shuffleArray(Object.keys(options[currentQuestionNumber]));
+    const currentOptions = this.shuffleArray(options[currentQuestionNumber]);
 
     let content;
 
-    if (quizStart) {
+    if (!quizStart) {
       content = this.__quizDescription();
     }
 
@@ -111,12 +115,14 @@ class TobyPage extends React.Component {
           {content}
         </div>
         <br/>
-        <div className="answers container" style={{width: "50%"}}>
+        <div className="answers container" style={{width: "50%"}} hidden={!quizStart}>
           <Table bordered>
             <tbody>
-            {currentOptions.map(currentOption => {
-              return this.__quizAnswers(currentOption)
-            })}
+              <tr>
+                {currentOptions.map(currentOption => {
+                  return this.__quizAnswers(currentOption)
+                })}
+              </tr>
             </tbody>
           </Table>
         </div>
@@ -144,7 +150,7 @@ class TobyPage extends React.Component {
   render() {
     let content;
     const { gameData, currentQuestionNumber } = this.state;
-    const maxQuestions = Object.keys(gameData.questions).length + 1;
+    const maxQuestions = gameData.options.length;
 
     if (maxQuestions === currentQuestionNumber) {
       content = this.__quizFinish();

@@ -177,9 +177,6 @@ class LandingPage extends React.Component {
           <div className="navbar">
             <Navbar collapseOnSelect>
               <Navbar.Header>
-                <Navbar.Brand>
-                  <a href="#">Tiffany + Eugene</a>
-                </Navbar.Brand>
                 <Navbar.Toggle />
               </Navbar.Header>
               <Navbar.Collapse>

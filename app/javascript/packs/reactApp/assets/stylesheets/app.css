@@ -27,3 +27,13 @@ body {
     box-shadow: 3px 3px 4px lightgrey;
     font-size: 18px !important;
 }
+
+.navbar .navbar-nav {
+    display: inline-block;
+    float: none;
+    vertical-align: top;
+}
+
+.navbar .navbar-collapse {
+    text-align: center;
+}

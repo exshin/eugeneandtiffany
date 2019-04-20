@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, Form, FormGroup, FormControl, ControlLabel } from 'react-bootstrap'
+import { Button, Form, FormGroup, FormControl, ControlLabel, Panel } from 'react-bootstrap'
 
 import $ from 'jquery'
 
@@ -44,15 +44,40 @@ class RsvpPage extends React.Component {
     }
   }
 
-  __rsvp(rsvp, index) {
+  __rsvpView(rsvp, index) {
+    const {first_name, last_name, email, dietary_restrictions, attending, updated_at} = rsvp;
+
+    return (
+      <div key={index} className="rsvp container">
+        <Panel style={{width: "90%", background: "aliceblue"}}>
+          <Panel.Heading style={{background: "lightsteelblue"}}>
+            <Panel.Title componentClass="h3" style={{textAlign: "center", color: "white", fontSize: "24px"}}>{first_name} {last_name}</Panel.Title>
+          </Panel.Heading>
+          <br/>
+          <Panel.Body>
+            <div>Will You Be Attending? {attending}</div>
+            <div>Any Dietary Requirements? {dietary_restrictions}</div>
+          </Panel.Body>
+        </Panel>
+        <br/>
+      </div>
+    )
+  }
+
+  __rsvpEdit(rsvp, index) {
     const {first_name, last_name, email, dietary_restrictions, attending, updated_at} = rsvp;
 
     return (
       <div key={index} className="rsvp container">
         <div>Name: {first_name} {last_name}</div>
-        <div>Email: {email}</div>
-        <div>Will You Be Attending? {attending}</div>
-        <div>Any Dietary Requirements? {dietary_restrictions}</div>
+        <div className="container-fluid">
+          <div style={{float: "left"}}>Will You Be Attending?</div>
+          <div style={{float: "left"}}><Button>Yes</Button></div>
+          <div style={{float: "left"}}><Button>No</Button></div>
+        </div>
+        <div className="container-fluid">
+          Any Dietary Requirements?
+        </div>
         <br/>
       </div>
     )
@@ -64,7 +89,19 @@ class RsvpPage extends React.Component {
     return (
       <div className="rsvps container">
         {rsvps.map((rsvp, index) => {
-          return this.__rsvp(rsvp, index)
+          return this.__rsvpView(rsvp, index)
+        })}
+      </div>
+    )
+  }
+
+  __editRsvps() {
+    const {rsvps} = this.state;
+
+    return (
+      <div className="rsvps container">
+        {rsvps.map((rsvp, index) => {
+          return this.__rsvpView(rsvp, index)
         })}
       </div>
     )
@@ -83,7 +120,20 @@ class RsvpPage extends React.Component {
     let content;
 
     if (rsvps.length > 0) {
-      content = this.__showRsvps();
+      let rsvpd_count = 0;
+      rsvps.map(rsvp => {
+        if (rsvp.attending != null) {
+          rsvpd_count += 1
+        }
+      });
+
+      if (rsvpd_count === 0) {
+        // No one in this rsvp group has rsvpd yet so immediately go to rsvp edit
+        content = this.__editRsvps();
+      } else {
+        // Just show the rsvp
+        content = this.__showRsvps();
+      }
     }
 
     if (rsvpFetchFail) {
