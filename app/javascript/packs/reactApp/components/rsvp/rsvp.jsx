@@ -88,21 +88,23 @@ class RsvpPage extends React.Component {
     } else {
       attendingString = "I'm not sure..."
     }
-
     return (
       <div key={index} className="rsvp container">
         <Panel className="div-center" style={{width: "40%", background: "white", boxShadow: "lightgrey 5px 1px 7px"}}>
-          <Panel.Body>
+          <Panel.Body className="rsvpPanelBGView" style={{marginRight: "5px"}}>
             <div style={{fontFamily: "cursive", fontSize: "xx-large"}}>{first_name} {last_name}</div>
             <br/>
             <div>Will You Be Attending? {attendingString || "N/A"}</div>
             <div>Any Dietary Restrictions? {dietary_restrictions || "None"}</div>
-            <img style={{float: "right"}} src={require('./../../assets/images/rsvp_flowers.png')} height="160px"/>
+            <br/>
+            <br/>
+            <br/>
           </Panel.Body>
         </Panel>
         <br/>
       </div>
     )
+
   }
 
   __yes(id, e) {
@@ -148,7 +150,7 @@ class RsvpPage extends React.Component {
   __rsvpEdit(rsvp, index) {
     const {id, first_name, last_name, email, dietary_restrictions, attending, updated_at} = rsvp;
 
-    // TODO: Pre-render with existing information
+    // Pre-render with existing information
     let yesButtonClass;
     let noButtonClass;
     if (attending === true) {
@@ -161,8 +163,6 @@ class RsvpPage extends React.Component {
       yesButtonClass = "btn btn-default";
       noButtonClass = "btn btn-default";
     }
-
-    let dietText = dietary_restrictions;
 
     return (
       <div key={index} className="rsvp container">
@@ -183,7 +183,7 @@ class RsvpPage extends React.Component {
                 <FormControl
                   type="text"
                   value={this.state.value}
-                  placeholder={dietText}
+                  placeholder={dietary_restrictions}
                   onChange={this.__handleDietTextChange.bind(this, id)}
                 />
               </form>

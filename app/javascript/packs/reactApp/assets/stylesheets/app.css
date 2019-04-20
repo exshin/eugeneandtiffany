@@ -45,6 +45,13 @@ body {
     background-size: cover;
 }
 
+.rsvpPanelBGView {
+    background-image: url("./../../assets/images/rsvp_flowers.png");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
 .div-center {
     display: block;
     margin-left: auto;
