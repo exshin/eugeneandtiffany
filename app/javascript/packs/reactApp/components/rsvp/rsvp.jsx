@@ -149,6 +149,20 @@ class RsvpPage extends React.Component {
     const {id, first_name, last_name, email, dietary_restrictions, attending, updated_at} = rsvp;
 
     // TODO: Pre-render with existing information
+    let yesButtonClass;
+    let noButtonClass;
+    if (attending === true) {
+      yesButtonClass = "btn btn-primary";
+      noButtonClass = "btn btn-default";
+    } else if (attending === false) {
+      yesButtonClass = "btn btn-default";
+      noButtonClass = "btn btn-primary";
+    } else {
+      yesButtonClass = "btn btn-default";
+      noButtonClass = "btn btn-default";
+    }
+
+    let dietText = dietary_restrictions;
 
     return (
       <div key={index} className="rsvp container">
@@ -160,8 +174,8 @@ class RsvpPage extends React.Component {
             <br/>
             <div style={{marginBottom: "20px"}}>
               <div>Will You Be Attending?</div>
-              <Button style={{float: "left", marginRight: "10px"}} onClick={this.__yes.bind(this, id)}>Joyfully Accept</Button>
-              <Button onClick={this.__no.bind(this, id)}>Regretfully Decline</Button>
+              <Button className={yesButtonClass} style={{float: "left", marginRight: "10px"}} onClick={this.__yes.bind(this, id)}>Joyfully Accept</Button>
+              <Button className={noButtonClass} onClick={this.__no.bind(this, id)}>Regretfully Decline</Button>
             </div>
             <div style={{width: "75%"}}>
               <div>Any Dietary Restrictions?</div>
@@ -169,6 +183,7 @@ class RsvpPage extends React.Component {
                 <FormControl
                   type="text"
                   value={this.state.value}
+                  placeholder={dietText}
                   onChange={this.__handleDietTextChange.bind(this, id)}
                 />
               </form>
@@ -191,6 +206,7 @@ class RsvpPage extends React.Component {
         <br/>
         <div className="container" style={{textAlign: "center"}}>
           <div>Thank you for RSVPing!</div>
+          <br/>
           <Button bsStyle="primary" onClick={this.__editRSVPClick.bind(this)}>Edit your RSVP</Button>
         </div>
         <br/>
@@ -306,6 +322,7 @@ class RsvpPage extends React.Component {
       <div className="rsvp-page container">
         <div className="container text-center">
           <h1>Find your RSVP</h1>
+          <hr/>
         </div>
         {searchContent}
         <br/>
