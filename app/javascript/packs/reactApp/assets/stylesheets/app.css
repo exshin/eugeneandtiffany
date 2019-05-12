@@ -65,3 +65,50 @@ body {
     float: left;
     margin-top: 9px;
 }
+
+.vertical-line {
+    border-style: solid;
+    border-right: 1px;
+    border-width: thin;
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+.border {
+    padding: 0px;
+}
+
+.garden-board {
+    width: 280px;
+    padding: 0px;
+}
+.garden-outer-board {
+    width: 344px;
+    margin-left: 136px;
+}
+.garden-board-col {
+    padding-left: 0px;
+    padding-right: 0px;
+    width: 76px;
+    height: 76px;
+    float: left;
+}
+.garden-board-row {
+    margin-bottom: 1px;
+}
+div.empty-square {
+    width: 76px;
+    height: 76px;
+    background: white;
+}
+
+.addImgBorder {
+    border: 1px solid #000000;
+}
+
+.scheduleBG {
+    background-image: url("./../../assets/images/forest_background.jpeg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}

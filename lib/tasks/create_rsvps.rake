@@ -90,6 +90,327 @@ task create_rsvps: :environment do
               {first: 'Alice', last: 'Sheu', email: ''},
           ]
       },
+
+      {
+          name: 'Sarah & Alex',
+          group: [
+              {first: 'Sarah', last: 'Sheu', email: ''},
+              {first: 'Alex', last: 'Sheu', email: ''},
+              {first: 'Alice', last: 'Sheu', email: ''},
+          ]
+      },
+      {
+          name: 'Sarah & Alex',
+          group: [
+              {first: 'Sarah', last: 'Sheu', email: ''},
+              {first: 'Alex', last: 'Sheu', email: ''},
+              {first: 'Alice', last: 'Sheu', email: ''},
+          ]
+      },
+      {
+          name: 'Sarah & Alex',
+          group: [
+              {first: 'Sarah', last: 'Sheu', email: ''},
+              {first: 'Alex', last: 'Sheu', email: ''},
+              {first: 'Alice', last: 'Sheu', email: ''},
+          ]
+      },
+      {
+          name: 'Sarah & Alex',
+          group: [
+              {first: 'Sarah', last: 'Sheu', email: ''},
+              {first: 'Alex', last: 'Sheu', email: ''},
+              {first: 'Alice', last: 'Sheu', email: ''},
+          ]
+      },
+      {
+          name: 'Sarah & Alex',
+          group: [
+              {first: 'Sarah', last: 'Sheu', email: ''},
+              {first: 'Alex', last: 'Sheu', email: ''},
+              {first: 'Alice', last: 'Sheu', email: ''},
+          ]
+      },
+      {
+          name: 'GROUP_NAME',
+          group: [
+              {first: '', last: '', email: ''},
+              {first: '', last: '', email: ''},
+          ]
+      },
+      {
+          name: 'GROUP_NAME',
+          group: [
+              {first: '', last: '', email: ''},
+              {first: '', last: '', email: ''},
+          ]
+      },
+      {
+          name: 'GROUP_NAME',
+          group: [
+              {first: '', last: '', email: ''},
+              {first: '', last: '', email: ''},
+          ]
+      },
+      {
+          name: 'GROUP_NAME',
+          group: [
+              {first: '', last: '', email: ''},
+              {first: '', last: '', email: ''},
+          ]
+      },
+      {
+          name: 'GROUP_NAME',
+          group: [
+              {first: '', last: '', email: ''},
+              {first: '', last: '', email: ''},
+          ]
+      },
+      {
+          name: 'GROUP_NAME',
+          group: [
+              {first: '', last: '', email: ''},
+              {first: '', last: '', email: ''},
+          ]
+      },
+      {
+          name: 'GROUP_NAME',
+          group: [
+              {first: '', last: '', email: ''},
+              {first: '', last: '', email: ''},
+          ]
+      },
+      {
+          name: 'GROUP_NAME',
+          group: [
+              {first: '', last: '', email: ''},
+              {first: '', last: '', email: ''},
+          ]
+      },
+      {
+          name: 'GROUP_NAME',
+          group: [
+              {first: '', last: '', email: ''},
+              {first: '', last: '', email: ''},
+          ]
+      },
+      {
+          name: 'GROUP_NAME',
+          group: [
+              {first: '', last: '', email: ''},
+              {first: '', last: '', email: ''},
+          ]
+      },
+      {
+          name: 'GROUP_NAME',
+          group: [
+              {first: '', last: '', email: ''},
+              {first: '', last: '', email: ''},
+          ]
+      },
+      {
+          name: 'GROUP_NAME',
+          group: [
+              {first: '', last: '', email: ''},
+              {first: '', last: '', email: ''},
+          ]
+      },
+      {
+          name: 'GROUP_NAME',
+          group: [
+              {first: '', last: '', email: ''},
+              {first: '', last: '', email: ''},
+          ]
+      },
+      {
+          name: 'GROUP_NAME',
+          group: [
+              {first: '', last: '', email: ''},
+              {first: '', last: '', email: ''},
+          ]
+      },
+      {
+          name: 'GROUP_NAME',
+          group: [
+              {first: '', last: '', email: ''},
+              {first: '', last: '', email: ''},
+          ]
+      },
+      {
+          name: 'GROUP_NAME',
+          group: [
+              {first: '', last: '', email: ''},
+              {first: '', last: '', email: ''},
+          ]
+      },
+      {
+          name: 'GROUP_NAME',
+          group: [
+              {first: '', last: '', email: ''},
+              {first: '', last: '', email: ''},
+          ]
+      },
+      {
+          name: 'GROUP_NAME',
+          group: [
+              {first: '', last: '', email: ''},
+              {first: '', last: '', email: ''},
+          ]
+      },
+      {
+          name: 'GROUP_NAME',
+          group: [
+              {first: '', last: '', email: ''},
+              {first: '', last: '', email: ''},
+          ]
+      },
+      {
+          name: 'GROUP_NAME',
+          group: [
+              {first: '', last: '', email: ''},
+              {first: '', last: '', email: ''},
+          ]
+      },
+      {
+          name: 'GROUP_NAME',
+          group: [
+              {first: '', last: '', email: ''},
+              {first: '', last: '', email: ''},
+          ]
+      },
+      {
+          name: 'GROUP_NAME',
+          group: [
+              {first: '', last: '', email: ''},
+              {first: '', last: '', email: ''},
+          ]
+      },
+      {
+          name: 'GROUP_NAME',
+          group: [
+              {first: '', last: '', email: ''},
+              {first: '', last: '', email: ''},
+          ]
+      },
+      {
+          name: 'GROUP_NAME',
+          group: [
+              {first: '', last: '', email: ''},
+              {first: '', last: '', email: ''},
+          ]
+      },
+      {
+          name: 'GROUP_NAME',
+          group: [
+              {first: '', last: '', email: ''},
+              {first: '', last: '', email: ''},
+          ]
+      },
+      {
+          name: 'GROUP_NAME',
+          group: [
+              {first: '', last: '', email: ''},
+              {first: '', last: '', email: ''},
+          ]
+      },
+      {
+          name: 'GROUP_NAME',
+          group: [
+              {first: '', last: '', email: ''},
+              {first: '', last: '', email: ''},
+          ]
+      },
+      {
+          name: 'GROUP_NAME',
+          group: [
+              {first: '', last: '', email: ''},
+              {first: '', last: '', email: ''},
+          ]
+      },
+      {
+          name: 'GROUP_NAME',
+          group: [
+              {first: '', last: '', email: ''},
+              {first: '', last: '', email: ''},
+          ]
+      },
+      {
+          name: 'GROUP_NAME',
+          group: [
+              {first: '', last: '', email: ''},
+              {first: '', last: '', email: ''},
+          ]
+      },{
+          name: 'GROUP_NAME',
+          group: [
+              {first: '', last: '', email: ''},
+              {first: '', last: '', email: ''},
+          ]
+      },
+      {
+          name: 'GROUP_NAME',
+          group: [
+              {first: '', last: '', email: ''},
+              {first: '', last: '', email: ''},
+          ]
+      },
+      {
+          name: 'GROUP_NAME',
+          group: [
+              {first: '', last: '', email: ''},
+              {first: '', last: '', email: ''},
+          ]
+      },
+      {
+          name: 'GROUP_NAME',
+          group: [
+              {first: '', last: '', email: ''},
+              {first: '', last: '', email: ''},
+          ]
+      },
+      {
+          name: 'GROUP_NAME',
+          group: [
+              {first: '', last: '', email: ''},
+              {first: '', last: '', email: ''},
+          ]
+      },
+      {
+          name: 'GROUP_NAME',
+          group: [
+              {first: '', last: '', email: ''},
+              {first: '', last: '', email: ''},
+          ]
+      },
+      {
+          name: 'GROUP_NAME',
+          group: [
+              {first: '', last: '', email: ''},
+              {first: '', last: '', email: ''},
+          ]
+      },
+      {
+          name: 'GROUP_NAME',
+          group: [
+              {first: '', last: '', email: ''},
+              {first: '', last: '', email: ''},
+          ]
+      },
+      {
+          name: 'GROUP_NAME',
+          group: [
+              {first: '', last: '', email: ''},
+              {first: '', last: '', email: ''},
+          ]
+      },
+      {
+          name: 'GROUP_NAME',
+          group: [
+              {first: '', last: '', email: ''},
+              {first: '', last: '', email: ''},
+          ]
+      },
+
   ]
 
   rsvps.each do |rsvp_group|

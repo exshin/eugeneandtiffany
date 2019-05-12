@@ -3,6 +3,7 @@ import { Button, Panel } from 'react-bootstrap'
 
 import QuizPage from './quiz.jsx'
 import TobyPage from './toby.jsx'
+import Garden from './garden.jsx'
 
 class ExtrasPage extends React.Component {
   constructor(props) {
@@ -29,6 +30,10 @@ class ExtrasPage extends React.Component {
         break;
       case "toby":
         content = <TobyPage/>;
+        showIndex = false;
+        break;
+      case "garden":
+        content = <Garden/>;
         showIndex = false;
         break;
       default:
@@ -65,11 +70,11 @@ class ExtrasPage extends React.Component {
           <Panel className="extras-panel" bsStyle="primary">
             <Panel.Heading style={{height: "75px"}}>
               <Panel.Title className="extras-panel-title" componentClass="h4">
-                Another Game.
+                The Catnip Garden
               </Panel.Title>
             </Panel.Heading>
             <Panel.Body>
-              <Button block onClick={this.__click.bind(this, "game")}>Play</Button>
+              <Button block onClick={this.__click.bind(this, "garden")}>Play</Button>
             </Panel.Body>
           </Panel>
 
