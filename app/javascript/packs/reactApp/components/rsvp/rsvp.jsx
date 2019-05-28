@@ -282,10 +282,17 @@ class RsvpPage extends React.Component {
     )
   }
 
+  __emptyContainer() {
+    return (
+      <div style={{height: "450px"}}></div>
+    )
+  }
+
   render() {
     const {rsvps, rsvpFetchFail, rsvpEdit, rsvpDone} = this.state;
-    let content;
-    let searchContent;
+    let content = this.__emptyContainer();
+    let searchContent = this.__emptyContainer();
+    let bottomContent = null;
 
     if (rsvps.length > 0) {
       let rsvpd_count = 0;
@@ -301,9 +308,11 @@ class RsvpPage extends React.Component {
         searchContent = this.__foundRsvpContent();
       } else if (rsvpDone) {
         content = this.__doneRsvp();
+        searchContent = null;
       } else {
         // Just show the rsvp
         content = this.__showRsvps();
+        searchContent = null;
       }
     } else {
       searchContent = this.__findRsvpContent();
@@ -312,21 +321,24 @@ class RsvpPage extends React.Component {
     if (rsvpDone) {
       content = this.__doneRsvp();
       searchContent = null;
+      bottomContent = this.__emptyContainer();
     }
 
     if (rsvpFetchFail) {
+      searchContent = null;
       content = this.__showFetchRsvpFail();
     }
 
     return(
-      <div className="rsvp-page container">
-        <div className="container text-center">
-          <h1>Find your RSVP</h1>
+      <div className="rsvp-page rsvpBG">
+        <div className="text-center">
+          <h1 style={{textAlign: "center", paddingTop: "20px", marginTop: "0px"}}>Find your RSVP</h1>
           <hr/>
         </div>
         {searchContent}
         <br/>
         {content}
+        {bottomContent}
       </div>
     )
   }

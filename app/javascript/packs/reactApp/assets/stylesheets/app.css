@@ -112,3 +112,40 @@ div.empty-square {
     background-repeat: no-repeat;
     background-size: cover;
 }
+
+.welcomeBG {
+    background: url("./../../assets/images/sitting_on_hill_backs.jpg") no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+.getting-married-text {
+    font-family: 'Rouge Script', cursive;
+    font-size: 60px;
+}
+
+.scheduleBG {
+    background: url("./../../assets/images/sutro_baths_background.jpg") no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+.travelBG {
+    background: url("./../../assets/images/travel-background.png") no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+.rsvpBG {
+    background: url("./../../assets/images/hilltop_sun.jpg") no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}

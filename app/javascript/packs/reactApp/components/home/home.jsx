@@ -8,8 +8,12 @@ class HomePage extends React.Component {
 
   render() {
     return(
-      <div className="home-page container">
-        <img src={require('./../../assets/images/test.jpg')} height="500px"/>
+      <div className="home-page welcomeBG" style={{height: "600px"}}>
+        <div className="text-center" style={{paddingTop: "70px"}}>
+          <div className="getting-married-text">
+            Tiffany and Eugene are getting married!
+          </div>
+        </div>
       </div>
     )
   }

@@ -17,10 +17,10 @@ class LandingPage extends React.Component {
 
     this.state = {
       activeTab: 1,
-      authenticated: true, // change this to false for prod
+      authenticated: false, // change this to false for prod
       password: '',
       incorrectPassword: false,
-      admin: true, // change this to false for prod,
+      admin: false, // change this to false for prod,
     };
   }
 
@@ -174,7 +174,7 @@ class LandingPage extends React.Component {
 
       return(
         <div id="landing-page">
-          <div className="navbar">
+          <div className="navbar" style={{marginBottom: "0px"}}>
             <Navbar collapseOnSelect fixedTop>
               <Navbar.Header>
                 <Navbar.Toggle />
@@ -182,7 +182,7 @@ class LandingPage extends React.Component {
               <Navbar.Collapse>
                 <Nav activeKey={activeTab} onSelect={this.__handleSelect.bind(this)}>
                   <NavItem className="nav-item nav-home" eventKey={1} href="#">
-                    Home
+                    Welcome
                   </NavItem>
                   <NavItem className="nav-item nav-schedule" eventKey={3} href="#">
                     Schedule
@@ -201,8 +201,8 @@ class LandingPage extends React.Component {
               </Navbar.Collapse>
             </Navbar>
           </div>
-          <div className="content container">
-            <div style={ { backgroundImage: `url(require("./../assets/images/img.svg"))` } }>
+          <div className="content">
+            <div>
               {content}
             </div>
           </div>

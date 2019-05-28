@@ -41,7 +41,10 @@ class ExtrasPage extends React.Component {
     }
 
     return(
-      <div className="extras-page container">
+      <div className="extras-page">
+        <h1 style={{textAlign: "center", paddingTop: "20px", marginTop: "0px"}}>Games</h1>
+        <hr/>
+
         <div className="index container" hidden={!showIndex}>
 
           <Panel className="extras-panel" bsStyle="primary">
