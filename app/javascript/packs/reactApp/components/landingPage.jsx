@@ -17,15 +17,16 @@ class LandingPage extends React.Component {
 
     this.state = {
       activeTab: 1,
+      admin: false, // change this to false for prod,
       authenticated: false, // change this to false for prod
       password: '',
       incorrectPassword: false,
-      admin: false, // change this to false for prod,
     };
   }
 
   componentDidMount() {
     // for the remember me
+    this.__checkToken();
   }
 
   __authenticate(password) {
@@ -45,7 +46,34 @@ class LandingPage extends React.Component {
       this.setState({
         authenticated: result.auth,
         admin: result.admin,
-        incorrectPassword: !result.auth
+        incorrectPassword: !result.auth,
+      });
+      localStorage.setItem('tiffanyandeugeneauthtoken', result.token);
+    }
+  }
+
+  __checkToken() {
+    const token = localStorage.getItem('tiffanyandeugeneauthtoken');
+
+    if (token) {
+      $.ajax({
+        type: "GET",
+        url: "/tokens/find_token",
+        data: {
+          token: token,
+        },
+        dataType: "json",
+        success: this.__handleTokenAuthSuccess.bind(this)
+      });
+    }
+  }
+
+  __handleTokenAuthSuccess(result) {
+    if (result) {
+      this.setState({
+        authenticated: true,
+        admin: result.admin,
+        incorrectPassword: false
       });
     }
   }

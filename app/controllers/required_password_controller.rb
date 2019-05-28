@@ -7,11 +7,13 @@ class RequiredPasswordController < ActionController::Base
     required_admin_password = ENV['REQUIRED_GUEST_PASSWORD'] || 'admin'
 
     if params['password'] == required_guest_password
-      render json: {auth: true, admin: false}
+      token = Token.create!(hexdigest: Digest::SHA1.hexdigest([Time.now, rand].join), admin: false)
+      render json: {auth: true, admin: false, token: token.hexdigest}
     elsif params['password'] == required_admin_password
-      render json: {auth: true, admin: true}
+      token = Token.create!(hexdigest: Digest::SHA1.hexdigest([Time.now, rand].join), admin: true)
+      render json: {auth: true, admin: true, token: token.hexdigest}
     else
-      render json: {auth: false, admin: false}
+      render json: {auth: false, admin: false, token: nil}
     end
   end
 end
