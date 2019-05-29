@@ -3,8 +3,8 @@ class RequiredPasswordController < ActionController::Base
   end
 
   def password
-    required_guest_password = ENV['REQUIRED_GUEST_PASSWORD'] || 'guest'
-    required_admin_password = ENV['REQUIRED_GUEST_PASSWORD'] || 'admin'
+    required_guest_password = ENV['GUEST_PASSWORD'] || 'guest'
+    required_admin_password = ENV['ADMIN_PASSWORD'] || 'admin'
 
     if params['password'] == required_guest_password
       token = Token.create!(hexdigest: Digest::SHA1.hexdigest([Time.now, rand].join), admin: false)

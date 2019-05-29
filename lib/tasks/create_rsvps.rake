@@ -49,7 +49,7 @@ task create_rsvps: :environment do
       {
           name: 'Chinveeraphan Family - TJ',
           group: [
-              {first: 'TJ', last: 'Schwabenbauer', email: ''},
+              {first: 'TJ', last: 'Schwabenbauer', email: 'mistertj33@gmail.com'},
               {first: 'Haley', last: 'Schwabenbauer', email: ''},
               {first: 'Jacob', last: 'Schwabenbauer', email: ''},
           ]
@@ -415,13 +415,19 @@ task create_rsvps: :environment do
 
   rsvps.each do |rsvp_group|
     group_name = rsvp_group[:name]
-    group = RsvpGroup.create(name: group_name)
+    group = RsvpGroup.find_by(name: group_name)
+    group = RsvpGroup.create(name: group_name) unless group
 
     rsvp_group[:group].each do |rsvp|
+      rsvp = Rsvp.find_by(first_name: rsvp[:first],
+                   last_name: rsvp[:last],
+                   email: rsvp[:email],
+                   rsvp_group_id: group.id)
+
       Rsvp.create(first_name: rsvp[:first],
                   last_name: rsvp[:last],
                   email: rsvp[:email],
-                  rsvp_group_id: group.id)
+                  rsvp_group_id: group.id) unless rsvp
     end
   end
 end
