@@ -8,7 +8,7 @@ class HomePage extends React.Component {
 
   render() {
     return(
-      <div className="home-page welcomeBG" style={{height: "600px"}}>
+      <div className="home-page welcomeBG" style={{height: "100vh"}}>
         <div className="text-center" style={{paddingTop: "70px"}}>
           <div className="getting-married-text">
             Tiffany and Eugene are getting married!

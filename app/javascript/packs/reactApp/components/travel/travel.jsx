@@ -13,7 +13,7 @@ class TravelPage extends React.Component {
 
     return(
       <div className="travel-page travelBG">
-        <h1 style={{textAlign: "center", paddingTop: "20px", marginTop: "0px"}}>Travel and Accommodations</h1>
+        <h1 className="title-header" style={{textAlign: "center", paddingTop: "20px", marginTop: "0px"}}>Travel and Accommodations</h1>
         <hr/>
 
         <br/>

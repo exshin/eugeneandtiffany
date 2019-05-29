@@ -147,7 +147,7 @@ class QuizPage extends React.Component {
   __questions(currentQuestion, currentAnswerChoices, currentQuestionNumber) {
     return (
       <div>
-        <div className="questions container" style={{width: "80%", fontSize: "26px", fontWeight: 500, textAlign: "center"}}>
+        <div className="questions container" style={{width: "80%", fontSize: "22px", fontWeight: 500, textAlign: "center"}}>
           {currentQuestionNumber}. {currentQuestion}
         </div>
         <br/>
@@ -354,7 +354,7 @@ class QuizPage extends React.Component {
         <div className="container">
           <div className="container" style={{float: "left", width: "40%"}}>
             <h4>Top 10 "You Are A Tiffany" Scores</h4>
-            <Table bordered>
+            <Table bordered style={{background: "white"}}>
               <thead>
               <tr>
                 <th>Name</th>
@@ -371,7 +371,7 @@ class QuizPage extends React.Component {
 
           <div className="container" style={{float: "left", width: "40%"}}>
             <h4>Top 10 "You Are A Eugene" Scores</h4>
-            <Table bordered>
+            <Table bordered style={{background: "white"}}>
               <thead>
               <tr>
                 <th>Name</th>

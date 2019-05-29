@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, Panel } from 'react-bootstrap'
+import { Button, Panel, Glyphicon } from 'react-bootstrap'
 
 class SchedulePage extends React.Component {
   __click() {
@@ -11,15 +11,15 @@ class SchedulePage extends React.Component {
 
     return(
       <div className="schedule-page scheduleBG">
-        <h1 style={{textAlign: "center", paddingTop: "20px", marginTop: "0px"}}>Schedule</h1>
+        <h1 className="title-header" style={{textAlign: "center", paddingTop: "20px", marginTop: "0px"}}>Schedule</h1>
         <hr/>
 
         <br/>
 
         <div className="schedule" style={{textAlign: "center"}}>
           <Panel className="div-center" style={{width: "40%", background: "whitesmoke", boxShadow: "lightgrey 5px 1px 7px"}}>
-            <Panel.Body className="" style={{fontSize: "18px"}}>
-              <div style={{fontFamily: "cursive", fontSize: "28px"}}>Ceremony & Reception</div>
+            <Panel.Body className="" style={{fontSize: "18px", fontStyle: "italic"}}>
+              <div style={{fontFamily: "cursive", fontSize: "34px"}}>Ceremony & Reception</div>
               <br/>
               <div>Saratoga Springs Events and Weddings</div>
               <br/>
@@ -38,18 +38,43 @@ class SchedulePage extends React.Component {
 
         <div className="schedule" style={{textAlign: "center"}}>
           <Panel className="div-center" style={{width: "40%", background: "whitesmoke", boxShadow: "lightgrey 5px 1px 7px"}}>
-            <Panel.Body className="" style={{fontSize: "14px"}}>
+            <Panel.Body className="" style={{fontSize: "14px", fontStyle: "italic"}}>
               <div style={{fontFamily: "cursive", fontSize: "28px"}}>Menu</div>
               <br/>
-              <div>Seasonal Green Salad with Heirlooms Tomatoes, Avocado, Red Onion & Miso-Sesame Dressing</div>
+              <div>
+                <div className="container" style={{float: "left", width: "5%", padding: "0px"}}>
+                  <Glyphicon glyph="leaf" />
+                </div>
+                Seasonal Green Salad with Heirloom Tomatoes, Avocado, Red Onions & a Miso-Sesame Dressing
+              </div>
               <br/>
-              <div>Sweet-Soy Braised Short-Rib with Dates, Asian-Pear & Radish</div>
+              <div>
+                <div className="container" style={{float: "left", width: "5%", padding: "0px"}}>
+                  <img src={require('./../../assets/images/cow.png')} height="20px" width="20px"/>
+                </div>
+                Sweet-Soy Braised Short-Ribs with Dates, Asian-Pears & Radish
+              </div>
               <br/>
-              <div>Honey & Miso-Glazed Salmon Filets</div>
+              <div>
+                <div className="container" style={{float: "left", width: "5%", padding: "0px"}}>
+                  <img src={require('./../../assets/images/fish.png')} height="20px" width="20px"/>
+                </div>
+                Honey & Miso-Glazed Salmon Fillets
+              </div>
               <br/>
-              <div>Japchae Noodles with Stir-Fried Veggies & Shiitake Mushrooms</div>
+              <div>
+                <div className="container" style={{float: "left", width: "5%", padding: "0px"}}>
+                  <Glyphicon glyph="leaf" />
+                </div>
+                Japchae Noodles with Stir-Fried Veggies & Shiitake Mushrooms
+              </div>
               <br/>
-              <div>Roasted Vegetables (Bok Choy, Broccoli, Cauliflower, Shiitake Mushrooms, Onions) in Oyster-Plum Reduction</div>
+              <div>
+                <div className="container" style={{float: "left", width: "5%", padding: "0px"}}>
+                  <Glyphicon glyph="leaf" />
+                </div>
+                Roasted Vegetables (Bok Choy, Broccoli, Cauliflower, Shiitake Mushrooms, Onions) in Oyster-Plum Reduction
+              </div>
               <br/>
             </Panel.Body>
           </Panel>

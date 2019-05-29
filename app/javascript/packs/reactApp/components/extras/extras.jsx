@@ -23,27 +23,34 @@ class ExtrasPage extends React.Component {
   render() {
     let content;
     let showIndex = true;
+    let titleClassName = "title-header";
+
     switch (this.state.game) {
       case "quiz":
         content = <QuizPage/>;
         showIndex = false;
+        titleClassName = "title-header hidden";
         break;
       case "toby":
         content = <TobyPage/>;
         showIndex = false;
+        titleClassName = "title-header hidden";
         break;
       case "garden":
         content = <Garden/>;
         showIndex = false;
+        titleClassName = "title-header hidden";
         break;
       default:
         break;
     }
 
     return(
-      <div className="extras-page">
-        <h1 style={{textAlign: "center", paddingTop: "20px", marginTop: "0px"}}>Games</h1>
-        <hr/>
+      <div className="extras-page gamesBG" style={{height: "100vh"}}>
+        <div className={titleClassName}>
+          <h1 style={{textAlign: "center", paddingTop: "20px", marginTop: "0px"}}>Games</h1>
+          <hr/>
+        </div>
 
         <div className="index container" hidden={!showIndex}>
 
@@ -54,7 +61,7 @@ class ExtrasPage extends React.Component {
               </Panel.Title>
             </Panel.Heading>
             <Panel.Body>
-              <img src={require('./../../assets/images/eugene_vs_tiffany_cropped.jpg')} style={{width: "100%", height: "80%", border: "1px solid black"}}/>
+              <img src={require('./../../assets/images/eugene_vs_tiffany_cropped.jpg')} style={{width: "100%", height: "250px", border: "1px solid black"}}/>
               <Button block onClick={this.__click.bind(this, "quiz")}>Play</Button>
             </Panel.Body>
           </Panel>
@@ -66,6 +73,7 @@ class ExtrasPage extends React.Component {
               </Panel.Title>
             </Panel.Heading>
             <Panel.Body>
+              <img src={require('./../../assets/images/toby_avatar300.jpeg')} style={{width: "100%", height: "250px", border: "1px solid black"}}/>
               <Button block onClick={this.__click.bind(this, "toby")}>Play</Button>
             </Panel.Body>
           </Panel>
@@ -73,16 +81,18 @@ class ExtrasPage extends React.Component {
           <Panel className="extras-panel" bsStyle="primary">
             <Panel.Heading style={{height: "75px"}}>
               <Panel.Title className="extras-panel-title" componentClass="h4">
-                The Catnip Garden
+                The Garden (Under Construction)
               </Panel.Title>
             </Panel.Heading>
             <Panel.Body>
-              <Button block onClick={this.__click.bind(this, "garden")}>Play</Button>
+              Please check back in later!
             </Panel.Body>
           </Panel>
 
         </div>
         <div className="content container">
+          <br/>
+          <br/>
           {content}
         </div>
       </div>

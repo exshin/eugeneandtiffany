@@ -204,7 +204,7 @@ class RsvpPage extends React.Component {
     return (
       <div className="rsvps container">
         <br/>
-        <div className="container" style={{textAlign: "center"}}>
+        <div className="container" style={{textAlign: "center", fontSize: "25px"}}>
           <div>Thank you for RSVPing!</div>
           <br/>
           <Button bsStyle="primary" onClick={this.__editRSVPClick.bind(this)}>Edit your RSVP</Button>
@@ -241,7 +241,7 @@ class RsvpPage extends React.Component {
 
   __showFetchRsvpFail() {
     return (
-      <div style={{textAlign: "center"}}>
+      <div style={{textAlign: "center", fontSize: "20px"}}>
         Sorry, we couldn't find your RSVP. Please try again or contact us.
       </div>
     )
@@ -268,7 +268,7 @@ class RsvpPage extends React.Component {
 
   __foundRsvpContent() {
     return (
-      <div style={{textAlign: "center"}}>
+      <div style={{textAlign: "center", fontSize: "25px"}}>
         Please submit your RSVP by <strong>June 15th</strong>. Thank you!
       </div>
     )
@@ -276,7 +276,7 @@ class RsvpPage extends React.Component {
 
   __doneRsvp() {
     return (
-      <div style={{textAlign: "center"}}>
+      <div style={{textAlign: "center", fontSize: "25px"}}>
         Thanks for submitting your RSVP!
       </div>
     )
@@ -325,14 +325,15 @@ class RsvpPage extends React.Component {
     }
 
     if (rsvpFetchFail) {
-      searchContent = null;
-      content = this.__showFetchRsvpFail();
+      searchContent = this.__showFetchRsvpFail();
+      content = this.__findRsvpContent();
+      bottomContent = this.__emptyContainer();
     }
 
     return(
       <div className="rsvp-page rsvpBG">
         <div className="text-center">
-          <h1 style={{textAlign: "center", paddingTop: "20px", marginTop: "0px"}}>Find your RSVP</h1>
+          <h1 className="title-header" style={{textAlign: "center", paddingTop: "20px", marginTop: "0px"}}>Find your RSVP</h1>
           <hr/>
         </div>
         {searchContent}

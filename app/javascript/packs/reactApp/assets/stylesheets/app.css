@@ -3,6 +3,11 @@ body {
     background: #f2f8ff !important;
 }
 
+.title-header {
+    font-family: 'Rouge Script', cursive;
+    font-size: 50px;
+}
+
 .progress.right .progress-bar {
     float: right;
 }
@@ -144,6 +149,14 @@ div.empty-square {
 
 .rsvpBG {
     background: url("./../../assets/images/hilltop_sun.jpg") no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+.gamesBG {
+    background: url("./../../assets/images/hike_sunrise_dust.jpg") no-repeat center center fixed;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
