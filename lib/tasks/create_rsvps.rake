@@ -71,71 +71,22 @@ task create_rsvps: :environment do
       {
           name: 'Jeff & Anne',
           group: [
-              {first: 'Jeff', last: 'Hsieh', email: ''},
-              {first: 'Anne', last: 'Wu', email: ''},
+              {first: 'Jeff', last: 'Hsieh', email: 'jhsieh10@gmail.com'},
+              {first: 'Anne', last: 'Wu', email: 'has.annesia@gmail.com'},
           ]
       },
       {
           name: 'George & Fanny',
           group: [
-              {first: 'George', last: 'Chin', email: ''},
-              {first: 'Fanny', last: 'Halim', email: ''},
+              {first: 'George', last: 'Chin', email: 'georgecchin@gmail.com'},
+              {first: 'Fanny', last: 'Halim', email: 'fanny.halim@gmail.com'},
           ]
       },
       {
           name: 'Sarah & Alex',
           group: [
-              {first: 'Sarah', last: 'Sheu', email: ''},
-              {first: 'Alex', last: 'Sheu', email: ''},
-              {first: 'Alice', last: 'Sheu', email: ''},
-          ]
-      },
-
-      {
-          name: 'Sarah & Alex',
-          group: [
-              {first: 'Sarah', last: 'Sheu', email: ''},
-              {first: 'Alex', last: 'Sheu', email: ''},
-              {first: 'Alice', last: 'Sheu', email: ''},
-          ]
-      },
-      {
-          name: 'Sarah & Alex',
-          group: [
-              {first: 'Sarah', last: 'Sheu', email: ''},
-              {first: 'Alex', last: 'Sheu', email: ''},
-              {first: 'Alice', last: 'Sheu', email: ''},
-          ]
-      },
-      {
-          name: 'Sarah & Alex',
-          group: [
-              {first: 'Sarah', last: 'Sheu', email: ''},
-              {first: 'Alex', last: 'Sheu', email: ''},
-              {first: 'Alice', last: 'Sheu', email: ''},
-          ]
-      },
-      {
-          name: 'Sarah & Alex',
-          group: [
-              {first: 'Sarah', last: 'Sheu', email: ''},
-              {first: 'Alex', last: 'Sheu', email: ''},
-              {first: 'Alice', last: 'Sheu', email: ''},
-          ]
-      },
-      {
-          name: 'Sarah & Alex',
-          group: [
-              {first: 'Sarah', last: 'Sheu', email: ''},
-              {first: 'Alex', last: 'Sheu', email: ''},
-              {first: 'Alice', last: 'Sheu', email: ''},
-          ]
-      },
-      {
-          name: 'GROUP_NAME',
-          group: [
-              {first: '', last: '', email: ''},
-              {first: '', last: '', email: ''},
+              {first: 'Sarah', last: 'Sheu', email: 'sarahlsheu@gmail.com '},
+              {first: 'Alex', last: 'Sheu', email: 'alexanderysheu@gmail.com '},
           ]
       },
       {
@@ -414,12 +365,14 @@ task create_rsvps: :environment do
   ]
 
   rsvps.each do |rsvp_group|
+    next if rsvp_group[:name] == 'GROUP_NAME'
+
     group_name = rsvp_group[:name]
     group = RsvpGroup.find_by(name: group_name)
     group = RsvpGroup.create(name: group_name) unless group
 
     rsvp_group[:group].each do |rsvp|
-      rsvp = Rsvp.find_by(first_name: rsvp[:first],
+      found_rsvp = Rsvp.find_by(first_name: rsvp[:first],
                    last_name: rsvp[:last],
                    email: rsvp[:email],
                    rsvp_group_id: group.id)
@@ -427,7 +380,7 @@ task create_rsvps: :environment do
       Rsvp.create(first_name: rsvp[:first],
                   last_name: rsvp[:last],
                   email: rsvp[:email],
-                  rsvp_group_id: group.id) unless rsvp
+                  rsvp_group_id: group.id) unless found_rsvp
     end
   end
 end
