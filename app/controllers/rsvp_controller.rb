@@ -19,6 +19,8 @@ class RsvpController < ActionController::Base
         rsvp = Rsvp.find_by(id: id)
         next unless rsvp
 
+        rsvp.first_name = updates['first_name'] if updates['first_name']
+        rsvp.last_name = updates['last_name'] if updates['last_name']
         rsvp.attending = updates['attending'] if updates['attending']
         rsvp.dietary_restrictions = updates['dietary_restrictions'] if updates['dietary_restrictions']
 

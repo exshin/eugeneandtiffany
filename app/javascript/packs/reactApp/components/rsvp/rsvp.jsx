@@ -23,13 +23,18 @@ class RsvpPage extends React.Component {
     const first_name = event.target.children[0].children[1].value;
     const last_name = event.target.children[1].children[1].value;
 
-    $.ajax({
-      type: "GET",
-      url: "/rsvp/find_groups_by_name",
-      data: {first_name: first_name, last_name: last_name},
-      dataType: "json",
-      complete: this.__rsvpSuccess.bind(this)
-    });
+    if (first_name === '' || last_name === '') {
+      // Can't search with no names
+      // Display an error message
+    } else {
+      $.ajax({
+        type: "GET",
+        url: "/rsvp/find_groups_by_name",
+        data: {first_name: first_name, last_name: last_name},
+        dataType: "json",
+        complete: this.__rsvpSuccess.bind(this)
+      });
+    }
   }
 
   __submitRsvp(params) {
@@ -147,8 +152,41 @@ class RsvpPage extends React.Component {
     });
   }
 
+  __handleFirstNameTextChange(id, e) {
+    const {rsvpSubmits} = this.state;
+    let submit = rsvpSubmits;
+    if (!rsvpSubmits[id]) {
+      submit[id] = {};
+    }
+    submit[id]['first_name'] = e.target.value;
+    this.setState({
+      rsvpSubmits: submit
+    });
+  }
+
+  __handleLastNameTextChange(id, e) {
+    const {rsvpSubmits} = this.state;
+    let submit = rsvpSubmits;
+    if (!rsvpSubmits[id]) {
+      submit[id] = {};
+    }
+    submit[id]['last_name'] = e.target.value;
+    this.setState({
+      rsvpSubmits: submit
+    });
+  }
+
   __rsvpEdit(rsvp, index) {
-    const {id, first_name, last_name, email, dietary_restrictions, attending, updated_at} = rsvp;
+    const {id, email, dietary_restrictions, attending, updated_at} = rsvp;
+    let first_name = rsvp.first_name;
+    let last_name = rsvp.last_name;
+    let nameEdit = "hidden";
+
+    if (first_name === '' && last_name === '') {
+      first_name = "Guest";
+      last_name = "";
+      nameEdit = "";
+    }
 
     // Pre-render with existing information
     let yesButtonClass;
@@ -172,6 +210,28 @@ class RsvpPage extends React.Component {
             <hr className="gold-line"/>
             <br/>
             <br/>
+            <div className={nameEdit}>
+              <form role="form" inline>
+                <FormGroup controlId="formInlineName" style={{marginRight: "15px"}}>
+                  <ControlLabel>First Name</ControlLabel>{' '}
+                  <FormControl
+                    type="text"
+                    placeholder=""
+                    value={this.state.value}
+                    onChange={this.__handleFirstNameTextChange.bind(this, id)}
+                  />
+                </FormGroup>{' '}
+                <FormGroup controlId="formInlineName">
+                  <ControlLabel>Last Name</ControlLabel>{' '}
+                  <FormControl
+                    type="text"
+                    placeholder=""
+                    value={this.state.value}
+                    onChange={this.__handleLastNameTextChange.bind(this, id)}
+                  />
+                </FormGroup>{' '}
+              </form>
+            </div>
             <div style={{marginBottom: "20px"}}>
               <div>Will You Be Attending?</div>
               <Button className={yesButtonClass} style={{float: "left", marginRight: "10px"}} onClick={this.__yes.bind(this, id)}>Joyfully Accept</Button>

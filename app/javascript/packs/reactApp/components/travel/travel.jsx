@@ -1,23 +1,42 @@
 import React from 'react';
-import { Button } from 'react-bootstrap'
+import { Button, Grid, Row, Col, Table } from 'react-bootstrap'
 
 // import MapContainer from './maps.jsx' // Not implementing due to high costs
 
 class TravelPage extends React.Component {
+
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      activeTab: 1,
+    };
+  }
+
+  __handleSelect(eventKey, event) {
+    const { activeTab } = this.state;
+    event.preventDefault();
+
+    if (activeTab === eventKey) {
+      this.setState({
+        activeTab: 1
+      });
+    }
+
+    this.setState({
+      activeTab: eventKey
+    });
+  }
+
   __click() {
     debugger;
   }
 
-  render() {
+  __hotelContainer() {
     const hotelBookingLink = "https://www.marriott.com/event-reservations/reservation-link.mi?id=1550266610811&key=GRP&app=resvlink";
 
-    return(
-      <div className="travel-page travelBG">
-        <h1 className="title-header" style={{textAlign: "center", paddingTop: "20px", marginTop: "0px"}}>Travel and Accommodations</h1>
-        <hr/>
-
-        <br/>
-
+    return (
+      <div>
         <div className="hotel-info" style={{textAlign: "center"}}>
           <div className="hotel-description">
             <div>Hello Travelers! We have reserved a room block at the Aloft Cupertino Hotel for our guests.</div>
@@ -65,12 +84,86 @@ class TravelPage extends React.Component {
           </div>
 
         </div>
+      </div>
+    )
+  }
 
+  __airportContainer() {
+    return (
+      <div>
+
+      </div>
+    )
+  }
+
+  __eatsContainer() {
+    return (
+      <div>
+
+      </div>
+    )
+  }
+
+  render() {
+    const {activeTab} = this.state;
+
+    let content;
+    let buttonName1;
+    let buttonName2;
+    let buttonName3;
+    switch (activeTab) {
+      case 1:
+        content = this.__hotelContainer();
+        buttonName1 = "primary";
+        buttonName2 = "default";
+        buttonName3 = "default";
+        break;
+      case 2:
+        content = this.__airportContainer();
+        buttonName1 = "default";
+        buttonName2 = "primary";
+        buttonName3 = "default";
+        break;
+      case 3:
+        content = this.__eatsContainer();
+        buttonName1 = "default";
+        buttonName2 = "default";
+        buttonName3 = "primary";
+        break;
+      default:
+        break;
+    }
+
+
+    return(
+      <div className="travel-page travelBG">
+        <h1 className="title-header" style={{textAlign: "center", paddingTop: "20px", marginTop: "0px"}}>Travel and Accommodations</h1>
         <hr/>
 
-        <div>
-          Things to do in the area here
+        <br/>
+
+        <div className="row">
+          <div className="col-md-4 col-md-offset-4">
+            <div className="travel-nav-buttons">
+              <div>
+                <Button bsStyle={buttonName1} style={{float: "left"}} onClick={this.__handleSelect.bind(this, 1)}>Hotel Blocks</Button>
+              </div>
+              <div>
+                <Button bsStyle={buttonName2} style={{float: "left"}} onClick={this.__handleSelect.bind(this, 2)}>Airports</Button>
+              </div>
+              <div>
+                <Button bsStyle={buttonName3} style={{float: "left"}} onClick={this.__handleSelect.bind(this, 3)}>Recommended Eats</Button>
+              </div>
+            </div>
+          </div>
         </div>
+
+        <br/>
+        <br/>
+
+        {content}
+
+        <br/>
 
       </div>
     )
