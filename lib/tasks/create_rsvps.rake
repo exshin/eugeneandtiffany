@@ -444,7 +444,7 @@ task create_rsvps: :environment do
       {
           name: 'The Guardinos',
           group: [
-             {first: 'Katie', last: 'Guardino', email: ''},
+             {first: 'Katie', last: 'Guardino', email: 'katieguardino@gmail.com'},
              {first: 'Ellie', last: 'Guardino', email: 'Guardino.ellie@gene.com'},
              {first: 'Jeff', last: 'Guardino', email: ''},
           ]

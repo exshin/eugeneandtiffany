@@ -29,13 +29,27 @@ class TravelPage extends React.Component {
   }
 
   __hotelClick(hotel, e) {
-    debugger;
+    console.log(hotel);
   }
 
-  __hotelContainer2() {
+  __hotelContainer() {
     return (
       <div>
         <Grid>
+          <Row className="show-grid">
+            <div className="container intro" style={{textAlign: "center", fontSize: "14px"}}>
+              <div>
+                Hello Travelers! We've reserved some room blocks for you at a discounted rate! Please book through the links provided below to get access to our room block rates.
+              </div>
+              <div>
+                Each hotel will have between 10 - 15 rooms blocked for us, so if a hotel is showing no availabilities it has likely been filled.
+              </div>
+              <div>
+                Please note that the last date to book through our room blocks is <u><strong>July 19th</strong></u>!
+              </div>
+            </div>
+          </Row>
+          <br/>
           <Row className="show-grid">
             <Col xs={6} md={4} style={{marginLeft: "10px", width: "40%", paddingRight: "0px"}}>
               <div className="hotel-map">
@@ -46,147 +60,119 @@ class TravelPage extends React.Component {
             <Col xs={10} md={7}>
 
               <Row className="show-grid">
-
                 <Panel bsStyle="primary">
                   <Panel.Body className="hotelPanel" onClick={this.__hotelClick.bind(this, "aloft")}>
-                    <Col xs={6} md={6} style={{padding: "0px"}}>
-                      <div className="container" style={{marginRight: "0px", marginLeft: "0px"}}>
+                    <Col xs={6} md={7} style={{padding: "0px"}}>
+                      <div className="container" style={{marginRight: "0px", marginLeft: "0px", width: "100%"}}>
                         <div className="hotel-picture" style={{float: "left", marginTop: "10px", marginBottom: "10px"}}>
-                          <img src={require('./../../assets/images/aloft_cupertino.jpg')} height="80px" width="80px" style={{borderRadius: "50%"}}/>
+                          <img src={require('./../../assets/images/courtyardmarriott.jpg')} height="80px" width="80px" style={{borderRadius: "50%"}}/>
                         </div>
-                        <div className="" style={{float: "left", marginLeft: "10px", marginTop: "20px"}}>
-                          <div>Aloft Cupertino Hotel</div>
-                          <div style={{fontSize: "12px"}}><a href="https://bit.ly/2ICjZUr" target="/">10165 N De Anza Blvd, Cupertino</a></div>
-                          <div style={{fontSize: "12px"}}>(408) 766-7000</div>
+                        <div className="" style={{float: "left", marginLeft: "20px", marginTop: "10px"}}>
+                          <div>Courtyard Marriott</div>
+                          <div style={{fontSize: "12px"}}><a href="https://www.google.com/maps/place/10605+N+Wolfe+Rd,+Cupertino,+CA+95014/@37.3322262,-122.017649,17z/data=!3m1!4b1!4m5!3m4!1s0x808fb597d3a31c4b:0x4fef8e165e91953e!8m2!3d37.3322262!4d-122.0154603" target="/">10605 North Wolfe Road, Cupertino</a></div>
+                          <div style={{fontSize: "12px"}}>(408) 252-9100</div>
+                          <div><a href="https://www.marriott.com/events/start.mi?id=1559317318476&key=GRP" target="/">BOOK HERE</a></div>
                         </div>
                       </div>
                     </Col>
-                    <Col xs={6} md={3} style={{padding: "0px"}}>
+                    <Col xs={6} md={4} style={{padding: "0px"}}>
                       <div>
                         <h5>Rates</h5>
                         <div style={{fontSize: "12px"}}>
-                          <div>1 King bed - $119 per night</div>
-                          <div>2 Queen beds - $129 per night</div>
-                        </div>
-                      </div>
-                    </Col>
-                    <Col xs={6} md={3} style={{padding: "0px"}}>
-                      <div>
-                        <h5>Booking</h5>
-                        <div style={{fontSize: "12px"}}>
-                          <div>
-                            To book at our room block rate, please visit <a href="https://www.marriott.com/event-reservations/reservation-link.mi?id=1550266610811&key=GRP&app=resvlink" target="/">THIS LINK</a>.
-                          </div>
-                          <div style={{fontStyle: "oblique"}}>Last Day to Book: <strong>Friday, July 19, 2019</strong></div>
+                          <div>1 King, Sofa bed - $99 / night</div>
+                          <div>2 Double beds - $99 / night</div>
                         </div>
                       </div>
                     </Col>
                   </Panel.Body>
                 </Panel>
-
               </Row>
 
-            </Col>
-          </Row>
-        </Grid>
-      </div>
-    )
-  }
-
-  __hotelContainer() {
-    const hotelBookingLink = "https://www.marriott.com/event-reservations/reservation-link.mi?id=1550266610811&key=GRP&app=resvlink";
-
-    return (
-      <div>
-        <Grid>
-          <Row className="show-grid">
-            <Col xs={6} md={5} style={{marginLeft: "100px", width: "40%", paddingRight: "0px"}}>
-              <Panel bsStyle="primary" style={{width: "90%"}}>
-                <div className="container" style={{marginRight: "0px", marginLeft: "0px"}}>
-                  <div className="hotel-picture" style={{float: "left", marginTop: "10px", marginBottom: "10px"}}>
-                    <img src={require('./../../assets/images/aloft_cupertino.jpg')} height="80px" width="80px" style={{borderRadius: "50%"}}/>
-                  </div>
-                  <div className="" style={{float: "left", marginLeft: "30px", marginTop: "20px"}}>
-                    <div>Aloft Cupertino Hotel</div>
-                    <div><a href="https://bit.ly/2ICjZUr" target="/">10165 N De Anza Blvd, Cupertino</a></div>
-                    <div>(408) 766-7000</div>
-                  </div>
-                </div>
-              </Panel>
-
-              <br/>
-              <Panel bsStyle="primary" style={{width: "90%"}}>
-                <div className="container">
-                  <div className="hotel-picture" style={{float: "left", marginTop: "10px", marginBottom: "10px"}}>
-                    <img src={require('./../../assets/images/aloft_cupertino.jpg')} height="80px" width="80px" style={{borderRadius: "50%"}}/>
-                  </div>
-                  <div className="" style={{float: "left", marginLeft: "30px", marginTop: "20px"}}>
-                    <div>Aloft Cupertino Hotel</div>
-                    <div><a href="https://bit.ly/2ICjZUr" target="/">10165 N De Anza Blvd, Cupertino</a></div>
-                    <div>(408) 766-7000</div>
-                  </div>
-                </div>
-              </Panel>
-
-              <br/>
-
-              <Panel bsStyle="primary" style={{width: "90%"}}>
-                <div className="container">
-                  <div className="hotel-picture" style={{float: "left", marginTop: "10px", marginBottom: "10px"}}>
-                    <img src={require('./../../assets/images/aloft_cupertino.jpg')} height="80px" width="80px" style={{borderRadius: "50%"}}/>
-                  </div>
-                  <div className="" style={{float: "left", marginLeft: "30px", marginTop: "20px"}}>
-                    <div>Aloft Cupertino Hotel</div>
-                    <div><a href="https://bit.ly/2ICjZUr" target="/">10165 N De Anza Blvd, Cupertino</a></div>
-                    <div>(408) 766-7000</div>
-                  </div>
-                </div>
-              </Panel>
-
-            </Col>
-            <Col xs={10} md={6}>
-              <Panel bsStyle="primary">
-                <div className="hotel-description">
-                  <div className="container">
-                    <div>
-                      <h4>Location</h4>
-                      <div style={{marginLeft: "15px"}}>
-                        <div>Situated between the San Jose Airport and the wedding venue, </div>
-                        <div>it is about a 15 minute drive from each.</div>
-                        <div className="hotel-map">
-                          <img className="addImgBorder" src={require('./../../assets/images/travel_map.png')} height="300px"/>
+              <Row className="show-grid">
+                <Panel bsStyle="primary">
+                  <Panel.Body className="hotelPanel" onClick={this.__hotelClick.bind(this, "aloft")}>
+                    <Col xs={6} md={7} style={{padding: "0px"}}>
+                      <div className="container" style={{marginRight: "0px", marginLeft: "0px", width: "100%"}}>
+                        <div className="hotel-picture" style={{float: "left", marginTop: "10px", marginBottom: "10px"}}>
+                          <img src={require('./../../assets/images/wildpalms.jpg')} height="80px" width="80px" style={{borderRadius: "50%"}}/>
+                        </div>
+                        <div className="" style={{float: "left", marginLeft: "20px", marginTop: "10px"}}>
+                          <div>Wild Palms Hotel</div>
+                          <div style={{fontSize: "12px"}}><a href="https://www.google.com/maps/place/Wild+Palms+Hotel/@37.3519461,-122.0135551,15z/data=!4m2!3m1!1s0x0:0x74dd551c58050b4a?sa=X&ved=2ahUKEwjPqci12sfiAhUXrp4KHVpkDekQ_BIwKXoECC0QCA" target="/">910 E Fremont Ave, Sunnyvale</a></div>
+                          <div style={{fontSize: "12px"}}>(408) 738-0500</div>
                         </div>
                       </div>
-                      <br/>
-                    </div>
-                    <div>
-                      <h4>Rates</h4>
-                      <div style={{marginLeft: "15px"}}>
-                        <div>Aloft, Guest room, 1 King - $119 per night</div>
-                        <div>Aloft, Guest room, 2 Queen - $129 per night</div>
-                      </div>
-                    </div>
-                    <div>
-                      <h4>Dates Available</h4>
-                      <div style={{marginLeft: "15px"}}>
-                        <div>Start Date: Saturday, August 10, 2019</div>
-                        <div>End Date: Monday, August 12, 2019</div>
-                        <div style={{fontStyle: "oblique"}}>Last Day to Book: <strong>Friday, July 19, 2019</strong></div>
-                      </div>
-                    </div>
-                    <div>
-                      <h4>Booking</h4>
-                      <div style={{marginLeft: "15px"}}>
-                        <div>
-                          To request a room at our room block rate, please visit <a href={hotelBookingLink} target="/">THIS LINK</a>.
+                    </Col>
+                    <Col xs={6} md={4} style={{padding: "0px"}}>
+                      <div>
+                        <h5>Rates</h5>
+                        <div style={{fontSize: "12px"}}>
+                          <div>1 King bed - $99 / night</div>
+                          <div>2 Double beds - $120 / night</div>
                         </div>
                       </div>
-                    </div>
-                    <br/>
-                    <br/>
-                  </div>
-                </div>
-              </Panel>
+                    </Col>
+                  </Panel.Body>
+                </Panel>
+              </Row>
+
+              <Row className="show-grid">
+                <Panel bsStyle="primary">
+                  <Panel.Body className="hotelPanel" onClick={this.__hotelClick.bind(this, "aloft")}>
+                    <Col xs={6} md={7} style={{padding: "0px"}}>
+                      <div className="container" style={{marginRight: "0px", marginLeft: "0px", width: "100%"}}>
+                        <div className="hotel-picture" style={{float: "left", marginTop: "10px", marginBottom: "10px"}}>
+                          <img src={require('./../../assets/images/aloft_cupertino.jpg')} height="80px" width="80px" style={{borderRadius: "50%"}}/>
+                        </div>
+                        <div className="" style={{float: "left", marginLeft: "20px", marginTop: "10px"}}>
+                          <div>Aloft Cupertino Hotel</div>
+                          <div style={{fontSize: "12px"}}><a href="https://bit.ly/2ICjZUr" target="/">10165 N De Anza Blvd, Cupertino</a></div>
+                          <div style={{fontSize: "12px"}}>(408) 766-7000</div>
+                          <div><a href="https://www.marriott.com/event-reservations/reservation-link.mi?id=1550266610811&key=GRP&app=resvlink" target="/">BOOK HERE</a></div>
+                        </div>
+                      </div>
+                    </Col>
+                    <Col xs={6} md={4} style={{padding: "0px"}}>
+                      <div>
+                        <h5>Rates</h5>
+                        <div style={{fontSize: "12px"}}>
+                          <div>1 King bed - $119 / night</div>
+                          <div>2 Queen beds - $129 / night</div>
+                        </div>
+                      </div>
+                    </Col>
+                  </Panel.Body>
+                </Panel>
+              </Row>
+
+              <Row className="show-grid">
+                <Panel bsStyle="primary">
+                  <Panel.Body className="hotelPanel" onClick={this.__hotelClick.bind(this, "aloft")}>
+                    <Col xs={6} md={7} style={{padding: "0px"}}>
+                      <div className="container" style={{marginRight: "0px", marginLeft: "0px", width: "100%"}}>
+                        <div className="hotel-picture" style={{float: "left", marginTop: "10px", marginBottom: "10px"}}>
+                          <img src={require('./../../assets/images/achotelsunnyvale.jpg')} height="80px" width="80px" style={{borderRadius: "50%"}}/>
+                        </div>
+                        <div className="" style={{float: "left", marginLeft: "20px", marginTop: "10px"}}>
+                          <div>AC Hotel Sunnyvale Cupertino</div>
+                          <div style={{fontSize: "12px"}}><a href="https://www.google.com/maps/place/AC+Hotel+by+Marriott+Sunnyvale+Cupertino/@37.3624126,-122.0251817,15z/data=!4m2!3m1!1s0x0:0x4102651c00c9f48c?sa=X&ved=2ahUKEwiG7-Wz3MfiAhWVpp4KHdfECjsQ_BIwKXoECCsQCA" target="/">597 East El Camino Real, Sunnyvale</a></div>
+                          <div style={{fontSize: "12px"}}>(408) 733-7950</div>
+                          <div><a href="https://www.marriott.com/events/start.mi?id=1559346514320&key=GRP" target="/">BOOK HERE</a></div>
+                        </div>
+                      </div>
+                    </Col>
+                    <Col xs={6} md={4} style={{padding: "0px"}}>
+                      <div>
+                        <h5>Rates</h5>
+                        <div style={{fontSize: "12px"}}>
+                          <div>1 King bed - $119 / night</div>
+                        </div>
+                      </div>
+                    </Col>
+                  </Panel.Body>
+                </Panel>
+              </Row>
+
             </Col>
           </Row>
         </Grid>
@@ -219,7 +205,7 @@ class TravelPage extends React.Component {
     let buttonName3;
     switch (activeTab) {
       case 1:
-        content = this.__hotelContainer2();
+        content = this.__hotelContainer();
         buttonName1 = "primary";
         buttonName2 = "default";
         buttonName3 = "default";
