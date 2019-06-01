@@ -21,3 +21,7 @@
  - `yarn install`
  - `foreman start -f Procfile.dev -p 3000`
  
+* Heroku
+ - rails console -> heroku run rails console -a eugeneandtiffany
+ - migrations -> heroku run rake db:migrate -a eugeneandtiffany
+ - rake tasks -> heroku run rake rake_task -a eugeneandtiffany

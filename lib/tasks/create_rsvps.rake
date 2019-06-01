@@ -12,7 +12,7 @@ task create_rsvps: :environment do
       {
           name: 'Annie - Wu Family',
           group: [
-              {first: 'Annie', last: 'Sung', email: ''},
+              {first: 'Annie', last: 'Sung', email: 'twinkle@gmail.com'},
               {first: 'Tim', last: 'Chen', email: nil},
               {first: 'Bella', last: 'Chen', email: nil},
           ]
@@ -20,7 +20,7 @@ task create_rsvps: :environment do
       {
           name: 'Michelle - Wu Family',
           group: [
-              {first: 'Michelle', last: 'Wu', email: ''},
+              {first: 'Michelle', last: 'Wu', email: 'michellelwu@gmail.com'},
               {first: 'Martin', last: 'Pham', email: nil},
               {first: 'Joshua', last: 'Pham', email: nil},
           ]
@@ -28,14 +28,14 @@ task create_rsvps: :environment do
       {
           name: 'Parents - Wu Family',
           group: [
-              {first: 'Hofu', last: 'Wu', email: ''},
-              {first: 'Meina', last: 'Wu', email: ''}
+              {first: 'Hofu', last: 'Wu', email: 'hofuwu@gmail.com'},
+              {first: 'Meina', last: 'Wu', email: 'mommyteapot@gmail.com'}
           ]
       },
       {
           name: 'Chinveeraphan Family',
           group: [
-              {first: 'Gina', last: 'Tantiudomrak', email: ''},
+              {first: 'Gina', last: 'Tantiudomrak', email: 'ginagigglez@gmail.com'},
               {first: 'Leo', last: 'Tantiudomrak', email: ''},
               {first: 'Oggie', last: 'Chinveeraphan', email: ''}
           ]
@@ -57,15 +57,15 @@ task create_rsvps: :environment do
       {
           name: 'Chinveeraphan Family - Renee',
           group: [
-              {first: 'Renee', last: 'Schwabenbauer', email: ''},
+              {first: 'Renee', last: 'Schwabenbauer', email: 'write2renee@gmail.com'},
               {first: 'Julian', last: '', email: ''},
           ]
       },
       {
           name: 'Chinveeraphan Family - Dawn',
           group: [
-              {first: 'Dawn', last: 'Schwabenbauer', email: ''},
-              {first: 'Alex', last: '', email: ''},
+              {first: 'Dawn', last: 'Schwabenbauer', email: 'D.schwabbie@outlook.com'},
+              {first: 'Alex', last: 'Topp', email: ''},
           ]
       },
       {

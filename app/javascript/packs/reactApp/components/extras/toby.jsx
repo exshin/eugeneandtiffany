@@ -142,7 +142,7 @@ class TobyPage extends React.Component {
 
     return (
       <div className="quiz-finish container">
-        Congratulations. You are a {person}!
+        Finished!
       </div>
     )
   }
