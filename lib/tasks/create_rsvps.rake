@@ -384,7 +384,7 @@ task create_rsvps: :environment do
       {
           name: 'Angela Wang Whittington',
           group: [
-              {first: 'Angela', last: 'Wang Whittington', email: 'aw0319@gmail.com'},
+              {first: 'Angela', last: 'Wang', email: 'aw0319@gmail.com'},
               {first: 'Adam', last: 'Whittington', email: ''},
               {first: 'Ada', last: 'Whittington', email: ''},
           ]

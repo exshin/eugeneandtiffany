@@ -302,7 +302,7 @@ class RsvpPage extends React.Component {
   __showFetchRsvpFail() {
     return (
       <div style={{textAlign: "center", fontSize: "20px"}}>
-        Sorry, we couldn't find your RSVP. Please try again or contact us.
+        Sorry, we couldn't find your RSVP. Please try again or contact us (chinveeraphan.wu@gmail.com).
       </div>
     )
   }
