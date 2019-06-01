@@ -74,8 +74,7 @@ class ExtrasPage extends React.Component {
             </Panel.Heading>
             <Panel.Body>
               <img src={require('./../../assets/images/toby_avatar300.jpeg')} style={{width: "100%", height: "250px", border: "1px solid black"}}/>
-              Almost ready! 
-              <!--<Button block onClick={this.__click.bind(this, "toby")}>Play</Button>-->
+              Almost ready!
             </Panel.Body>
           </Panel>
 
