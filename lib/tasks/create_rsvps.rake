@@ -475,6 +475,7 @@ task create_rsvps: :environment do
         if found_rsvp
           if found_rsvp.last_name.empty? && rsvp.last_name.length > 0
             found_rsvp.update(last_name: rsvp.last_name)
+            found_rsvp.update(short_name: rsvp.first_name.downcase + rsvp.last_name.downcase)
             Rails.logger.info("Updated Last Name -- #{rsvp.last_name}")
           end
 
