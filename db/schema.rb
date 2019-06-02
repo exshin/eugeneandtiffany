@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_06_01_074211) do
+ActiveRecord::Schema.define(version: 2019_06_02_214545) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -38,6 +38,13 @@ ActiveRecord::Schema.define(version: 2019_06_01_074211) do
     t.integer "rsvp_group_id"
     t.datetime "updated_at"
     t.string "short_name"
+  end
+
+  create_table "toby_games", force: :cascade do |t|
+    t.string "name"
+    t.integer "score"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "tokens", force: :cascade do |t|
