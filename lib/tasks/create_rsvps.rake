@@ -14,15 +14,15 @@ task create_rsvps: :environment do
           group: [
               {first: 'Annie', last: 'Sung', email: 'twinkle@gmail.com'},
               {first: 'Tim', last: 'Chen', email: 'timchen13@gmail.com'},
-              {first: 'Bella', last: 'Chen', email: nil},
+              {first: 'Bella', last: 'Chen', email: ''},
           ]
       },
       {
           name: 'Michelle - Wu Family',
           group: [
               {first: 'Michelle', last: 'Wu', email: 'michellelwu@gmail.com'},
-              {first: 'Martin', last: 'Pham', email: nil},
-              {first: 'Joshua', last: 'Pham', email: nil},
+              {first: 'Martin', last: 'Pham', email: ''},
+              {first: 'Joshua', last: 'Pham', email: ''},
           ]
       },
       {
@@ -479,7 +479,7 @@ task create_rsvps: :environment do
             Rails.logger.info("Updated Last Name -- #{rsvp.last_name}")
           end
 
-          if found_rsvp.email.empty? && rsvp.email && rsvp.email.length > 0
+          if found_rsvp.email.empty? && rsvp.email.length > 0
             found_rsvp.update(email: rsvp.email)
             Rails.logger.info("Updated Email -- #{rsvp.email}")
           end
