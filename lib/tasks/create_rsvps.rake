@@ -13,7 +13,7 @@ task create_rsvps: :environment do
           name: 'Annie - Wu Family',
           group: [
               {first: 'Annie', last: 'Sung', email: 'twinkle@gmail.com'},
-              {first: 'Tim', last: 'Chen', email: nil},
+              {first: 'Tim', last: 'Chen', email: 'timchen13@gmail.com'},
               {first: 'Bella', last: 'Chen', email: nil},
           ]
       },
@@ -58,7 +58,7 @@ task create_rsvps: :environment do
           name: 'Chinveeraphan Family - Renee',
           group: [
               {first: 'Renee', last: 'Schwabenbauer', email: 'write2renee@gmail.com'},
-              {first: 'Julian', last: '', email: ''},
+              {first: 'Julian', last: 'Braun', email: ''},
           ]
       },
       {
@@ -85,8 +85,9 @@ task create_rsvps: :environment do
       {
           name: 'Sarah & Alex',
           group: [
-              {first: 'Sarah', last: 'Sheu', email: 'sarahlsheu@gmail.com '},
-              {first: 'Alex', last: 'Sheu', email: 'alexanderysheu@gmail.com '},
+              {first: 'Sarah', last: 'Sheu', email: 'sarahlsheu@gmail.com'},
+              {first: 'Alex', last: 'Sheu', email: 'alexanderysheu@gmail.com'},
+              {first: 'Alice', last: 'Sheu', email: ''},
           ]
       },
       {
@@ -194,7 +195,7 @@ task create_rsvps: :environment do
           name: 'Will & Simon',
           group: [
               {first: 'Will', last: 'Hsiao', email: 'william.z.hsiao@gmail.com'},
-              {first: 'Simon', last: 'Todd', email: 'sjtsimontodd@gmail.com '},
+              {first: 'Simon', last: 'Todd', email: 'sjtsimontodd@gmail.com'},
           ]
       },
       {
@@ -214,7 +215,7 @@ task create_rsvps: :environment do
           name: 'Emily & Brian',
           group: [
               {first: 'Emily', last: 'Yu', email: 'emilyyu88@gmail.com'},
-              {first: 'Brian', last: 'Hu', email: ''},
+              {first: 'Brian', last: 'Hu', email: 'husbrian@gmail.com'},
           ]
       },
       {
@@ -267,7 +268,8 @@ task create_rsvps: :environment do
           name: 'Tiffany Pan',
           group: [
               {first: 'Tiffany', last: 'Pan', email: 'tiffanypan32@gmail.com'},
-              {first: 'Amanda', last: '', email: ''},
+              {first: 'Amanda', last: 'Wilson', email: ''},
+              {first: 'Tracy', last: 'Pan', email: 'me.tracy@gmail.com'},
           ]
       },
       {
@@ -420,8 +422,8 @@ task create_rsvps: :environment do
       {
           name: 'The Maluths',
           group: [
-              {first: 'Hannah', last: 'Maluth', email: ''},
-              {first: 'Sharon', last: 'Maluth', email: ''},
+              {first: 'Hannah', last: 'Maluth', email: 'hannahmmcsus@gmail.com'},
+              {first: 'Sharon', last: 'Maluth', email: 'smaluth@comcast'},
               {first: 'Elliot', last: 'Maluth', email: ''},
           ]},
       {
@@ -438,7 +440,7 @@ task create_rsvps: :environment do
               {first: 'Joseph', last: 'Crisci', email: ''},
               {first: 'Tina', last: 'Crisci', email: 'tinapcrisci@gmail.com'},
               {first: 'Paul', last: 'Crisci', email: ''},
-              {first: '', last: '', email: ''},
+              {first: 'Nicole', last: 'Crisci', email: ''},
           ]
       },
       {
@@ -448,26 +450,49 @@ task create_rsvps: :environment do
              {first: 'Ellie', last: 'Guardino', email: 'Guardino.ellie@gene.com'},
              {first: 'Jeff', last: 'Guardino', email: ''},
           ]
+      },
+      {
+          name: 'Christina Hong',
+          group: [
+              {first: 'Christina', last: 'Hong', email: 'chrhong111@gmail.com'},
+          ]
       }
   ]
 
-  rsvps.each do |rsvp_group|
-    next if rsvp_group[:name] == 'GROUP_NAME'
+  begin
+    rsvps.each do |rsvp_group|
+      next if rsvp_group[:name] == 'GROUP_NAME'
 
-    group_name = rsvp_group[:name]
-    group = RsvpGroup.find_by(name: group_name)
-    group = RsvpGroup.create(name: group_name) unless group
+      group_name = rsvp_group[:name]
+      group = RsvpGroup.find_by(name: group_name)
+      group = RsvpGroup.create(name: group_name) unless group
 
-    rsvp_group[:group].each do |rsvp|
-      found_rsvp = Rsvp.find_by(first_name: rsvp[:first],
-                   last_name: rsvp[:last],
-                   email: rsvp[:email],
-                   rsvp_group_id: group.id)
+      rsvp_group[:group].each do |rsvp|
+        found_rsvp = Rsvp.find_by(first_name: rsvp[:first],
+                                  last_name: rsvp[:last],
+                                  rsvp_group_id: group.id)
 
-      Rsvp.create(first_name: rsvp[:first],
-                  last_name: rsvp[:last],
-                  email: rsvp[:email],
-                  rsvp_group_id: group.id) unless found_rsvp
-    end
+        if found_rsvp
+          if found_rsvp.last_name.empty? && rsvp.last_name.length > 0
+            found_rsvp.update(last_name: rsvp.last_name)
+            Rails.logger.info("Updated Last Name -- #{rsvp.last_name}")
+          end
+
+          if found_rsvp.email.empty? && rsvp.email && rsvp.email.length > 0
+            found_rsvp.update(email: rsvp.email)
+            Rails.logger.info("Updated Email -- #{rsvp.email}")
+          end
+
+          else
+            Rsvp.create!(first_name: rsvp[:first],
+                        last_name: rsvp[:last],
+                        email: rsvp[:email],
+                        rsvp_group_id: group.id)
+          end
+        end
+      end
+  rescue => error
+    Rails.logger.debug(error)
   end
+
 end
