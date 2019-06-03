@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, Table, Row, Col, Label } from 'react-bootstrap'
+import { Button, Table, Row, Col, Label, FormGroup, FormControl, ControlLabel, Panel } from 'react-bootstrap'
 
 import $ from 'jquery'
 
@@ -13,19 +13,37 @@ class TobyPage extends React.Component {
       score: 0.0,
       gameData: {
         options: [
-          ['eugene.jpg', 'hbird.jpg'],
-          ['toby_2.jpg', 'faketoby2.jpg'],
-          ['toby3.jpg', 'faketoby3.jpg'],
+          ['toby6.jpg', 'autumn.jpg'],
+          ['toby2.jpg', 'eve_toby.jpg'],
+          ['toby13.jpg', 'orangecat4_1.jpg'],
+          ['toby8.jpg', 'orangecat2_2.jpg'],
+          ['toby10.jpg', 'orangecat2_1.jpg'],
+          ['toby.jpg', 'orangecat1_1.jpg'],
+          ['toby11.jpg', 'orangecat1_2.jpg'],
+          ['toby3.jpg', 'max5.jpg'],
+          ['toby5.jpg', 'max1.jpg'],
+          ['toby15.jpg', 'max2.jpg'],
+          ['toby20.jpg', 'max7.jpg'],
+          ['toby9.jpg', 'max8.jpg'],
         ],
         answers: [
-          'eugene.jpg',
-          'toby_2.jpg',
-          'toby3.jpg'
+          'toby6.jpg',
+          'toby2.jpg',
+          'toby13.jpg',
+          'toby8.jpg',
+          'toby10.jpg',
+          'toby.jpg',
+          'toby11.jpg',
+          'toby3.jpg',
+          'toby5.jpg',
+          'toby15.jpg',
+          'toby20.jpg',
+          'toby9.jpg',
         ],
-        incorrectAnswers: []
       },
+      incorrectAnswers: [],
       showLeaderBoard: false,
-      highScores: {},
+      highScores: [],
     };
   }
 
@@ -53,15 +71,15 @@ class TobyPage extends React.Component {
     const { gameData, currentQuestionNumber, score, incorrectAnswers } = this.state;
     const { answers } = gameData;
 
-    const currentAnswer = answers[currentQuestionNumber];
     const correctAnswer = answers[currentQuestionNumber];
 
-    if (currentAnswer === correctAnswer) {
+    if (answer === correctAnswer) {
       this.setState({
         score: score + 1,
       });
     } else {
-      let newIncorrectAnswers = incorrectAnswers.push(currentQuestionNumber);
+      let newIncorrectAnswers = incorrectAnswers;
+      newIncorrectAnswers.push(currentQuestionNumber);
       this.setState({
         incorrectAnswers: newIncorrectAnswers
       });
@@ -77,7 +95,6 @@ class TobyPage extends React.Component {
   }
 
   __quizAnswers(currentOption) {
-    // TODO: Need to implement button images with the currentOption as the image name
     return (
       <td key={currentOption}>
         <div className="answer">
@@ -93,17 +110,21 @@ class TobyPage extends React.Component {
 
   __quizDescription() {
     return (
-      <div className="quiz-game-description">
+      <div className="quiz-game-description" style={{marginBottom: "80px"}}>
         <div>
           Meet Toby. Toby is our pet cat.
           We adopted him and his sister Eve from a shelter in SF.
         </div>
+        <br/>
         <div>
           The game is all about finding Toby! Please take a look at these photos of Toby.
+        </div>
+        <div>
           When you think you are ready to find him amongst the other "fake Toby's" please click Start!
         </div>
         <br/>
         <Button onClick={this.__gameStartClick.bind(this)}>Start</Button>
+        <br/>
       </div>
     )
   }
@@ -121,69 +142,144 @@ class TobyPage extends React.Component {
     }
 
     return (
-      <div className="quiz-game container">
-        <div className="quiz-game header">
-          <h3>Toby or Not Toby - That is the question!</h3>
-          {content}
-        </div>
-        <br/>
-        <div className="answers container" style={{width: "50%"}} hidden={!quizStart}>
-          <Table bordered>
-            <tbody>
-              <tr>
-                {currentOptions.map(currentOption => {
-                  return this.__quizAnswers(currentOption)
-                })}
-              </tr>
-            </tbody>
-          </Table>
+      <div className="toby-game container">
+        <div className="toby-game container">
+          <Panel style={{width: "90%", background: "whitesmoke"}}>
+            <Panel.Heading style={{background: "lightsalmon"}}>
+              <Panel.Title componentClass="h3" style={{textAlign: "center", color: "white", fontSize: "24px"}}>Toby or Not Toby - That is the question!</Panel.Title>
+            </Panel.Heading>
+            <br/>
+            <Panel.Body>
+              <div className="answers container" style={{width: "65%"}} hidden={!quizStart}>
+                <h5>#{currentQuestionNumber+1} / 12</h5>
+                <Table bordered>
+                  <tbody>
+                    <tr>
+                      {currentOptions.map(currentOption => {
+                        return this.__quizAnswers(currentOption)
+                      })}
+                    </tr>
+                  </tbody>
+                </Table>
+              </div>
+              <br/>
+              {content}
+              <br/>
+            </Panel.Body>
+          </Panel>
         </div>
       </div>
     )
   }
 
   __quizFinish() {
-    const { score, gameData } = this.state;
+    const { score, gameData, incorrectAnswers } = this.state;
     let labelClassName;
-    let labelTitle;
-    const totalQuestions = gameData['options'].length;
+    let scoreMessage;
+    const totalQuestions = gameData["options"].length;
     const scorePercent = score / (totalQuestions + 0.0);
 
     if (scorePercent > 0.5) {
       labelClassName = "success";
       if (scorePercent === 1.0) {
-        labelTitle = "Oh my goodness! You've gotten a perfect score! You are a Toby EXPERT!";
+        scoreMessage = "Oh my goodness! You've gotten a perfect score! You are a Toby EXPERT!";
       } else {
-        labelTitle = "Congratulations! You can pick out a Toby amongst the crowd!";
+        scoreMessage = "Congratulations! You can pick out a Toby amongst the crowd!";
       }
     } else {
       labelClassName = "danger";
       if (scorePercent === 0.0) {
-        labelTitle = "Wow. Amazing. You've gotten them all wrong. This is... impressive.";
+        scoreMessage = "Wow. Amazing. You've gotten them all wrong. This is... impressive.";
       } else {
-        labelTitle = "Looks like you're going to need more training! Would you like to spend a weekend with Toby?";
+        scoreMessage = "Looks like you're going to need more training! Would you like to spend a weekend with Toby?";
       }
     }
 
+    const scorePercentString = Math.ceil(scorePercent*100);
+
+    let questions = [];
+
+    incorrectAnswers.map(i => {
+      let choices = gameData["options"][i];
+      let correctChoice = gameData["answers"][i];
+
+      // Remove the correct choice and what's left is the wrong choice
+      choices = choices.filter(item => item !== correctChoice);
+      const wrongChoice = choices[0];
+
+      questions.push([correctChoice, wrongChoice])
+    });
+
+    let incorrectClassName = "incorrect-choices div-center";
+    if (scorePercentString === 100) {
+      incorrectClassName = "incorrect-choices div-center hidden";
+    }
+
     return (
-      <div className="quiz-finish container">
-        <div className="div-center">
-          <br/>
-          <div className="score">
-            <h3>{labelTitle}</h3>
-            <Label bsStyle={labelClassName} style={{fontSize: "60px"}}>{scorePercent*100}%</Label>
-          </div>
-          <hr/>
+      <div className="toby-finish container">
+        <Panel style={{width: "90%", background: "aliceblue"}}>
+          <div className="div-center">
+            <br/>
+            <div className="toby-score-title" style={{textAlign: "center", marginBottom: "40px"}}>
+              <h3>Your Score</h3>
+              <hr/>
+            </div>
 
-          <div className="incorrect-choices">
+            <div className="toby-score-value" style={{textAlign: "center"}}>
+              <Label bsStyle={labelClassName} style={{fontSize: "80px", paddingTop: "0px", paddingBottom: "0px"}}>{scorePercentString}%</Label>
+            </div>
 
-          </div>
+            <div className="toby-score-message" style={{textAlign: "center", marginTop: "40px"}}>
+              {scoreMessage}
+              <hr/>
+            </div>
 
-          <div className="submit-score">
-            {this.__submitScore()}
+            <div className="submit-toby-score container" style={{width: "80%"}}>
+              {this.__submitScore()}
+            </div>
+
+            <div className={incorrectClassName}>
+              <h4 style={{textAlign: "center"}}>Your Incorrect Answers</h4>
+              <div className="div-center">
+                <Table className="container" bordered style={{background: "white", width: "25%"}}>
+                  <thead>
+                  <tr>
+                    <th>Correct Answer</th>
+                    <th>Your Answer</th>
+                  </tr>
+                  </thead>
+                  <tbody>
+                  {questions.map((question, i) => {
+                    return this.__incorrectAnswer(question)
+                  })}
+                  </tbody>
+                </Table>
+              </div>
+            </div>
           </div>
-        </div>
+        </Panel>
       </div>
+    )
+  }
+
+  __incorrectAnswer(question, i) {
+    return (
+      <tr key={i}>
+        <td>
+          <div className="correct-answer">
+            <img src={require(`./../../assets/images/toby_game/${question[0]}`)}
+                 style={{width: "100px", height: "100px", border: "1px solid black"}}
+            />
+          </div>
+        </td>
+        <td>
+          <div className="incorrect-answer">
+            <img src={require(`./../../assets/images/toby_game/${question[1]}`)}
+                 style={{width: "100px", height: "100px", border: "1px solid black"}}
+            />
+          </div>
+        </td>
+      </tr>
     )
   }
 
@@ -191,9 +287,9 @@ class TobyPage extends React.Component {
     // allows user to submit their score to a leaderboard (as well as for admin viewing)
     return (
       <div>
-        <form>
+        <form style={{width: "80%", float: "left"}}>
           <FormGroup controlId="formBasicText">
-            <ControlLabel>Enter your name to submit your score!</ControlLabel>
+            <ControlLabel>Enter your name to submit your score! (and see the leaderboard)</ControlLabel>
             <FormControl
               type="text"
               value={this.state.value}
@@ -208,7 +304,7 @@ class TobyPage extends React.Component {
             <FormControl.Feedback />
           </FormGroup>
         </form>
-        <Button bsStyle="primary" onClick={this.__handleSubmitScore.bind(this)}>Submit</Button>
+        <Button style={{float: "left", marginTop: "25px"}} bsStyle="primary" onClick={this.__handleSubmitScore.bind(this)}>Submit</Button>
       </div>
     )
   }
@@ -229,7 +325,7 @@ class TobyPage extends React.Component {
   __submit(params) {
     $.ajax({
       type: "POST",
-      url: "/quiz/score",
+      url: "/toby_game/score",
       data: params,
       complete: this.__handleSuccess.bind(this)
     });
@@ -260,15 +356,67 @@ class TobyPage extends React.Component {
     }
   }
 
+  __leaderBoard() {
+    const {highScores} = this.state;
+
+    return (
+      <div className="div-center">
+        <div>
+          <h3 style={{textAlign: "center"}}>Leaderboard</h3>
+        </div>
+        <div className="div-center" style={{width: "40%"}}>
+          <Table className="container" bordered style={{background: "white", width: "50%"}}>
+            <thead>
+            <tr>
+              <th>Placement</th>
+              <th>Name</th>
+              <th>Score</th>
+            </tr>
+            </thead>
+            <tbody>
+            {highScores.map((highScore, index) => {
+              return this.__leaderBoardEntries(highScore, index)
+            })}
+            </tbody>
+          </Table>
+        </div>
+
+      </div>
+    )
+  }
+
+  __leaderBoardEntries(entry, index) {
+    const {gameData} = this.state;
+    const score = Math.ceil(entry.score / (gameData["options"].length + 0.0) * 100);
+
+    return (
+      <tr key={index}>
+        <td>
+          {index}
+        </td>
+        <td>
+          {entry.name}
+        </td>
+        <td>
+          {score}%
+        </td>
+      </tr>
+    )
+  }
+
   render() {
     let content;
-    const { gameData, currentQuestionNumber } = this.state;
+    const { gameData, currentQuestionNumber, showLeaderBoard } = this.state;
     const maxQuestions = gameData.options.length;
 
     if (maxQuestions === currentQuestionNumber) {
       content = this.__quizFinish();
     } else {
       content = this.__quizGame();
+    }
+
+    if (showLeaderBoard === true) {
+      content = this.__leaderBoard();
     }
 
     return(

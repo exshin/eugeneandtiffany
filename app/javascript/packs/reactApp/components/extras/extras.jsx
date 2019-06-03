@@ -94,6 +94,10 @@ class ExtrasPage extends React.Component {
           <br/>
           <br/>
           {content}
+          <br/>
+          <br/>
+          <br/>
+          <br/>
         </div>
       </div>
     )

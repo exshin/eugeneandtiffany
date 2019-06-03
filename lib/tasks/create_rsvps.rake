@@ -374,7 +374,7 @@ task create_rsvps: :environment do
           name: 'Bradford & Amy',
           group: [
               {first: 'Bradford', last: 'Chong', email: 'bradfordjchong@gmail.com'},
-              {first: 'Amy', last: 'Chen', email: ''},
+              {first: 'Amy', last: 'Chen', email: 'amycchen8@gmail.com'},
           ]
       },
       {
@@ -473,15 +473,15 @@ task create_rsvps: :environment do
                                   rsvp_group_id: group.id)
 
         if found_rsvp
-          if found_rsvp.last_name.empty? && rsvp.last_name.length > 0
-            found_rsvp.update(last_name: rsvp.last_name)
-            found_rsvp.update(short_name: rsvp.first_name.downcase + rsvp.last_name.downcase)
-            Rails.logger.info("Updated Last Name -- #{rsvp.last_name}")
+          if found_rsvp.last_name.empty? && rsvp[:last].length > 0
+            found_rsvp.update(last_name: rsvp[:last])
+            found_rsvp.update(short_name: rsvp[:first].downcase + rsvp[:last].downcase)
+            Rails.logger.info("Updated Last Name -- #{rsvp[:last]}")
           end
 
-          if found_rsvp.email.empty? && rsvp.email.length > 0
-            found_rsvp.update(email: rsvp.email)
-            Rails.logger.info("Updated Email -- #{rsvp.email}")
+          if found_rsvp.email.empty? && rsvp[:email].length > 0
+            found_rsvp.update(email: rsvp[:email])
+            Rails.logger.info("Updated Email -- #{rsvp[:email]}")
           end
 
           else

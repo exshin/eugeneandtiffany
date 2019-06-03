@@ -21,4 +21,9 @@ Rails.application.routes.draw do
   namespace :tokens do
     get :find_token
   end
+
+  namespace :toby_game do
+    post :score
+    get :high_scores
+  end
 end
