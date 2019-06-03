@@ -1,17 +1,17 @@
 # == Schema Information
 #
-# Table name: tokens
+# Table name: toby_games
 #
 #  id         :bigint(8)        not null, primary key
-#  hexdigest  :string
-#  admin      :boolean
+#  name       :string
+#  score      :integer
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #
 
 require 'test_helper'
 
-class TokenTest < ActiveSupport::TestCase
+class TobyGameTest < ActiveSupport::TestCase
   # test "the truth" do
   #   assert true
   # end

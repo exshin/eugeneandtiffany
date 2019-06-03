@@ -29,20 +29,20 @@ class QuizPage extends React.Component {
           6: "Which of the following kinds of fruit do you like best?",
           7: "How are you with driving directions?",
           8: "Which of the following activities would you prefer?",
-          9: "While traveling, rank the categories Nature, Food, and Culture in order of importance to you. (First being most important.)",
-          10: "Choose your favorite cat from the list..."
+          9: "While traveling, which of the following categories is most important to you? - Nature, Food, or Culture",
+          10: "How much sunblock would you wear on a normal sunny day?"
         },
         answers: { // scoring is [Tiffany, Eugene]
           1: {"Drown me in it!": [2, 0], "Yes.": [1, 0], "It's alright. I'll eat it sometimes": [0, 2], "Not one bit": [0, 1]},
-          2: {"Emo rock music from the 90s": [2, 1], "Happy pop music": [1, 0], "Classical music": [0, 1], "Indie folk music": [1, 2], "Foreign (e.g. kpop)": [0, 1], "EDM": [0, 1]},
+          2: {"Pop music": [1, 0], "Other": [0, 0], "Indie folk music": [1, 2], "None. I cook in silence.": [0, 1], "EDM": [0, 1]},
           3: {"Anything, I'm so HUNGRY!!": [2, 0], "Eggs, bacon, and biscuits and gravy mmmmm": [1, 0], "Pancakes. but only after 10am.": [0, 1], "Just coffee. I need that caffeine... Gimmeeee it!": [0, 2], "None of these": [0, 0]},
-          4: {"eats shoots, and leaves": [0, 1], "eats shoots and leaves": [2, 0], "eats, shoots and leaves": [0 ,1], "eats, shoots, and leaves": [0, 2]},
+          4: {"eats shoots and leaves": [2, 0],  "eats, shoots, and leaves": [0, 2]},
           5: {"New Zealand": [1, 0], "Italy": [2, 1], "Taiwan": [2, 1], "Japan": [1, 2]},
-          6: {"Grapes?": [2, 1], "Exotic Fruits from Southeast Asia (E.g. Cherimoya)": [2, 0], "Stone Fruit (Peaches, Nectarines, etc..)": [2, 1], "Melons": [0, 2], "None. I don't like fruit": [0, 0]},
+          6: {"Grapes?": [2, 1], "Exotic Fruits from Southeast Asia (E.g. Cherimoya)": [2, 0], "Stone Fruit (Peaches, Nectarines, etc..)": [2, 1], "Melons": [0, 2], "None of these.": [0, 0]},
           7: {"Yes.": [1, 1], "Amazing. I can show you the way~": [2, 0], "Eh. I know the general directions": [0, 2], "Like a fish out of water": [0, 2]},
-          8: {"Reading a book": [1, 0], "Watching your favorite TV show": [1, 2], "Gardening": [1, 1], "Playing video games": [0, 2], "Arts and Crafts!": [2, 0], "Sports": [0, 1]},
-          9: {"Food, Nature, then Culture": [2, 1], "Food, Culture, then Nature": [1, 2], "Culture, Nature, then Food": [0, 0], "Culture, Food, then Nature": [0, 1], "Nature, Food, then Culture": [2, 0], "Nature, Culture, then Food": [0, 0]},
-          10: {"Toby": [2, 2], "Eve": [2, 2], "Shami": [1, 1], "Autumn": [1, 1], "Mini": [1, 1], "The cat in the hat": [0, 0]},
+          8: {"Reading a book": [1, 0], "Watching your favorite TV shows": [1, 2], "Playing video games": [0, 2], "Arts and Crafts!": [2, 0], "Sports": [0, 1]},
+          9: {"Food": [1, 2], "Nature": [1, 0], "Culture": [2, 1]},
+          10: {"Just a fine layer": [1, 1], "None. Sunblock feels gross on my skin.": [0, 2], "Ahh cover everything!!": [2, 0]},
         },
         categories: {
           1: "Chocolate",
@@ -54,7 +54,7 @@ class QuizPage extends React.Component {
           7: "Sense of direction",
           8: "Activities",
           9: "Travel",
-          10: "Cats"
+          10: "Sunblock"
         }
 
       }
@@ -147,7 +147,7 @@ class QuizPage extends React.Component {
   __questions(currentQuestion, currentAnswerChoices, currentQuestionNumber) {
     return (
       <div>
-        <div className="questions container" style={{width: "80%", fontSize: "22px", fontWeight: 500, textAlign: "center"}}>
+        <div className="questions container" style={{width: "80%", fontSize: "18px", fontWeight: 500, textAlign: "center"}}>
           {currentQuestionNumber}. {currentQuestion}
         </div>
         <br/>
@@ -201,14 +201,22 @@ class QuizPage extends React.Component {
   }
 
   __progress() {
-    const {tiffanyScore, eugeneScore} = this.state;
+    const {tiffanyScore, eugeneScore, quizFinished, gameData, currentQuestionNumber} = this.state;
+
+    const maxQuestions = Object.keys(gameData.questions).length + 1;
+
     let leftScorePercent = eugeneScore * 5.0;
     let rightScorePercent = tiffanyScore * 5.0;
+    //let eugeneHeight = Object(30 + (eugeneScore * 5.0)).toString() + "px";
+    //let tiffanyHeight = Object(30 + (tiffanyScore * 5.0)).toString() + "px";
+
+    let eugeneHeight = "50px";
+    let tiffanyHeight = "50px";
 
     return (
       <div className="container" style={{textAlign: "center"}}>
         <div className="container" style={{float: "left", width: "10%", padding: "0px"}}>
-          <img src={require('./../../assets/images/eugene_vs_headshot.jpg')} height="50px"/>
+          <img src={require('./../../assets/images/eugene_vs_headshot.jpg')} height={eugeneHeight}/>
         </div>
         <div className="container" style={{float: "left", width: "30%", padding: "0px"}}>
           <ProgressBar active={true} bsStyle="warning" className="right" now={leftScorePercent}/>
@@ -220,7 +228,7 @@ class QuizPage extends React.Component {
           <ProgressBar active={true} now={rightScorePercent} />
         </div>
         <div className="container" style={{float: "left", width: "10%", padding: "0px"}}>
-          <img src={require('./../../assets/images/tiffany_vs_headshot.jpg')} height="50px"/>
+          <img src={require('./../../assets/images/tiffany_vs_headshot.jpg')} height={tiffanyHeight}/>
         </div>
       </div>
     )
@@ -318,10 +326,10 @@ class QuizPage extends React.Component {
       <div className="quiz-finish container">
         <div className="container" style={{float: "left", width: "40%"}}>
           <div>
-            {message}
+            <h3>{message}</h3>
           </div>
           <div>
-            <img src={require(`./../../assets/images/${imageUrl}.jpg`)} height="400px"/>
+            <img src={require(`./../../assets/images/${imageUrl}.jpg`)} height="250px"/>
           </div>
         </div>
         <div className="container" style={{float: "left", width: "40%"}}>
@@ -334,6 +342,7 @@ class QuizPage extends React.Component {
             })}
           </div>
         </div>
+        <br/>
         <div className="container"  style={{float: "left", width: "30%"}}>
           {this.__submitScore()}
         </div>
@@ -356,10 +365,10 @@ class QuizPage extends React.Component {
             <h4>Top 10 "You Are A Tiffany" Scores</h4>
             <Table bordered style={{background: "white"}}>
               <thead>
-              <tr>
-                <th>Name</th>
-                <th>Score</th>
-              </tr>
+                <tr>
+                  <th>Name</th>
+                  <th>Score</th>
+                </tr>
               </thead>
               <tbody>
               {tiffanyHighScores.map((highScore, index) => {

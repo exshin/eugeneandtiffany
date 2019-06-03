@@ -10,6 +10,7 @@
 #  dietary_restrictions :text
 #  rsvp_group_id        :integer
 #  updated_at           :datetime
+#  short_name           :string
 #
 
 class Rsvp < ApplicationRecord
