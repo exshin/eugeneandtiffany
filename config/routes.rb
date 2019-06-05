@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   namespace :quiz do
     post :score
     get :high_scores
+    get :all_scores
   end
 
   namespace :rsvp do

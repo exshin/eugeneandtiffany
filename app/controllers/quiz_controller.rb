@@ -5,6 +5,7 @@ class QuizController < ActionController::Base
     tiffany_scores = Quiz.tiffany_high_scores.limit(10)
     eugene_scores = Quiz.eugene_high_scores.limit(10)
     latest_tied_high_scores = Quiz.tied_high_scores.limit(10)
+
     render json: {
         tiffany_scores: tiffany_scores,
         eugene_scores: eugene_scores,
@@ -22,6 +23,18 @@ class QuizController < ActionController::Base
                        user_eugene_answers: eugene_answers,
                        created_at: Time.now)
     render json: quiz
+  end
+
+  def all_scores
+    tiffany_scores = Quiz.tiffany_high_scores
+    eugene_scores = Quiz.eugene_high_scores
+    latest_tied_high_scores = Quiz.tied_high_scores
+
+    render json: {
+        tiffany_scores: tiffany_scores,
+        eugene_scores: eugene_scores,
+        latest_tied_high_scores: latest_tied_high_scores
+    }
   end
 end
 

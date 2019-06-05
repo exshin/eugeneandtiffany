@@ -19,6 +19,7 @@ class QuizPage extends React.Component {
       showLeaderBoard: false,
       tiffanyHighScores: [],
       eugeneHighScores: [],
+      latestTiedHighScores: [],
       gameData: {
         questions: {
           1: "How much do you like chocolate?",
@@ -429,8 +430,9 @@ class QuizPage extends React.Component {
     if (result && result.responseJSON) {
       this.setState({
         tiffanyHighScores: result.responseJSON.tiffany_scores,
-        eugeneHighScores: result.responseJSON.eugene_scores
-      })
+        eugeneHighScores: result.responseJSON.eugene_scores,
+        latestTiedHighScores: result.responseJSON.latest_tied_high_scores
+      });
     }
   }
 
