@@ -14,6 +14,7 @@ Rails.application.routes.draw do
   end
 
   namespace :rsvp do
+    get :index
     get :find_groups_by_name
     post :submit_rsvps
   end

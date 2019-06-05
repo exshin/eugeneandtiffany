@@ -116,8 +116,11 @@ class TobyPage extends React.Component {
           We adopted him and his sister Eve from a shelter in SF.
         </div>
         <br/>
+        <div className="toby-picture">
+          <img src={require('./../../assets/images/toby_game/toby_pic.jpg')} style={{width: "100%", height: "150px", width: "150px", border: "1px solid black"}}/>
+        </div>
         <div>
-          The game is all about finding Toby! Please take a look at these photos of Toby.
+          The game is all about finding Toby!
         </div>
         <div>
           When you think you are ready to find him amongst the other "fake Toby's" please click Start!
@@ -152,6 +155,7 @@ class TobyPage extends React.Component {
             <Panel.Body>
               <div className="answers container" style={{width: "65%"}} hidden={!quizStart}>
                 <h5>#{currentQuestionNumber+1} / 12</h5>
+                <div>Click on the picture of Toby.</div>
                 <Table bordered>
                   <tbody>
                     <tr>

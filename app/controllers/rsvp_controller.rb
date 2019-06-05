@@ -2,7 +2,13 @@ class RsvpController < ActionController::Base
   protect_from_forgery with: :null_session
 
   def index
-    render json: {rsvps: Rsvp.all}
+    rsvps = []
+    RsvpGroup.all.each do |group|
+      group.rsvps.each do |rsvp|
+        rsvps << rsvp
+      end
+    end
+    render json: {rsvps: rsvps}
   end
 
   def find_groups_by_name

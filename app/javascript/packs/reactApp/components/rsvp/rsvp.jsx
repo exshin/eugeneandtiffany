@@ -329,7 +329,7 @@ class RsvpPage extends React.Component {
   __foundRsvpContent() {
     return (
       <div style={{textAlign: "center", fontSize: "25px"}}>
-        Please submit your RSVP by <strong>June 15th</strong>. Thank you!
+        Please submit your RSVP by <strong>July 11th</strong>. Thank you!
       </div>
     )
   }

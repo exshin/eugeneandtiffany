@@ -104,7 +104,7 @@ class TravelPage extends React.Component {
                           <div>Wild Palms Hotel</div>
                           <div style={{fontSize: "12px"}}><a href="https://www.google.com/maps/place/Wild+Palms+Hotel/@37.3519461,-122.0135551,15z/data=!4m2!3m1!1s0x0:0x74dd551c58050b4a?sa=X&ved=2ahUKEwjPqci12sfiAhUXrp4KHVpkDekQ_BIwKXoECC0QCA" target="/">910 E Fremont Ave, Sunnyvale</a></div>
                           <div style={{fontSize: "12px"}}>(408) 738-0500</div>
-                          <div><a>Booking currently unavailable</a></div>
+                          <div><a>Booking link coming soon</a></div>
                         </div>
                       </div>
                     </Col>

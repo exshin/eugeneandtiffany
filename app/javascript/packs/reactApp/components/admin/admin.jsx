@@ -1,15 +1,22 @@
 import React from 'react';
 import { Button, Table } from 'react-bootstrap'
 
+import $ from 'jquery'
+
 class AdminPage extends React.Component {
   constructor(props) {
     super(props);
 
     this.state = {
+      rsvps: [],
       totalYes: 0,
       totalNo: 0,
       total: 0
-    }
+    };
+  }
+
+  componentDidMount() {
+    this.__fetchRsvps();
   }
 
 
@@ -17,8 +24,29 @@ class AdminPage extends React.Component {
     debugger;
   }
 
+  __fetchRsvps() {
+    $.ajax({
+      type: "GET",
+      url: "/rsvp/index",
+      data: {},
+      dataType: "json",
+      complete: this.__handleFetchRsvps.bind(this)
+    });
+  }
+
+  __handleFetchRsvps(result) {
+    debugger;
+    if (result && result.responseJSON) {
+      this.setState({
+        rsvps: result.responseJSON.rsvps
+      })
+    }
+  }
+
   render() {
-    const {totalYes, totalNo, total} = this.state;
+    const {totalYes, totalNo, total, rsvps} = this.state;
+
+    debugger;
 
     return(
       <div className="admin-page container">
