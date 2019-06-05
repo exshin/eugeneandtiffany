@@ -14,7 +14,7 @@ task create_rsvps: :environment do
           group: [
               {first: 'Annie', last: 'Sung', email: 'twinkle@gmail.com'},
               {first: 'Tim', last: 'Chen', email: 'timchen13@gmail.com'},
-              {first: 'Bella', last: 'Chen', email: ''},
+              {first: 'Bella', last: 'Chen', email: '', no_drink: true},
           ]
       },
       {
@@ -22,7 +22,7 @@ task create_rsvps: :environment do
           group: [
               {first: 'Michelle', last: 'Wu', email: 'michellelwu@gmail.com'},
               {first: 'Martin', last: 'Pham', email: ''},
-              {first: 'Joshua', last: 'Pham', email: ''},
+              {first: 'Joshua', last: 'Pham', email: '', no_drink: true},
           ]
       },
       {
@@ -50,15 +50,15 @@ task create_rsvps: :environment do
           name: 'Chinveeraphan Family - TJ',
           group: [
               {first: 'TJ', last: 'Schwabenbauer', email: 'mistertj33@gmail.com'},
-              {first: 'Haley', last: 'Schwabenbauer', email: ''},
-              {first: 'Jacob', last: 'Schwabenbauer', email: ''},
+              {first: 'Haley', last: 'Schwabenbauer', email: '', no_drink: true},
+              {first: 'Jacob', last: 'Schwabenbauer', email: '', no_drink: true},
           ]
       },
       {
           name: 'Chinveeraphan Family - Renee',
           group: [
               {first: 'Renee', last: 'Schwabenbauer', email: 'write2renee@gmail.com'},
-              {first: 'Julian', last: 'Braun', email: ''},
+              {first: 'Julian', last: 'Braun', email: '', no_drink: true},
           ]
       },
       {
@@ -87,7 +87,7 @@ task create_rsvps: :environment do
           group: [
               {first: 'Sarah', last: 'Sheu', email: 'sarahlsheu@gmail.com'},
               {first: 'Alex', last: 'Sheu', email: 'alexanderysheu@gmail.com'},
-              {first: 'Alice', last: 'Sheu', email: ''},
+              {first: 'Alice', last: 'Sheu', email: '', no_drink: true},
           ]
       },
       {
@@ -109,7 +109,7 @@ task create_rsvps: :environment do
           group: [
               {first: 'Lucy', last: 'Liu', email: 'luzliu@gmail.com'},
               {first: 'Wilmot', last: 'Yeh', email: 'byoink@gmail.com'},
-              {first: 'Linden', last: 'Yeh', email: ''},
+              {first: 'Linden', last: 'Yeh', email: '', no_drink: true},
           ]
       },      {
           name: 'Jessica & Will',
@@ -130,7 +130,7 @@ task create_rsvps: :environment do
           group: [
               {first: 'Hope', last: 'Nam Phung', email: 'nam.hope@gmail.com'},
               {first: 'Mike', last: 'Phung', email: ''},
-              {first: 'Claire', last: 'Phung', email: ''},
+              {first: 'Claire', last: 'Phung', email: '', no_drink: true},
           ]
       },      {
           name: 'Melissa & David',
@@ -144,8 +144,8 @@ task create_rsvps: :environment do
           group: [
               {first: 'Jennifer', last: 'Hu', email: 'Jennifer.hu9@gmail.com'},
               {first: 'Eric', last: 'Lin', email: 'ericplin68@gmail.com'},
-              {first: 'Alexa', last: 'Lin', email: ''},
-              {first: 'Oliver', last: 'Lin', email: ''},
+              {first: 'Alexa', last: 'Lin', email: '', no_drink: true},
+              {first: 'Oliver', last: 'Lin', email: '', no_drink: true},
           ]
       },
       {
@@ -153,8 +153,8 @@ task create_rsvps: :environment do
           group: [
               {first: 'Hiromi', last: 'Nakano', email: 'hi.nakano@gmail.com'},
               {first: 'Jeff', last: 'Berger', email: ''},
-              {first: 'Jake', last: 'Berger', email: ''},
-              {first: 'Julia', last: 'Berger', email: ''},
+              {first: 'Jake', last: 'Berger', email: '', no_drink: true},
+              {first: 'Julia', last: 'Berger', email: '', no_drink: true},
           ]
       },
       {
@@ -262,7 +262,7 @@ task create_rsvps: :environment do
           group: [
               {first: 'Alan', last: 'Kuo', email: 'alankuo1229@gmail.com'},
               {first: 'Jessie', last: 'Kuo', email: ''},
-              {first: 'Kate', last: 'Kuo', email: ''},
+              {first: 'Kate', last: 'Kuo', email: '', no_drink: true},
           ]},
       {
           name: 'Tiffany Pan',
@@ -302,7 +302,7 @@ task create_rsvps: :environment do
           group: [
               {first: 'John', last: 'Yu', email: 'johnxy888@gmail.com'},
               {first: 'Phoebe', last: 'Yu', email: 'plsuen@gmail.com'},
-              {first: 'Kellan', last: 'Yu', email: ''},
+              {first: 'Kellan', last: 'Yu', email: '', no_drink: true},
           ]},
       {
           name: 'Tina & Jeff',
@@ -388,7 +388,7 @@ task create_rsvps: :environment do
           group: [
               {first: 'Angela', last: 'Wang', email: 'aw0319@gmail.com'},
               {first: 'Adam', last: 'Whittington', email: ''},
-              {first: 'Ada', last: 'Whittington', email: ''},
+              {first: 'Ada', last: 'Whittington', email: '', no_drink: true},
           ]
       },
       {
@@ -403,7 +403,7 @@ task create_rsvps: :environment do
           group: [
               {first: 'John', last: 'Marren', email: ''},
               {first: 'Lynda', last: 'Marren', email: 'lyndamarren@gmail.com'},
-              {first: 'James', last: 'Marren', email: 'james.marren@menloschool.org'},
+              {first: 'James', last: 'Marren', email: 'james.marren@menloschool.org', no_drink: true},
           ]
       },
       {
@@ -436,8 +436,8 @@ task create_rsvps: :environment do
       {
           name: 'The Criscis',
           group: [
-              {first: 'Amanda', last: 'Crisci', email: 'acrisci@umich.edu'},
-              {first: 'Joseph', last: 'Crisci', email: ''},
+              {first: 'Amanda', last: 'Crisci', email: 'acrisci@umich.edu', no_drink: true},
+              {first: 'Joseph', last: 'Crisci', email: '', no_drink: true},
               {first: 'Tina', last: 'Crisci', email: 'tinapcrisci@gmail.com'},
               {first: 'Paul', last: 'Crisci', email: ''},
               {first: 'Nicole', last: 'Crisci', email: ''},
@@ -446,7 +446,7 @@ task create_rsvps: :environment do
       {
           name: 'The Guardinos',
           group: [
-             {first: 'Katie', last: 'Guardino', email: 'katieguardino@gmail.com'},
+             {first: 'Katie', last: 'Guardino', email: 'katieguardino@gmail.com', no_drink: true},
              {first: 'Ellie', last: 'Guardino', email: 'Guardino.ellie@gene.com'},
              {first: 'Jeff', last: 'Guardino', email: ''},
           ]
@@ -484,14 +484,24 @@ task create_rsvps: :environment do
             Rails.logger.info("Updated Email -- #{rsvp[:email]}")
           end
 
+          ## Update rsvps to include no_drink -> true if person cannot drink
+          if rsvp[:no_drink] && rsvp[:no_drink] == true
+            found_rsvp.update(no_drink: true)
           else
-            Rsvp.create!(first_name: rsvp[:first],
-                        last_name: rsvp[:last],
-                        email: rsvp[:email],
-                        rsvp_group_id: group.id)
+            found_rsvp.update(no_drink: false)
           end
+
+        else
+          Rsvp.create!(first_name: rsvp[:first],
+                       last_name: rsvp[:last],
+                       email: rsvp[:email],
+                       rsvp_group_id: group.id,
+                       no_drink: rsvp[:no_drink] ? rsvp[:no_drink] : false
+
+          )
         end
       end
+    end
   rescue => error
     Rails.logger.debug(error)
   end

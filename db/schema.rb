@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_06_02_214545) do
+ActiveRecord::Schema.define(version: 2019_06_05_074142) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -38,6 +38,7 @@ ActiveRecord::Schema.define(version: 2019_06_02_214545) do
     t.integer "rsvp_group_id"
     t.datetime "updated_at"
     t.string "short_name"
+    t.boolean "no_drink"
   end
 
   create_table "toby_games", force: :cascade do |t|

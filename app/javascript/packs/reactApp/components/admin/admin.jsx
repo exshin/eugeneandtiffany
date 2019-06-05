@@ -120,11 +120,16 @@ class AdminPage extends React.Component {
 
     let totalYes = 0;
     rsvps.map(r => {
-      if( r.attending===true ) {
-        totalYes+=1
+      if (r.attending === true) {
+        totalYes += 1
       }
     });
-    const totalNo = rsvps.length - totalYes;
+    let totalNo = 0;
+    rsvps.map(r => {
+      if (r.attending === false) {
+        totalNo += 1
+      }
+    });
     const total = rsvps.length;
 
     return (
@@ -132,9 +137,10 @@ class AdminPage extends React.Component {
         <h3>Rsvps</h3>
         <div className="container">
           <div style={{float: "left"}}>Yes: {totalYes}</div>
-          <div style={{float: "left"}}>No: {totalNo}</div>
-          <div style={{float: "left"}}>Total Replied: {totalYes + totalNo} / {total}</div>
+          <div style={{float: "left", marginLeft: "20px"}}>No: {totalNo}</div>
+          <div style={{float: "left", marginLeft: "20px"}}>Total Replied: {totalYes + totalNo} / {total}</div>
         </div>
+        <hr/>
         <BootstrapTable keyField='id' data={ rsvps } columns={ columns } />
       </div>
     )
