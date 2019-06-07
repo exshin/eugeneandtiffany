@@ -187,8 +187,41 @@ class TravelPage extends React.Component {
 
   __airportContainer() {
     return (
-      <div>
+      <div className="div-center container">
+        <div>
+          <div>
+            There are 2 major airports in the Bay Area close to our venue
+          </div>
+          <br/>
 
+          <div>
+            <h4>Norman Y. Mineta San Jose International Airport (SJC)</h4>
+            <ul>
+              <li>SJC is about 15-20 minutes from the hotels and 30 minutes from the venue.</li>
+              <li>This is the preferred airport as it is much closer to the hotels and venue.</li>
+            </ul>
+            <div className="container">
+              <img src={require(`./../../assets/images/sjc_map.jpg`)}
+                   style={{width: "400px", border: "1px solid black"}} />
+            </div>
+          </div>
+
+          <div>
+            <h4>San Francisco International Airport (SFO)</h4>
+            <ul>
+              <li>SFO is 45-60 minutes from the hotels and the venue.</li>
+              <li>While quite far from hotels and the venue, this may be preferable if you wish to spend time exploring San Francisco.</li>
+            </ul>
+            <div className="container">
+              <img src={require(`./../../assets/images/sfo_map.jpg`)}
+                   style={{width: "400px", border: "1px solid black"}} />
+            </div>
+          </div>
+
+        </div>
+        <div>
+
+        </div>
       </div>
     )
   }

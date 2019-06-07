@@ -3,6 +3,7 @@ import { Button, Panel } from 'react-bootstrap'
 
 import QuizPage from './quiz.jsx'
 import TobyPage from './toby.jsx'
+import ColorsPage from './colors.jsx'
 import Garden from './garden.jsx'
 
 class ExtrasPage extends React.Component {
@@ -38,6 +39,11 @@ class ExtrasPage extends React.Component {
         break;
       case "garden":
         content = <Garden/>;
+        showIndex = false;
+        titleClassName = "title-header hidden";
+        break;
+      case "colors":
+        content = <ColorsPage/>;
         showIndex = false;
         titleClassName = "title-header hidden";
         break;
