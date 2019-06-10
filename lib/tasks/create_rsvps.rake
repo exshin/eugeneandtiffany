@@ -456,54 +456,64 @@ task create_rsvps: :environment do
           group: [
               {first: 'Christina', last: 'Hong', email: 'chrhong111@gmail.com'},
           ]
+      },
+      {
+          name: 'Calvin Kwan',
+          group: [
+              {first: 'Calvin', last: 'Kwan', email: 'kwest88@gmail.com'},
+          ]
+      },
+      {
+          name: 'Jenny Yoo',
+          group: [
+              {first: 'Jenny', last: 'Yoo', email: 'hopefuljenny@gmail.com'},
+              {first: 'Seongho', last: '', email: ''},
+          ]
       }
   ]
 
-  begin
-    rsvps.each do |rsvp_group|
-      next if rsvp_group[:name] == 'GROUP_NAME'
+  rsvps.each do |rsvp_group|
+    next if rsvp_group[:name] == 'GROUP_NAME'
 
-      group_name = rsvp_group[:name]
-      group = RsvpGroup.find_by(name: group_name)
-      group = RsvpGroup.create(name: group_name) unless group
+    group_name = rsvp_group[:name]
+    group = RsvpGroup.find_by(name: group_name)
+    group = RsvpGroup.create(name: group_name) unless group
 
-      rsvp_group[:group].each do |rsvp|
-        found_rsvp = Rsvp.find_by(first_name: rsvp[:first],
-                                  last_name: rsvp[:last],
-                                  rsvp_group_id: group.id)
+    rsvp_group[:group].each do |rsvp|
+      found_rsvp = Rsvp.find_by(first_name: rsvp[:first],
+                                last_name: rsvp[:last],
+                                rsvp_group_id: group.id)
 
-        if found_rsvp
-          if found_rsvp.last_name.empty? && rsvp[:last].length > 0
-            found_rsvp.update(last_name: rsvp[:last])
-            found_rsvp.update(short_name: rsvp[:first].downcase + rsvp[:last].downcase)
-            Rails.logger.info("Updated Last Name -- #{rsvp[:last]}")
-          end
-
-          if found_rsvp.email.empty? && rsvp[:email].length > 0
-            found_rsvp.update(email: rsvp[:email])
-            Rails.logger.info("Updated Email -- #{rsvp[:email]}")
-          end
-
-          ## Update rsvps to include no_drink -> true if person cannot drink
-          if rsvp[:no_drink] && rsvp[:no_drink] == true
-            found_rsvp.update(no_drink: true)
-          else
-            found_rsvp.update(no_drink: false)
-          end
-
-        else
-          Rsvp.create!(first_name: rsvp[:first],
-                       last_name: rsvp[:last],
-                       email: rsvp[:email],
-                       rsvp_group_id: group.id,
-                       no_drink: rsvp[:no_drink] ? rsvp[:no_drink] : false
-
-          )
+      if found_rsvp
+        if found_rsvp && found_rsvp.last_name && found_rsvp.last_name.empty? && rsvp[:last].length > 0
+          found_rsvp.update(last_name: rsvp[:last])
+          found_rsvp.update(short_name: rsvp[:first].downcase + rsvp[:last].downcase)
+          Rails.logger.info("Updated Last Name -- #{rsvp[:last]}")
         end
+
+        if found_rsvp && found_rsvp.email && found_rsvp.email.empty? && rsvp[:email].length > 0
+          found_rsvp.update(email: rsvp[:email])
+          Rails.logger.info("Updated Email -- #{rsvp[:email]}")
+        end
+
+        ## Update rsvps to include no_drink -> true if person cannot drink
+        if rsvp[:no_drink] && rsvp[:no_drink] == true
+          found_rsvp.update(no_drink: true)
+        else
+          found_rsvp.update(no_drink: false)
+        end
+
+      else
+        no_drink = rsvp[:no_drink] ? rsvp[:no_drink] : false
+        Rsvp.create!(first_name: rsvp[:first],
+                     last_name: rsvp[:last],
+                     email: rsvp[:email],
+                     rsvp_group_id: group.id,
+                     no_drink: no_drink
+
+        )
       end
     end
-  rescue => error
-    Rails.logger.debug(error)
   end
 
 end

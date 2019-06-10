@@ -219,17 +219,66 @@ class TravelPage extends React.Component {
           </div>
 
         </div>
-        <div>
-
-        </div>
       </div>
     )
   }
 
   __eatsContainer() {
     return (
-      <div>
+      <div className="div-center container">
+        <div>
+          <div>
+            See below for a list of our recommended eats in the area!
+          </div>
+          <div>
+            <a href="https://goo.gl/maps/H8XwjfzUU2mSivb5A" target="/">Google Maps Link of These Recommendations</a>
+          </div>
+          <br/>
 
+          <div>
+            <h4>Desserts/Bakeries</h4>
+            <ul>
+              <li>MeetFresh - Known for their Taiwanese desserts and long lines, Eugene enjoys his hot grass jelly here</li>
+              <li>85 Degrees - Standard asian bakery with good breads and an assortment of drinks</li>
+              <li>Manresa Bread - Manresa is a Michelin restaurant. Apparently they opened up a bakery. It's probably good?</li>
+            </ul>
+          </div>
+
+          <div>
+            <h4>Restaurants</h4>
+            <ul>
+              <li>Chicken Meets Rice - Amazing Hainan chicken. Great for lunch</li>
+              <li>Kunjip - Best braised short ribs we've had in the Bay Area so far. You'll want to come early (lunch) before they run out!</li>
+              <li>Tobang - Great bang for your buck korean bbq place. A little more on the low-key side, but the portions are huge</li>
+              <li>Nutrition Restaurant - Asian breakfast foods and other asian foods stuff. It's pretty good, but we've been here once</li>
+              <li>Tapislog - Filipino food. Staff will try to claim you as their child supposedly</li>
+              <li>QQ Noodle Cupertino - Supposedly has the best noodles here. We've never been though. Try it and tell us?</li>
+              <li>Kizuna Cupertino - If you're hankering for some Japanese curry, this place is super legit</li>
+              <li>XLB Kitchen - Shanghainese food. Good soup dumplings (xiao long bao)</li>
+              <li>Fugetsu - A highly recommended okonomiyaki place</li>
+            </ul>
+          </div>
+
+          <div>
+            <h4>Boba</h4>
+            <ul>
+              <li>Happy Lemon - Tiffany loves their salted milk teas and fresh grapefruit yakult drink</li>
+              <li>Fantasia - Great milk teas here</li>
+              <li>Teaspoon - Another great milk tea place</li>
+              <li>TP Tea - Someone said that this place has the best milk tea..</li>
+            </ul>
+          </div>
+
+          <div>
+            <h4>For Fun</h4>
+            <ul>
+              <li>Winchester Mystery House - It's a mystery to us too!</li>
+              <li>Santana Row - For fancy shopping. Get a Tesla!</li>
+              <li>Hakone Estate and Gardens - Fun fact: We almost chose this place to host our wedding. It's very pretty here.</li>
+              <li>Valley Fair Mall - For normal shopping!</li>
+            </ul>
+          </div>
+        </div>
       </div>
     )
   }
