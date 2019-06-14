@@ -38,15 +38,19 @@ class TravelPage extends React.Component {
         <Grid>
           <Row className="show-grid">
             <div className="container intro" style={{textAlign: "center", fontSize: "14px"}}>
-              <div>
-                Hello Travelers! We've reserved some room blocks for you at a discounted rate! Please book through the links provided below to get access to our room block rates.
-              </div>
-              <div>
-                Each hotel will have between 10 - 15 rooms blocked for us, so if a hotel is showing no availabilities it has likely been filled.
-              </div>
-              <div>
-                Please note that the last date to book through our room blocks is <u><strong>July 19th</strong></u>!
-              </div>
+              <Panel style={{background: "white", boxShadow: "lightgrey 5px 1px 7px"}}>
+                <Panel.Body className="">
+                  <div>
+                    Hello Travelers! We've reserved some room blocks for you at a discounted rate! Please book through the links provided below to get access to our room block rates.
+                  </div>
+                  <div>
+                    Each hotel will have between 10 - 15 rooms blocked for us, so if a hotel is showing no availabilities it has likely been filled.
+                  </div>
+                  <div>
+                    Please note that the last date to book through our room blocks is <u><strong>July 19th</strong></u>!
+                  </div>
+                </Panel.Body>
+              </Panel>
             </div>
           </Row>
           <br/>
@@ -187,37 +191,49 @@ class TravelPage extends React.Component {
 
   __airportContainer() {
     return (
-      <div className="div-center container">
-        <div>
-          <div>
-            There are 2 major airports in the Bay Area close to our venue
-          </div>
+      <div className="div-center">
+        <div className="div-center" style={{textAlign: "center", width: "50%"}}>
+          <Panel style={{background: "white", boxShadow: "lightgrey 5px 1px 7px"}}>
+            <Panel.Body className="">
+              <div>
+                There are 2 major airports in the Bay Area close to our venue
+              </div>
+            </Panel.Body>
+          </Panel>
           <br/>
 
-          <div>
-            <h4>Norman Y. Mineta San Jose International Airport (SJC)</h4>
-            <ul>
-              <li>SJC is about 15-20 minutes from the hotels and 30 minutes from the venue.</li>
-              <li>This is the preferred airport as it is much closer to the hotels and venue.</li>
-            </ul>
-            <div className="container">
-              <img src={require(`./../../assets/images/sjc_map.jpg`)}
-                   style={{width: "400px", border: "1px solid black"}} />
-            </div>
-          </div>
+          <Panel style={{background: "white", boxShadow: "lightgrey 5px 1px 7px"}}>
+            <Panel.Body className="">
+              <h4>Norman Y. Mineta San Jose International Airport (SJC)</h4>
+              <div>
+                <li>SJC is about 15-20 minutes from the hotels and 30 minutes from the venue.</li>
+                <li>This is the preferred airport as it is much closer to the hotels and venue.</li>
+              </div>
+              <div className="" style={{marginTop: "10px"}}>
+                <img src={require(`./../../assets/images/sjc_map.jpg`)}
+                     style={{width: "400px", border: "1px solid black"}} />
+              </div>
+            </Panel.Body>
+          </Panel>
 
-          <div>
-            <h4>San Francisco International Airport (SFO)</h4>
-            <ul>
-              <li>SFO is 45-60 minutes from the hotels and the venue.</li>
-              <li>While quite far from hotels and the venue, this may be preferable if you wish to spend time exploring San Francisco.</li>
-            </ul>
-            <div className="container">
-              <img src={require(`./../../assets/images/sfo_map.jpg`)}
-                   style={{width: "400px", border: "1px solid black"}} />
-            </div>
-          </div>
+          <br/>
+          <br/>
 
+          <Panel style={{background: "white", boxShadow: "lightgrey 5px 1px 7px"}}>
+            <Panel.Body className="">
+              <div>
+                <h4>San Francisco International Airport (SFO)</h4>
+                <div>
+                  <li>SFO is 45-60 minutes from the hotels and the venue.</li>
+                  <li>While further away, SFO may be preferable if you wish to spend time exploring San Francisco.</li>
+                </div>
+                <div className="" style={{marginTop: "10px"}}>
+                  <img src={require(`./../../assets/images/sfo_map.jpg`)}
+                       style={{width: "400px", border: "1px solid black"}} />
+                </div>
+              </div>
+            </Panel.Body>
+          </Panel>
         </div>
       </div>
     )
@@ -227,57 +243,84 @@ class TravelPage extends React.Component {
     return (
       <div className="div-center container">
         <div>
-          <div>
-            See below for a list of our recommended eats in the area!
-          </div>
-          <div>
-            <a href="https://goo.gl/maps/H8XwjfzUU2mSivb5A" target="/">Google Maps Link of These Recommendations</a>
-          </div>
+          <Panel style={{background: "white", boxShadow: "lightgrey 5px 1px 7px"}}>
+            <Panel.Body className="">
+              <div style={{fontSize: "16px"}}>
+                See below for a list of our recommended eats in the area!
+              </div>
+              <div>
+                <a href="https://goo.gl/maps/H8XwjfzUU2mSivb5A" target="/">Google Maps Link of These Recommendations</a>
+              </div>
+            </Panel.Body>
+          </Panel>
+
           <br/>
 
-          <div>
-            <h4>Desserts/Bakeries</h4>
-            <ul>
-              <li>MeetFresh - Known for their Taiwanese desserts and long lines, Eugene enjoys his hot grass jelly here</li>
-              <li>85 Degrees - Standard asian bakery with good breads and an assortment of drinks</li>
-              <li>Manresa Bread - Manresa is a Michelin restaurant. Apparently they opened up a bakery. It's probably good?</li>
-            </ul>
-          </div>
+          <Panel style={{background: "white", boxShadow: "lightgrey 5px 1px 7px"}}>
+            <Panel.Body className="">
+              <div>
+                <h4>Desserts/Bakeries</h4>
+                <ul>
+                  <li><a href="https://www.yelp.com/biz/meet-fresh-cupertino?osq=meet+fresh+cupertino" target="/">MeetFresh</a> - Known for their Taiwanese desserts and long lines, Eugene enjoys his hot grass jelly here</li>
+                  <li><a href="https://www.yelp.com/biz/85-c-bakery-cafe-cupertino-2?osq=85+Degrees" target="/">85 Degrees</a> - Standard asian bakery with good breads and an assortment of drinks</li>
+                  <li><a href="https://www.yelp.com/biz/manresa-bread-caf%C3%A9-campbell?osq=Manresa+Bread" target="/">Manresa Bread</a> - Manresa is a Michelin restaurant. Apparently they opened up a bakery. It's probably good?</li>
+                </ul>
+              </div>
+            </Panel.Body>
+          </Panel>
 
-          <div>
-            <h4>Restaurants</h4>
-            <ul>
-              <li>Chicken Meets Rice - Amazing Hainan chicken. Great for lunch</li>
-              <li>Kunjip - Best braised short ribs we've had in the Bay Area so far. You'll want to come early (lunch) before they run out!</li>
-              <li>Tobang - Great bang for your buck korean bbq place. A little more on the low-key side, but the portions are huge</li>
-              <li>Nutrition Restaurant - Asian breakfast foods and other asian foods stuff. It's pretty good, but we've been here once</li>
-              <li>Tapislog - Filipino food. Staff will try to claim you as their child supposedly</li>
-              <li>QQ Noodle Cupertino - Supposedly has the best noodles here. We've never been though. Try it and tell us?</li>
-              <li>Kizuna Cupertino - If you're hankering for some Japanese curry, this place is super legit</li>
-              <li>XLB Kitchen - Shanghainese food. Good soup dumplings (xiao long bao)</li>
-              <li>Fugetsu - A highly recommended okonomiyaki place</li>
-            </ul>
-          </div>
 
-          <div>
-            <h4>Boba</h4>
-            <ul>
-              <li>Happy Lemon - Tiffany loves their salted milk teas and fresh grapefruit yakult drink</li>
-              <li>Fantasia - Great milk teas here</li>
-              <li>Teaspoon - Another great milk tea place</li>
-              <li>TP Tea - Someone said that this place has the best milk tea..</li>
-            </ul>
-          </div>
+          <Panel style={{background: "white", boxShadow: "lightgrey 5px 1px 7px"}}>
+            <Panel.Body className="">
+              <div>
+                <h4>Restaurants</h4>
+                <ul>
+                  <li><a href="https://www.yelp.com/biz/chicken-meets-rice-santa-clara" target="/">Chicken Meets Rice</a> - Amazing Hainan chicken. Great for lunch</li>
+                  <li><a href="https://www.yelp.com/biz/kunjip-restaurant-santa-clara-2?osq=Kunjip" target="/">Kunjip</a> - Best braised short ribs we've had in the Bay Area so far. You'll want to come early (lunch) before they run out!</li>
+                  <li><a href="https://www.yelp.com/biz/tobang-santa-clara-2" target="/">Tobang</a> - Great bang for your buck korean bbq place. A little more on the low-key side, but the portions are huge</li>
+                  <li><a href="https://www.yelp.com/biz/nutrition-restaurant-cupertino" target="/">Nutrition Restaurant</a> - Asian breakfast foods and other asian foods stuff. It's pretty good, but we've been here once</li>
+                  <li><a href="https://www.yelp.com/biz/tapsilog-bistro-campbell" target="/">Tapislog</a> - Filipino food. Staff will try to claim you as their child supposedly</li>
+                  <li><a href="https://www.yelp.com/biz/qq-noodle-cupertino?osq=QQ+Noodle+Cupertino" target="/">QQ Noodle Cupertino</a> - Supposedly has the best noodles here. We've never been though. Try it and tell us?</li>
+                  <li><a href="https://www.yelp.com/biz/kizuna-san-jose" target="/">Kizuna</a> - If you're hankering for some Japanese curry, this place is super legit</li>
+                  <li><a href="https://www.yelp.com/biz/xlb-kitchen-cupertino-3" target="/">XLB Kitchen</a> - Shanghainese food. Good soup dumplings (xiao long bao)</li>
+                  <li><a href="https://www.yelp.com/biz/fugetsu-santa-clara" target="/">Fugetsu</a> - A highly recommended okonomiyaki place</li>
+                </ul>
+              </div>
+            </Panel.Body>
+          </Panel>
 
-          <div>
-            <h4>For Fun</h4>
-            <ul>
-              <li>Winchester Mystery House - It's a mystery to us too!</li>
-              <li>Santana Row - For fancy shopping. Get a Tesla!</li>
-              <li>Hakone Estate and Gardens - Fun fact: We almost chose this place to host our wedding. It's very pretty here.</li>
-              <li>Valley Fair Mall - For normal shopping!</li>
-            </ul>
-          </div>
+          <Panel style={{background: "white", boxShadow: "lightgrey 5px 1px 7px"}}>
+            <Panel.Body className="">
+              <div>
+                <h4>Boba</h4>
+                <ul>
+                  <li><a href="https://www.yelp.com/biz/happy-lemon-sunnyvale-2" target="/">Happy Lemon</a> - Tiffany loves their salted milk teas and fresh grapefruit yakult drink</li>
+                  <li><a href="https://www.yelp.com/biz/fantasia-coffee-and-tea-cupertino?osq=Fantasia" target="/">Fantasia</a> - Great milk teas here</li>
+                  <li><a href="https://www.yelp.com/biz/teaspoon-santa-clara-7?osq=Teaspoon" target="/">Teaspoon</a> - Another great milk tea place</li>
+                  <li><a href="https://www.yelp.com/biz/tp-tea-cupertino?osq=meet+fresh+cupertino" target="/">TP Tea</a> - A friend told us that this place has the best milk tea..</li>
+                </ul>
+              </div>
+            </Panel.Body>
+          </Panel>
+
+          <Panel style={{background: "white", boxShadow: "lightgrey 5px 1px 7px"}}>
+            <Panel.Body className="">
+              <div>
+                <h4>Recreation</h4>
+                <ul>
+                  <li><a href="https://www.yelp.com/biz/winchester-mystery-house-san-jose" target="/">Winchester Mystery House</a> - It's a mystery to us too!</li>
+                  <li><a href="https://www.yelp.com/biz/santana-row-san-jose-3" target="/">Santana Row</a> - For fancy shopping. Get a Tesla!</li>
+                  <li><a href="https://www.yelp.com/biz/hakone-estate-and-gardens-saratoga" target="/">Hakone Estate and Gardens</a> - Fun fact: We almost chose this place to host our wedding. It's very pretty here.</li>
+                  <li><a href="https://www.yelp.com/biz/westfield-valley-fair-santa-clara-3?osq=West+Valley+Fair+Mall" target="/">Valley Fair Mall</a> - For normal shopping!</li>
+                </ul>
+              </div>
+            </Panel.Body>
+          </Panel>
+
+
+          <br/>
+          <br/>
+          <br/>
         </div>
       </div>
     )

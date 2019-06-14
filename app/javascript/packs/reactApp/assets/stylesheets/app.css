@@ -6,6 +6,12 @@ body {
 .title-header {
     font-family: 'Rouge Script', cursive;
     font-size: 50px;
+    text-shadow:
+            -1px -1px 0 #000,
+            1px -1px 0 #000,
+            -1px 1px 0 #000,
+            1px 1px 0 #000;
+    color: white;
 }
 
 .progress.right .progress-bar {
@@ -140,7 +146,7 @@ div.empty-square {
 }
 
 .travelBG {
-    background: url("./../../assets/images/travel-background.png") no-repeat center center fixed;
+    background: url("./../../assets/images/birds_bg.jpg") no-repeat center center fixed;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
@@ -157,6 +163,14 @@ div.empty-square {
 
 .gamesBG {
     background: url("./../../assets/images/hike_sunrise_dust.jpg") no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+.registryBG {
+    background: url("./../../assets/images/flowers_BG.jpg") no-repeat center center fixed;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;

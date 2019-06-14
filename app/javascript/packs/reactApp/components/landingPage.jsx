@@ -7,6 +7,7 @@ import PhotosPage from './photos/photos.jsx'
 import AdminPage from './admin/admin.jsx'
 import RsvpPage from './rsvp/rsvp.jsx'
 import SchedulePage from './schedule/schedule.jsx'
+import RegistryPage from './registry/registry.jsx'
 import ExtrasPage from './extras/extras.jsx'
 
 import $ from 'jquery'
@@ -196,6 +197,12 @@ class LandingPage extends React.Component {
         case 7:
           content = <AdminPage key={uniqueId}/>;
           break;
+        case 8:
+          content = <PhotosPage key={uniqueId}/>;
+          break;
+        case 9:
+          content = <RegistryPage key={uniqueId}/>;
+          break;
         default:
           break;
       }
@@ -215,14 +222,20 @@ class LandingPage extends React.Component {
                   <NavItem className="nav-item nav-schedule" eventKey={3} href="#">
                     Schedule
                   </NavItem>
-                  <NavItem className="nav-item nav-travel" eventKey={2} href="#">
-                    Travel & Accommodations
-                  </NavItem>
                   <NavItem className="nav-item nav-rsvp" eventKey={5} href="#">
                     RSVP
                   </NavItem>
+                  <NavItem className="nav-item nav-travel" eventKey={2} href="#">
+                    Travel & Accommodations
+                  </NavItem>
+                  <NavItem className="nav-item nav-rsvp" eventKey={8} href="#">
+                    Photos
+                  </NavItem>
+                  <NavItem className="nav-item nav-rsvp" eventKey={9} href="#">
+                    Registry
+                  </NavItem>
                   <NavItem className="nav-item nav-extras" eventKey={6} href="#">
-                    Games
+                    For Fun
                   </NavItem>
                   {this.__navAdmin()}
                 </Nav>

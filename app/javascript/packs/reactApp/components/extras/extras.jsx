@@ -53,10 +53,8 @@ class ExtrasPage extends React.Component {
 
     return(
       <div className="extras-page gamesBG" style={{height: "100vh"}}>
-        <div className={titleClassName}>
-          <h1 style={{textAlign: "center", paddingTop: "20px", marginTop: "0px"}}>Games</h1>
-          <hr/>
-        </div>
+        <h1 className={titleClassName} style={{textAlign: "center", paddingTop: "20px", marginTop: "0px"}}>For Fun</h1>
+        <hr/>
 
         <div className="index container" hidden={!showIndex}>
 

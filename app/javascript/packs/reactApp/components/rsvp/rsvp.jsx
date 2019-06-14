@@ -353,6 +353,7 @@ class RsvpPage extends React.Component {
     let content = this.__emptyContainer();
     let searchContent = this.__emptyContainer();
     let bottomContent = null;
+    let showMessage = "";
 
     if (rsvps.length > 0) {
       let rsvpd_count = 0;
@@ -366,13 +367,17 @@ class RsvpPage extends React.Component {
         // No one in this rsvp group has rsvpd yet so immediately go to rsvp edit
         content = this.__editRsvps();
         searchContent = this.__foundRsvpContent();
+        showMessage = "hidden";
       } else if (rsvpDone) {
+        // Rsvp has been submitted already
         content = this.__doneRsvp();
         searchContent = null;
+        showMessage = "hidden";
       } else {
         // Just show the rsvp
         content = this.__showRsvps();
         searchContent = null;
+        showMessage = "hidden";
       }
     } else {
       searchContent = this.__findRsvpContent();
@@ -388,6 +393,7 @@ class RsvpPage extends React.Component {
       searchContent = this.__showFetchRsvpFail();
       content = this.__findRsvpContent();
       bottomContent = this.__emptyContainer();
+      showMessage = "hidden";
     }
 
     return(
@@ -395,6 +401,11 @@ class RsvpPage extends React.Component {
         <div className="text-center">
           <h1 className="title-header" style={{textAlign: "center", paddingTop: "20px", marginTop: "0px"}}>Find your RSVP</h1>
           <hr/>
+        </div>
+        <div className={showMessage}>
+          <div style={{textAlign: "center", fontSize: "25px", marginBottom: "20px"}}>
+            Please submit your RSVP by <strong>July 11th</strong>. Thank you!
+          </div>
         </div>
         {searchContent}
         <br/>

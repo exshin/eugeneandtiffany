@@ -19,15 +19,19 @@ class SchedulePage extends React.Component {
         <div className="schedule" style={{textAlign: "center"}}>
           <Panel className="div-center" style={{width: "40%", background: "whitesmoke", boxShadow: "lightgrey 5px 1px 7px"}}>
             <Panel.Body className="" style={{fontSize: "18px", fontStyle: "italic"}}>
+              <div style={{marginBottom: "10px"}}>
+                <img src={require('./../../assets/images/headshots.jpg')} height="180px" width="180px" style={{borderRadius: "50%"}}/>
+              </div>
               <div style={{fontFamily: "cursive", fontSize: "34px"}}>Ceremony & Reception</div>
               <br/>
               <div>Saratoga Springs Events and Weddings</div>
-              <br/>
-              <div><a href={eventAddressLink} target="/">22801 Big Basin Way, Saratoga, CA 95070</a></div>
+              <div style={{fontSize: "16px"}}><a href={eventAddressLink} target="/">22801 Big Basin Way, Saratoga, CA 95070</a></div>
               <br/>
               <div>August 11<sup>th</sup> 2019, 5:00 PM</div>
               <br/>
               <div>Semi-Formal Attire</div>
+              <div style={{fontSize: "12px"}}>Please Note: The wedding, cocktail hour, and reception will be outdoors</div>
+              <div style={{fontSize: "12px"}}>It will be fully shaded and cool in the evening</div>
               <br/>
             </Panel.Body>
           </Panel>
