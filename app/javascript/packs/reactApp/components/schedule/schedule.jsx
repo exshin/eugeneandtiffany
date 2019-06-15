@@ -4,7 +4,7 @@ import { Button, Panel, Glyphicon } from 'react-bootstrap'
 class SchedulePage extends React.Component {
   __clickCow() {
     const foundBoh = localStorage.getItem("tiffanyandeugenefoundboh");
-    if (foundBoh === true) {
+    if (foundBoh === "true") {
       alert("Wow! You're fast! Come back to the cow after June 20th to continue the hunt!");
     }
   }
