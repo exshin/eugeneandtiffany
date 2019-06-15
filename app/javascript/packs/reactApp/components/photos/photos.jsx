@@ -72,7 +72,7 @@ class PhotosPage extends React.Component {
     return result
   }
 
-  __clickPhoto(photo, target) {
+  __clickPhoto(photo, index, target) {
     const {currentOrder, correctOrder} = this.state;
 
     let newOrder = currentOrder;
@@ -81,6 +81,7 @@ class PhotosPage extends React.Component {
 
     if (this.__checkArray(newOrder, correctOrder.slice(0, step))) {
       // Correct next photo click
+
       this.setState({
         currentOrder: newOrder
       });
@@ -89,26 +90,21 @@ class PhotosPage extends React.Component {
 
       // Check if finished
       if (step === correctOrder.length) {
-        this.__success();
+        this.setState({
+          successful: true,
+          bgHeight: "100vh"
+        });
+        localStorage.setItem('tiffanyandeugenehuntstart', true);
       }
     } else {
       this.setState({
         currentOrder: []
       });
 
-      $( "img" ).each(function( index ) {
-        this.parentElement.style.background = "white";
+      $( ".photo-panel" ).each(function( index ) {
+        this.style.background = "white";
       });
     }
-  }
-
-  __success() {
-    // Successful
-    this.setState({
-      successful: true,
-      bgHeight: "100vh"
-    });
-    localStorage.setItem('tiffanyandeugenehuntstart', true);
   }
 
   __photoContainer(photo, index) {
@@ -117,11 +113,13 @@ class PhotosPage extends React.Component {
     const data = photosData[photo];
     const {date, time, location, description} = data;
 
+    let idName = `photo-container-${index}`;
+
     return (
       <div className="" key={index} style={{float: "left", width: "25%", margin: "25px"}}>
-        <Panel style={{background: "white", boxShadow: "lightgrey 5px 1px 7px"}} onClick={this.__clickPhoto.bind(this, photo)}>
-          <Panel.Body className="" style={{fontSize: "18px", fontStyle: "italic"}}>
-            <img src={require(`./../../assets/images/${photo}`)} width="100%"/>
+        <Panel className="" id={idName} style={{background: "white", boxShadow: "lightgrey 5px 1px 7px"}}>
+          <Panel.Body className="photo-panel" style={{fontSize: "18px", fontStyle: "italic"}}>
+            <img src={require(`./../../assets/images/${photo}`)} width="100%" onClick={this.__clickPhoto.bind(this, photo, index)}/>
             <div className="photo-data">
               <div style={{marginTop: "15px", fontSize: "14px"}}>
                 {location}
@@ -140,7 +138,11 @@ class PhotosPage extends React.Component {
   }
 
   __photoCorrectContainer(index) {
-    const {correctOrder} = this.state;
+    const {correctOrder, successful} = this.state;
+
+    if (!successful) {
+      return null
+    }
 
     let photo = correctOrder[index];
 
@@ -162,7 +164,7 @@ class PhotosPage extends React.Component {
         this.setState({
           nextPhotoIndex: index + 1
         })
-      }, 800);
+      }, 900);
 
       return (
         <div>
@@ -200,7 +202,7 @@ class PhotosPage extends React.Component {
         <br/>
 
         <div className={regularClassName}>
-          {photos.map((photo, index) => {
+          {correctOrder.map((photo, index) => {
             return this.__photoContainer(photo, index)
           })}
         </div>
