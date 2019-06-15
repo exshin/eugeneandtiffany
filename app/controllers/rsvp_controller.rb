@@ -5,7 +5,7 @@ class RsvpController < ActionController::Base
     rsvps = []
     RsvpGroup.all.each do |group|
       group.rsvps.each do |rsvp|
-        rsvps << rsvp
+        rsvps << rsvp unless rsvp.first_name == 'Boh'
       end
     end
     render json: {rsvps: rsvps}
