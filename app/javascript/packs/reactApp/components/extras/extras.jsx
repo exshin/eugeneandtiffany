@@ -5,13 +5,15 @@ import QuizPage from './quiz.jsx'
 import TobyPage from './toby.jsx'
 import ColorsPage from './colors.jsx'
 import Garden from './garden.jsx'
+import Leaderboard from './leaderboard.jsx'
 
 class ExtrasPage extends React.Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      game: "index"
+      game: "index",
+      backgroundHeight: "100vh"
     };
   }
 
@@ -21,38 +23,58 @@ class ExtrasPage extends React.Component {
     });
   }
 
+  __clickShowLeaderBoard() {
+    this.setState({
+      game: "leaderboard",
+      backgroundHeight: "100%"
+    })
+  }
+
   render() {
+    const {backgroundHeight} = this.state;
+
     let content;
     let showIndex = true;
     let titleClassName = "title-header";
+    let showLeaderBoard = true;
 
     switch (this.state.game) {
       case "quiz":
         content = <QuizPage/>;
         showIndex = false;
         titleClassName = "title-header hidden";
+        showLeaderBoard = false;
         break;
       case "toby":
         content = <TobyPage/>;
         showIndex = false;
         titleClassName = "title-header hidden";
+        showLeaderBoard = false;
         break;
       case "garden":
         content = <Garden/>;
         showIndex = false;
         titleClassName = "title-header hidden";
+        showLeaderBoard = false;
         break;
       case "colors":
         content = <ColorsPage/>;
         showIndex = false;
         titleClassName = "title-header hidden";
+        showLeaderBoard = false;
+        break;
+      case "leaderboard":
+        content = <Leaderboard/>;
+        showIndex = false;
+        titleClassName = "title-header hidden";
+        showLeaderBoard = false;
         break;
       default:
         break;
     }
 
     return(
-      <div className="extras-page gamesBG" style={{height: "100vh"}}>
+      <div className="extras-page gamesBG" style={{height: backgroundHeight}}>
         <h1 className={titleClassName} style={{textAlign: "center", paddingTop: "20px", marginTop: "0px"}}>For Fun</h1>
         <hr/>
 
@@ -95,12 +117,10 @@ class ExtrasPage extends React.Component {
 
         </div>
         <div className="content container">
-          <br/>
-          <br/>
           {content}
-          <br/>
-          <br/>
-          <br/>
+          <div className="leaderboard-button div-center" style={{marginTop: "30px", width: "15%"}} hidden={!showLeaderBoard}>
+            <Button onClick={this.__clickShowLeaderBoard.bind(this)}>View Leaderboard</Button>
+          </div>
           <br/>
         </div>
       </div>

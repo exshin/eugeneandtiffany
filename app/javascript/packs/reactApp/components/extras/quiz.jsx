@@ -352,7 +352,7 @@ class QuizPage extends React.Component {
   }
 
   __leaderBoard() {
-    const {tiffanyHighScores, eugeneHighScores} = this.state;
+    const {tiffanyHighScores, eugeneHighScores, latestTiedHighScores} = this.state;
 
     return (
       <div className="container">
@@ -362,13 +362,13 @@ class QuizPage extends React.Component {
         </div>
 
         <div className="container">
-          <div className="container" style={{float: "left", width: "40%"}}>
+          <div className="container" style={{float: "left", width: "30%"}}>
             <h4>Top 10 "You Are A Tiffany" Scores</h4>
             <Table bordered style={{background: "white"}}>
               <thead>
                 <tr>
                   <th>Name</th>
-                  <th>Score</th>
+                  <th>Tiffany Score</th>
                 </tr>
               </thead>
               <tbody>
@@ -379,18 +379,35 @@ class QuizPage extends React.Component {
             </Table>
           </div>
 
-          <div className="container" style={{float: "left", width: "40%"}}>
+          <div className="container" style={{float: "left", width: "30%"}}>
             <h4>Top 10 "You Are A Eugene" Scores</h4>
             <Table bordered style={{background: "white"}}>
               <thead>
               <tr>
                 <th>Name</th>
-                <th>Score</th>
+                <th>Eugene Score</th>
               </tr>
               </thead>
               <tbody>
               {eugeneHighScores.map((highScore, index) => {
                 return this.__leaderBoardEntries(highScore, "eugene", index)
+              })}
+              </tbody>
+            </Table>
+          </div>
+
+          <div className="container" style={{float: "left", width: "30%"}}>
+            <h4>Top 10 "Tied" Scores</h4>
+            <Table bordered style={{background: "white"}}>
+              <thead>
+              <tr>
+                <th>Name</th>
+                <th>Both Scores</th>
+              </tr>
+              </thead>
+              <tbody>
+              {latestTiedHighScores.map((highScore, index) => {
+                return this.__leaderBoardEntries(highScore, "tied", index)
               })}
               </tbody>
             </Table>
@@ -402,6 +419,7 @@ class QuizPage extends React.Component {
   }
 
   __leaderBoardEntries(entry, leader, index) {
+    // note: tied scores have the same tiffany and eugene scores, so just show one
     const score = leader === "tiffany" ? entry.tiffany_score : entry.eugene_score;
 
     return (
