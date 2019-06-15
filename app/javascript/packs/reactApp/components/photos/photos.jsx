@@ -202,7 +202,7 @@ class PhotosPage extends React.Component {
         <br/>
 
         <div className={regularClassName}>
-          {correctOrder.map((photo, index) => {
+          {photos.map((photo, index) => {
             return this.__photoContainer(photo, index)
           })}
         </div>
