@@ -151,7 +151,7 @@ class Leaderboard extends React.Component {
     return (
       <div className="div-center">
         <div className="div-center" style={{width: "40%"}}>
-          <Table className="container" bordered style={{background: "white", width: "50%"}}>
+          <Table className="container" bordered style={{background: "white", width: "80%"}}>
             <thead>
             <tr>
               <th>Placement</th>
