@@ -42,7 +42,7 @@ class PhotosPage extends React.Component {
       successful: false,
       huntStart: false,
       photosData: {
-        "halfdome.jpg": {"date": "August 15, 2015", "time": "3:29 PM", "location": "Top of Half Dome, Yosemite", "description": "We had just climbed the cables to the peak of Half Dome. The hike start at 6am and ended at 11pm."},
+        "halfdome.jpg": {"date": "August 15, 2015", "time": "3:29 PM", "location": "Top of Half Dome, Yosemite", "description": "We had just climbed the cables to the peak of Half Dome. The hike started at 6am and ended at 11pm."},
         "wolf_lick.jpg": {"date": "July 27, 2017", "time": "11:26 AM", "location": "Anacortes Wolf Sanctuary, Washington", "description": "Eugene was deemed 'not-tasty' and was allowed to live."},
         "hike.jpg": {"date": "September 9, 2017", "time": "2:39 PM", "location": "Alamere Falls, California", "description": "Hiking with some friends up to a rare tidefall, a waterfall that flows directly into the ocean."},
         "castle.jpg": {"date": "September 22, 2017", "time": "11:04 AM", "location": "Osaka Castle, Osaka, Japan", "description": "What you see in the picture is but a small portion of the entire castle grounds."},
@@ -90,11 +90,11 @@ class PhotosPage extends React.Component {
 
       // Check if finished
       if (step === correctOrder.length) {
+        localStorage.setItem('tiffanyandeugenehuntstart', true);
         this.setState({
           successful: true,
           bgHeight: "100vh"
         });
-        localStorage.setItem('tiffanyandeugenehuntstart', true);
       }
     } else {
       this.setState({
@@ -154,7 +154,7 @@ class PhotosPage extends React.Component {
           <Panel style={{background: "white", boxShadow: "lightgrey 5px 1px 7px"}}>
             <Panel.Body className="" style={{fontSize: "18px", fontStyle: "italic"}}>
               <h2 style={{marginBottom: "15px"}}>The Hunt Begins</h2>
-              <img src={require(`./../../assets/images/spirited_away_baby mouse.png`)} width="50%"/>
+              <img src={require(`./../../assets/images/spirited_away_baby_mouse.png`)} width="50%"/>
             </Panel.Body>
           </Panel>
         </div>

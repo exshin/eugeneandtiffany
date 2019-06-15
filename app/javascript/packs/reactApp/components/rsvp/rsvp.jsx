@@ -14,7 +14,8 @@ class RsvpPage extends React.Component {
       rsvpFetchFail: false,
       rsvpEdit: false,
       rsvpDone: false,
-      rsvpSubmits: {}
+      rsvpSubmits: {},
+      backgroundHeight: "100vh"
     }
   }
 
@@ -23,7 +24,7 @@ class RsvpPage extends React.Component {
     const first_name = event.target.children[0].children[1].value;
     const last_name = event.target.children[1].children[1].value;
 
-    if (first_name === '' || last_name === '') {
+    if (first_name === '' && last_name === '') {
       // Can't search with no names
       // Display an error message
     } else {
@@ -99,10 +100,10 @@ class RsvpPage extends React.Component {
           <Panel.Body className="rsvpPanelBGView" style={{marginRight: "5px"}}>
             <div style={{fontFamily: "cursive", fontSize: "xx-large"}}>{first_name} {last_name}</div>
             <br/>
-            <div>Will You Be Attending? {attendingString || "N/A"}</div>
-            <div>Any Dietary Restrictions? {dietary_restrictions || "None"}</div>
-            <br/>
-            <br/>
+            <div><strong>Will You Be Attending?</strong></div>
+            <div style={{marginLeft: "15px", marginBottom: "20px"}}>{attendingString || "N/A"}</div>
+            <div><strong>Any Dietary Restrictions?</strong></div>
+            <div style={{marginLeft: "15px", marginBottom: "20px"}}>{dietary_restrictions || "None"}</div>
             <br/>
           </Panel.Body>
         </Panel>
@@ -261,13 +262,20 @@ class RsvpPage extends React.Component {
   __showRsvps() {
     const {rsvps} = this.state;
 
+    let bohRsvp = false;
+
+    if (rsvps[0]["first_name"] === "Boh") {
+      bohRsvp = true;
+      localStorage.setItem("tiffanyandeugenefoundboh", true)
+    }
+
     return (
       <div className="rsvps container">
         <br/>
         <div className="container" style={{textAlign: "center", fontSize: "25px"}}>
           <div>Thank you for RSVPing!</div>
           <br/>
-          <Button bsStyle="primary" onClick={this.__editRSVPClick.bind(this)}>Edit your RSVP</Button>
+          <Button bsStyle="primary" onClick={this.__editRSVPClick.bind(this)} disabled={bohRsvp}>Edit your RSVP</Button>
         </div>
         <br/>
         <div>
@@ -349,7 +357,7 @@ class RsvpPage extends React.Component {
   }
 
   render() {
-    const {rsvps, rsvpFetchFail, rsvpEdit, rsvpDone} = this.state;
+    const {rsvps, rsvpFetchFail, rsvpEdit, rsvpDone, backgroundHeight} = this.state;
     let content = this.__emptyContainer();
     let searchContent = this.__emptyContainer();
     let bottomContent = null;

@@ -469,6 +469,12 @@ task create_rsvps: :environment do
               {first: 'Jenny', last: 'Yoo', email: 'hopefuljenny@gmail.com'},
               {first: 'Seongho', last: '', email: ''},
           ]
+      },
+      {
+          name: 'Boh',
+          group: [
+              {first: 'Boh', last: '', email: ''}
+          ]
       }
   ]
 
@@ -516,4 +522,6 @@ task create_rsvps: :environment do
     end
   end
 
+  Rsvp.find_by(first_name: "Boh").update(dietary_restrictions: "Squeak! I'm so hungry I could eat a cow!",
+                                         short_name: "boh", no_drink: false, attending: true)
 end

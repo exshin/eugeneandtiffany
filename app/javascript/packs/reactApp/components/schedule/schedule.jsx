@@ -2,8 +2,11 @@ import React from 'react';
 import { Button, Panel, Glyphicon } from 'react-bootstrap'
 
 class SchedulePage extends React.Component {
-  __click() {
-    debugger;
+  __clickCow() {
+    const foundBoh = localStorage.getItem("tiffanyandeugenefoundboh");
+    if (foundBoh === true) {
+      alert("Wow! You're fast! Come back to the cow after June 20th to continue the hunt!");
+    }
   }
 
   render() {
@@ -54,7 +57,7 @@ class SchedulePage extends React.Component {
               <br/>
               <div>
                 <div className="container" style={{float: "left", width: "5%", padding: "0px"}}>
-                  <img src={require('./../../assets/images/cow.png')} height="20px" width="20px"/>
+                  <img src={require('./../../assets/images/cow.png')} height="20px" width="20px" onClick={this.__clickCow.bind(this)}/>
                 </div>
                 Sweet-Soy Braised Short-Ribs with Dates, Asian-Pears & Radish
               </div>

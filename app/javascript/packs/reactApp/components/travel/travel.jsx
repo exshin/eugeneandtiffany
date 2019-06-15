@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, Grid, Row, Col, Table, Panel } from 'react-bootstrap'
+import { Button, Grid, Row, Col, Table, Panel, Label } from 'react-bootstrap'
 
 // import MapContainer from './maps.jsx' // Not implementing due to high costs
 
@@ -10,7 +10,19 @@ class TravelPage extends React.Component {
 
     this.state = {
       activeTab: 1,
+      mouse: false,
+      mouseIndex: 0,
+      backgroundHeight: "100%"
     };
+  }
+
+  componentDidMount() {
+    const mouse = localStorage.getItem("tiffanyandeugenehuntstart");
+    if (mouse === "true") {
+      this.setState({
+        mouse: true
+      });
+    }
   }
 
   __handleSelect(eventKey, event) {
@@ -19,17 +31,26 @@ class TravelPage extends React.Component {
 
     if (activeTab === eventKey) {
       this.setState({
-        activeTab: 1
+        activeTab: 1,
+        backgroundHeight: "100%"
       });
     }
 
     this.setState({
-      activeTab: eventKey
+      activeTab: eventKey,
+      backgroundHeight: "100%"
     });
   }
 
   __hotelClick(hotel, e) {
     console.log(hotel);
+  }
+
+  __clickMouse() {
+    this.setState({
+      activeTab: 4,
+      backgroundHeight: "100vh"
+    });
   }
 
   __hotelContainer() {
@@ -240,6 +261,8 @@ class TravelPage extends React.Component {
   }
 
   __eatsContainer() {
+    const {mouse} = this.state;
+
     return (
       <div className="div-center container">
         <div>
@@ -321,13 +344,69 @@ class TravelPage extends React.Component {
           <br/>
           <br/>
           <br/>
+
+          <div className="mouse-div" hidden={!mouse}>
+            <img src={require("./../../assets/images/spirited_away_baby_mouse.png")}
+                 height="50px" width="50px" onClick={this.__clickMouse.bind(this)} />
+          </div>
+
+          <br/>
         </div>
       </div>
     )
   }
 
+  __mouseMessage() {
+    const {mouseIndex} = this.state;
+    const messages = [
+      "Squeak!",
+      "The hungry mouse has flown away.",
+      "Perhaps he wanted to come and play",
+      "and join us on our special day.",
+      "If only there was a way to find",
+      "a secret message left behind.",
+      "Did you catch his name?"
+    ];
+    const message = messages[mouseIndex];
+
+    window.scrollTo(0, 0); // scroll to top of page
+
+    return (
+      <div className="div-center" style={{textAlign: "center", width: "50%", marginTop: "30px"}}>
+        <Panel style={{background: "white", boxShadow: "lightgrey 5px 1px 7px"}}>
+          <Panel.Body className="" style={{fontSize: "18px", fontStyle: "italic"}}>
+            <div className="" style={{width: "70%", float: "left"}}>
+              {message}
+            </div>
+            <div className="" style={{width: "25%", float: "left", fontSize: "24px"}}>
+              <Button onClick={this.__nextMessage.bind(this)}>></Button>
+            </div>
+          </Panel.Body>
+        </Panel>
+      </div>
+    )
+
+  }
+
+  __nextMessage() {
+    const {mouseIndex} = this.state;
+
+    if (mouseIndex === 6) {
+      localStorage.setItem('tiffanyandeugenehuntstart', null);
+      this.setState({
+        activeTab: 1,
+        mouseIndex: 0
+      });
+    } else {
+      this.setState({
+        mouseIndex: mouseIndex + 1
+      });
+    }
+
+  }
+
   render() {
-    const {activeTab} = this.state;
+    const {activeTab, backgroundHeight} = this.state;
 
     let content;
     let buttonName1;
@@ -352,13 +431,19 @@ class TravelPage extends React.Component {
         buttonName2 = "default";
         buttonName3 = "primary";
         break;
+      case 4:
+        content = this.__mouseMessage();
+        buttonName1 = "default";
+        buttonName2 = "default";
+        buttonName3 = "default";
+        break;
       default:
         break;
     }
 
 
     return(
-      <div className="travel-page travelBG">
+      <div className="travel-page travelBG" style={{height: backgroundHeight}}>
         <h1 className="title-header" style={{textAlign: "center", paddingTop: "20px", marginTop: "0px"}}>Travel and Accommodations</h1>
         <hr/>
 
