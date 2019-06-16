@@ -12,9 +12,13 @@ class RsvpController < ActionController::Base
   end
 
   def find_groups_by_name
-    rsvp = Rsvp.find_by(first_name: params['first_name'].capitalize,
-                        last_name: params['last_name'].capitalize)
-    rsvp = Rsvp.find_by(short_name: params['first_name'].downcase + params['last_name'].downcase) unless rsvp
+    if params['first_name'].downcase == 'boh' || params['first_name'].downcase == 'bo'
+      rsvp = Rsvp.find_by(first_name: 'Boh')
+    else
+      rsvp = Rsvp.find_by(first_name: params['first_name'].capitalize,
+                          last_name: params['last_name'].capitalize)
+      rsvp = Rsvp.find_by(short_name: params['first_name'].downcase + params['last_name'].downcase) unless rsvp
+    end
     rsvps = rsvp ? rsvp.rsvp_group.rsvps : []
 
     render json: {rsvps: rsvps}
