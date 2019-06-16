@@ -155,6 +155,9 @@ class PhotosPage extends React.Component {
             <Panel.Body className="" style={{fontSize: "18px", fontStyle: "italic"}}>
               <h2 style={{marginBottom: "15px"}}>The Hunt Begins</h2>
               <img src={require(`./../../assets/images/spirited_away_baby_mouse.png`)} width="50%"/>
+              <div style={{fontSize: "10px"}}>
+                Squeak! I'm so hungry!
+              </div>
             </Panel.Body>
           </Panel>
         </div>
