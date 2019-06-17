@@ -35,11 +35,11 @@ class QuizPage extends React.Component {
         },
         answers: { // scoring is [Tiffany, Eugene]
           1: {"Drown me in it!": [2, 0], "Yes.": [1, 0], "It's alright. I'll eat it sometimes": [0, 2], "Not one bit": [0, 1]},
-          2: {"Pop music": [1, 0], "Other": [0, 0], "Indie folk music": [1, 2], "None. I cook in silence.": [0, 1], "EDM": [0, 1]},
+          2: {"Pop music": [2, 0], "Other": [1, 0], "Indie folk music": [1, 2], "None. I cook in silence.": [0, 1], "EDM": [0, 1]},
           3: {"Anything, I'm so HUNGRY!!": [2, 0], "Eggs, bacon, and biscuits and gravy mmmmm": [1, 0], "Pancakes. but only after 10am.": [0, 1], "Just coffee. I need that caffeine... Gimmeeee it!": [0, 2], "None of these": [0, 0]},
           4: {"eats shoots and leaves": [2, 0],  "eats, shoots, and leaves": [0, 2]},
           5: {"New Zealand": [1, 0], "Italy": [2, 1], "Taiwan": [2, 1], "Japan": [1, 2]},
-          6: {"Grapes?": [2, 1], "Tropical Fruits (E.g. Cherimoya, Lychee)": [2, 0], "Stone Fruit (Peaches, Nectarines, etc..)": [2, 1], "Melons": [0, 2], "None of these.": [0, 0]},
+          6: {"Grapes?": [2, 1], "Tropical Fruits (E.g. Cherimoya, Lychee)": [2, 0], "Stone Fruit (Peaches, Nectarines, etc..)": [2, 1], "Melons": [1, 2], "None of these.": [0, 1]},
           7: {"Yes.": [1, 1], "Amazing. I can show you the way~": [2, 0], "Eh. I know the general directions": [0, 2], "Like a fish out of water": [0, 2]},
           8: {"Reading a book": [1, 0], "Watching your favorite TV shows": [1, 2], "Playing video games": [0, 2], "Arts and Crafts!": [2, 0], "Sports": [0, 1]},
           9: {"Food": [1, 2], "Nature": [1, 0], "Culture": [2, 1]},
