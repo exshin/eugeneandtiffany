@@ -74,7 +74,7 @@ class Leaderboard extends React.Component {
       <div className="container">
         <div className="container">
           <div className="container" style={{float: "left", width: "30%"}}>
-            <h4 style={{color: "white"}}>Top 10 "You Are A Tiffany" Scores</h4>
+            <h4 style={{color: "white"}}>"You Are A Tiffany" Scores</h4>
             <Table bordered style={{background: "white"}}>
               <thead>
               <tr>
@@ -91,7 +91,7 @@ class Leaderboard extends React.Component {
           </div>
 
           <div className="container" style={{float: "left", width: "30%"}}>
-            <h4 style={{color: "white"}}>Top 10 "You Are A Eugene" Scores</h4>
+            <h4 style={{color: "white"}}>"You Are A Eugene" Scores</h4>
             <Table bordered style={{background: "white"}}>
               <thead>
               <tr>

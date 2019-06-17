@@ -363,7 +363,7 @@ class QuizPage extends React.Component {
 
         <div className="container">
           <div className="container" style={{float: "left", width: "30%"}}>
-            <h4>Top 10 "You Are A Tiffany" Scores</h4>
+            <h4>"You Are A Tiffany" Scores</h4>
             <Table bordered style={{background: "white"}}>
               <thead>
                 <tr>
@@ -380,7 +380,7 @@ class QuizPage extends React.Component {
           </div>
 
           <div className="container" style={{float: "left", width: "30%"}}>
-            <h4>Top 10 "You Are A Eugene" Scores</h4>
+            <h4>"You Are A Eugene" Scores</h4>
             <Table bordered style={{background: "white"}}>
               <thead>
               <tr>
@@ -397,7 +397,7 @@ class QuizPage extends React.Component {
           </div>
 
           <div className="container" style={{float: "left", width: "30%"}}>
-            <h4>Top 10 "Tied" Scores</h4>
+            <h4>"Tied" Scores</h4>
             <Table bordered style={{background: "white"}}>
               <thead>
               <tr>

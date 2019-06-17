@@ -42,7 +42,7 @@ class RegistryPage extends React.Component {
                   ZELLE
                 </div>
                 <div>
-                  tiffanykwu@gmail.com
+                  tiffany.k.wu@gmail.com
                 </div>
               </div>
               <div className="div-center" style={{width: "50%", marginLeft: "25%"}}>

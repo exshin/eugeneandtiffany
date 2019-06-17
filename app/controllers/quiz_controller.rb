@@ -2,9 +2,9 @@ class QuizController < ActionController::Base
   protect_from_forgery with: :null_session
 
   def high_scores
-    tiffany_scores = Quiz.tiffany_high_scores.limit(10)
-    eugene_scores = Quiz.eugene_high_scores.limit(10)
-    latest_tied_high_scores = Quiz.tied_high_scores.limit(10)
+    tiffany_scores = Quiz.tiffany_high_scores
+    eugene_scores = Quiz.eugene_high_scores
+    latest_tied_high_scores = Quiz.tied_high_scores
 
     render json: {
         tiffany_scores: tiffany_scores,
