@@ -259,14 +259,31 @@ class RsvpPage extends React.Component {
     )
   }
 
+  __handleHuntSuccess(result) {
+  }
+
   __showRsvps() {
     const {rsvps} = this.state;
 
     let bohRsvp = false;
 
-    if (rsvps[0]["first_name"] === "Boh") {
+    const progress = localStorage.getItem("tiffanyandeugenehuntprogress");
+    const hexdigest = localStorage.getItem("tiffanyandeugenehunthexdigest");
+
+    if (rsvps[0]["first_name"] === "Boh" && progress && parseInt(progress) === 2) {
       bohRsvp = true;
-      localStorage.setItem("tiffanyandeugenefoundboh", true)
+      localStorage.setItem("tiffanyandeugenefoundboh", true);
+      localStorage.setItem("tiffanyandeugenehuntprogress", 3);
+
+      $.ajax({
+        type: "POST",
+        url: "/hunts/progress",
+        data: {
+          hexdigest: hexdigest,
+          progress: 3
+        },
+        complete: this.__handleHuntSuccess.bind(this)
+      });
     }
 
     return (

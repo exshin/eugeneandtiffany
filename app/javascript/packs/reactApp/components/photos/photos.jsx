@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, Panel, Glyphicon, Label } from 'react-bootstrap'
+import { Button, Panel, Glyphicon, Label, FormGroup, FormControl, ControlLabel } from 'react-bootstrap'
 
 import $ from 'jquery'
 
@@ -39,7 +39,7 @@ class PhotosPage extends React.Component {
         "lying_on_flowers.jpg",
       ],
       currentOrder: [],
-      successful: false,
+      successful: true,
       huntStart: false,
       photosData: {
         "halfdome.jpg": {"date": "August 15, 2015", "time": "3:29 PM", "location": "Top of Half Dome, Yosemite", "description": "We had just climbed the cables to the peak of Half Dome. The hike started at 6am and ended at 11pm."},
@@ -56,7 +56,21 @@ class PhotosPage extends React.Component {
         "lying_on_flowers.jpg": {"date": "March 24, 2019", "time": "3:45 PM", "location": "Table Mountain, California", "description": "Trying to copy those instagram photos. Did it work? Do we look cool?"},
       },
       nextPhotoIndex: 0,
+      submitName: "",
     };
+  }
+
+  componentDidMount() {
+    let huntStart = false;
+    const progress = localStorage.getItem('tiffanyandeugenehuntprogress');
+
+    if (localStorage.getItem('tiffanyandeugenehuntstart') === true || (progress && progress > 0)) {
+      huntStart = true;
+    }
+
+    this.setState({
+      huntStart: huntStart
+    });
   }
 
   __checkArray(arr1, arr2) {
@@ -90,7 +104,6 @@ class PhotosPage extends React.Component {
 
       // Check if finished
       if (step === correctOrder.length) {
-        localStorage.setItem('tiffanyandeugenehuntstart', true);
         this.setState({
           successful: true,
           bgHeight: "100vh"
@@ -137,8 +150,67 @@ class PhotosPage extends React.Component {
     )
   }
 
+  __handleSuccess(result) {
+    const {hexdigest} = result.responseJSON.hunt;
+    localStorage.setItem("tiffanyandeugenehunthexdigest", hexdigest);
+    this.setState({
+      successful: false
+    });
+  }
+
+
+  __submit(params) {
+    $.ajax({
+      type: "POST",
+      url: "/hunts/progress",
+      data: params,
+      complete: this.__handleSuccess.bind(this)
+    });
+  }
+
+  __handleSubmitName() {
+    const { submitName } = this.state;
+    const params = {
+      name: submitName,
+      progress: 1
+    };
+
+    localStorage.setItem('tiffanyandeugenehuntstart', true);
+    localStorage.setItem('tiffanyandeugenehuntprogress', 1);
+    this.__submit(params);
+  }
+
+  __handleTextChange(e) {
+    this.setState({ submitName: e.target.value });
+  }
+
+  __submitName() {
+    // allows user to submit their name to start the hunt
+    return (
+      <div>
+        <form>
+          <FormGroup controlId="formBasicText">
+            <ControlLabel style={{fontSize: "14px"}}>Tell us your name to begin the hunt!</ControlLabel>
+            <FormControl
+              type="text"
+              onChange={this.__handleTextChange.bind(this)}
+              onKeyPress={event => {
+                if (event.key === "Enter") {
+                  event.preventDefault();
+                  this.__handleSubmitName();
+                }
+              }}
+            />
+            <FormControl.Feedback />
+          </FormGroup>
+        </form>
+        <Button bsStyle="primary" onClick={this.__handleSubmitName.bind(this)}>Submit</Button>
+      </div>
+    )
+  }
+
   __photoCorrectContainer(index) {
-    const {correctOrder, successful} = this.state;
+    const {correctOrder, successful, huntStart} = this.state;
 
     if (!successful) {
       return null
@@ -148,15 +220,17 @@ class PhotosPage extends React.Component {
 
     if (photo === undefined) {
       // Finished showing correct order of photos
-
       return (
         <div className="div-center" style={{textAlign: "center", width: "30%"}}>
           <Panel style={{background: "white", boxShadow: "lightgrey 5px 1px 7px"}}>
             <Panel.Body className="" style={{fontSize: "18px", fontStyle: "italic"}}>
-              <h2 style={{marginBottom: "15px"}}>The Hunt Begins</h2>
+              <h2 style={{marginBottom: "15px"}}>The Hunt Begins!</h2>
               <img src={require(`./../../assets/images/spirited_away_baby_mouse.png`)} width="50%"/>
-              <div style={{fontSize: "10px"}}>
-                Squeak! I'm so hungry!
+              <div style={{fontSize: "12px", marginBottom: "15px"}}>
+                Squeak! I'm so hungry! Where can I find some good food??
+              </div>
+              <div className="submit-name" hidden={huntStart}>
+                {this.__submitName()}
               </div>
             </Panel.Body>
           </Panel>
@@ -167,7 +241,7 @@ class PhotosPage extends React.Component {
         this.setState({
           nextPhotoIndex: index + 1
         })
-      }, 900);
+      }, 100);
 
       return (
         <div>

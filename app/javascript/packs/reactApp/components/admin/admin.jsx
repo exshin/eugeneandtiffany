@@ -15,7 +15,8 @@ class AdminPage extends React.Component {
       tiffanyHighScores: [],
       eugeneHighScores: [],
       latestTiedScores: [],
-      tobyScores: []
+      tobyScores: [],
+      huntProgress: [],
     };
   }
 
@@ -79,6 +80,26 @@ class AdminPage extends React.Component {
       if (result && result.responseJSON) {
         this.setState({
           tobyScores: result.responseJSON.high_scores
+        });
+      }
+    }
+  }
+
+  __fetchHuntProgress() {
+    $.ajax({
+      type: "GET",
+      url: "/hunts/index",
+      data: {},
+      dataType: "json",
+      complete: this.__handlefetchHuntProgress.bind(this)
+    });
+  }
+
+  __handlefetchHuntProgress(result) {
+    if (result && result.responseJSON) {
+      if (result && result.responseJSON) {
+        this.setState({
+          huntProgress: result.responseJSON.hunts
         });
       }
     }
@@ -258,6 +279,38 @@ class AdminPage extends React.Component {
       </div>
     )
   }
+
+  __HuntProgressPage() {
+    const {huntProgress} = this.state;
+    const columns = [{
+      dataField: "id",
+      text: "ID",
+      sort: true
+    }, {
+      dataField: "name",
+      text: "Name",
+      sort: true
+    }, {
+      dataField: "progress",
+      text: "Progress",
+      sort: true
+    }, {
+      dataField: "updated_at",
+      text: "Updated Date",
+      sort: true
+    }];
+
+    return (
+      <div>
+        <h3>The Hunt Progress</h3>
+        <div className="container">
+        </div>
+        <BootstrapTable keyField='id' data={ huntProgress } columns={ columns } />
+      </div>
+    )
+  }
+
+
   //
 
   __handleSelect(eventKey, event) {
@@ -284,6 +337,9 @@ class AdminPage extends React.Component {
       case 3:
         this.__fetchTobyScores();
         break;
+      case 4:
+        this.__fetchHuntProgress();
+        break;
       default:
         break
     }
@@ -292,28 +348,27 @@ class AdminPage extends React.Component {
   render() {
     const { activeTab } = this.state;
     let content;
-    let buttonName1;
-    let buttonName2;
-    let buttonName3;
+    let buttonName1 = "default";
+    let buttonName2 = "default";
+    let buttonName3 = "default";
+    let buttonName4 = "default";
 
     switch (activeTab) {
       case 1:
         content = this.__rsvpsPage();
         buttonName1 = "primary";
-        buttonName2 = "default";
-        buttonName3 = "default";
         break;
       case 2:
         content = this.__QuizScoresPage();
-        buttonName1 = "default";
         buttonName2 = "primary";
-        buttonName3 = "default";
         break;
       case 3:
         content = this.__TobyScoresPage();
-        buttonName1 = "default";
-        buttonName2 = "default";
         buttonName3 = "primary";
+        break;
+      case 4:
+        content = this.__HuntProgressPage();
+        buttonName4 = "primary";
         break;
       default:
         break;
@@ -327,7 +382,7 @@ class AdminPage extends React.Component {
         <br/>
 
         <div className="row">
-          <div className="col-md-6 col-md-offset-4">
+          <div className="col-md-7 col-md-offset-3">
             <div className="travel-nav-buttons">
               <div>
                 <Button bsStyle={buttonName1} style={{float: "left"}} onClick={this.__handleSelect.bind(this, 1)}>Rsvps</Button>
@@ -337,6 +392,9 @@ class AdminPage extends React.Component {
               </div>
               <div>
                 <Button bsStyle={buttonName3} style={{float: "left"}} onClick={this.__handleSelect.bind(this, 3)}>Toby Game Scores</Button>
+              </div>
+              <div>
+                <Button bsStyle={buttonName4} style={{float: "left"}} onClick={this.__handleSelect.bind(this, 4)}>The Hunt Progress</Button>
               </div>
             </div>
           </div>

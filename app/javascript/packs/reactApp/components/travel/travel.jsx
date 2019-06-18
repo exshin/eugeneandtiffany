@@ -1,6 +1,8 @@
 import React from 'react';
 import { Button, Grid, Row, Col, Table, Panel, Label } from 'react-bootstrap'
 
+import $ from 'jquery'
+
 // import MapContainer from './maps.jsx' // Not implementing due to high costs
 
 class TravelPage extends React.Component {
@@ -12,15 +14,22 @@ class TravelPage extends React.Component {
       activeTab: 1,
       mouse: false,
       mouseIndex: 0,
-      backgroundHeight: "100%"
+      backgroundHeight: "100%",
+      progress: "",
+      hexdigest: ""
     };
   }
 
   componentDidMount() {
     const mouse = localStorage.getItem("tiffanyandeugenehuntstart");
-    if (mouse === "true") {
+    const progress = localStorage.getItem("tiffanyandeugenehuntprogress");
+    const hexdigest = localStorage.getItem("tiffanyandeugenehunthexdigest");
+
+    if (mouse === "true" || (progress && parseInt(progress) > 0)) {
       this.setState({
-        mouse: true
+        mouse: true,
+        progress: progress,
+        hexdigest: hexdigest
       });
     }
   }
@@ -129,7 +138,7 @@ class TravelPage extends React.Component {
                           <div>Wild Palms Hotel</div>
                           <div style={{fontSize: "12px"}}><a href="https://www.google.com/maps/place/Wild+Palms+Hotel/@37.3519461,-122.0135551,15z/data=!4m2!3m1!1s0x0:0x74dd551c58050b4a?sa=X&ved=2ahUKEwjPqci12sfiAhUXrp4KHVpkDekQ_BIwKXoECC0QCA" target="/">910 E Fremont Ave, Sunnyvale</a></div>
                           <div style={{fontSize: "12px"}}>(408) 738-0500</div>
-                          <div><a>Booking link coming soon</a></div>
+                          <div><a href="https://www.hyatt.com/en-US/group-booking/SJCJW/G-TWA9" target="/">BOOK HERE</a></div>
                         </div>
                       </div>
                     </Col>
@@ -385,14 +394,30 @@ class TravelPage extends React.Component {
         </Panel>
       </div>
     )
+  }
 
+  __handleHuntSuccess(result) {
   }
 
   __nextMessage() {
-    const {mouseIndex} = this.state;
+    const {mouseIndex, hexdigest, progress} = this.state;
 
     if (mouseIndex === 6) {
-      localStorage.setItem('tiffanyandeugenehuntstart', null);
+      if (progress && parseInt(progress) === 1) {
+        localStorage.setItem('tiffanyandeugenehuntstart', null);
+        localStorage.setItem('tiffanyandeugenehuntprogress', 2);
+
+        $.ajax({
+          type: "POST",
+          url: "/hunts/progress",
+          data: {
+            hexdigest: hexdigest,
+            progress: 2
+          },
+          complete: this.__handleHuntSuccess.bind(this)
+        });
+      }
+
       this.setState({
         activeTab: 1,
         mouseIndex: 0

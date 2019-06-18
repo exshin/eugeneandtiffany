@@ -1,9 +1,32 @@
 import React from 'react';
 import { Button, Panel, Glyphicon } from 'react-bootstrap'
 
+import $ from 'jquery'
+
 class SchedulePage extends React.Component {
+
+  __handleHuntSuccess(result) {
+  }
+
   __clickCow() {
     const foundBoh = localStorage.getItem("tiffanyandeugenefoundboh");
+    const progress = localStorage.getItem("tiffanyandeugenehuntprogress");
+    const hexdigest = localStorage.getItem("tiffanyandeugenehunthexdigest");
+
+    if (progress && parseInt(progress) === 3) {
+      localStorage.setItem("tiffanyandeugenehuntprogress", 4);
+
+      $.ajax({
+        type: "POST",
+        url: "/hunts/progress",
+        data: {
+          hexdigest: hexdigest,
+          progress: 4
+        },
+        complete: this.__handleHuntSuccess.bind(this)
+      });
+    }
+
     if (foundBoh === "true") {
       alert("Wow! You're fast! Come back to the cow after June 20th to continue the hunt!");
     }

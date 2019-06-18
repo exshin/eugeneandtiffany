@@ -28,4 +28,10 @@ Rails.application.routes.draw do
     post :score
     get :high_scores
   end
+
+  namespace :hunts do
+    get :index
+    get :fetch_name
+    post :progress
+  end
 end
