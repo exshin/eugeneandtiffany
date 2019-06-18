@@ -39,7 +39,7 @@ class PhotosPage extends React.Component {
         "lying_on_flowers.jpg",
       ],
       currentOrder: [],
-      successful: true,
+      successful: false,
       huntStart: false,
       photosData: {
         "halfdome.jpg": {"date": "August 15, 2015", "time": "3:29 PM", "location": "Top of Half Dome, Yosemite", "description": "We had just climbed the cables to the peak of Half Dome. The hike started at 6am and ended at 11pm."},
@@ -241,7 +241,7 @@ class PhotosPage extends React.Component {
         this.setState({
           nextPhotoIndex: index + 1
         })
-      }, 100);
+      }, 500);
 
       return (
         <div>

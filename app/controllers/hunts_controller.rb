@@ -21,4 +21,8 @@ class HuntsController < ActionController::Base
     hunt = Hunt.find_by(hexdigest: params['hexdigest'])
     render json: {hunt: hunt}
   end
+
+  def update_name
+    
+  end
 end
