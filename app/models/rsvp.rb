@@ -11,6 +11,7 @@
 #  rsvp_group_id        :integer
 #  updated_at           :datetime
 #  short_name           :string
+#  no_drink             :boolean
 #
 
 class Rsvp < ApplicationRecord
