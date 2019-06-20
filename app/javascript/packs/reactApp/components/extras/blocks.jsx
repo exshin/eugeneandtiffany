@@ -145,6 +145,28 @@ class BlocksPage extends React.Component {
     )
   }
 
+  __replay() {
+    const {blockOptions} = this.state;
+    const nextBlock = this.randomOption(blockOptions);
+    const currentBlock = this.randomOption(blockOptions);
+
+    this.setState({
+      gameStart: true,
+      turnNumber: 0,
+      screenWidth: window.innerWidth,
+      score: 0.0,
+      score_message: "",
+      showLeaderBoard: false,
+      gameOver: false,
+      rows: [0,1,2,3,4,5],
+      cols: [0,1,2,3,4,5],
+      board: [[0,0,0,0,0,0],[0,0,0,0,0,0],[0,0,0,0,0,0],[0,0,0,0,0,0],[0,0,0,0,0,0],[0,0,0,0,0,0]],
+      nextBlock: nextBlock,
+      currentBlock: currentBlock,
+      matchMessage: ""
+    });
+  }
+
   __validMove(expand, board, i, j) {
     const {rows, cols} = this.state;
     const maxRows = Math.max(...rows);
@@ -648,7 +670,7 @@ class BlocksPage extends React.Component {
     // allows user to submit their score to a leaderboard (as well as for admin viewing)
     return (
       <div>
-        <form style={{width: "80%", float: "left"}}>
+        <form style={{width: "50%", float: "left"}}>
           <FormGroup controlId="formBasicText">
             <ControlLabel>Enter your name to submit your score! (and see the leaderboard)</ControlLabel>
             <FormControl
@@ -666,6 +688,8 @@ class BlocksPage extends React.Component {
           </FormGroup>
         </form>
         <Button style={{float: "left", marginTop: "25px"}} bsStyle="primary" onClick={this.__handleSubmitScore.bind(this)}>Submit</Button>
+        <div style={{float: "left", marginTop: "30px", marginRight: "20px", marginLeft: "20px"}}> OR </div>
+        <Button style={{float: "left", marginTop: "25px"}} onClick={this.__replay.bind(this)}>Replay</Button>
       </div>
     )
   }
