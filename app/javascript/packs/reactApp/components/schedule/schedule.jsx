@@ -29,6 +29,12 @@ class SchedulePage extends React.Component {
 
     if (foundBoh === "true") {
       alert("Wow! You're fast! Come back to the cow after June 20th to continue the hunt!");
+
+      /*
+      Squeak! Thanks for finding a cow for me to eat!
+      As a reward, I'll give you special access to a new game to beat!
+
+       */
     }
   }
 

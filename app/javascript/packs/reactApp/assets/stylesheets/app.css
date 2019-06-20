@@ -180,16 +180,5 @@ div.empty-square {
 .tile {
     float: left;
     margin: 0;
-}
-
-div.colors-board-yellow-cross {
-    cursor:url("./../../assets/images/colors/yellow_cross.png") 54 54,auto;
-}
-
-div.colors-board-blue-cross {
-    cursor:url("./../../assets/images/colors/blue_cross.png") 54 54,auto;
-}
-
-div.colors-board-red-cross {
-    cursor:url("./../../assets/images/colors/red_cross.png") 54 54,auto;
+    height: 40px;
 }

@@ -5,6 +5,7 @@ import QuizPage from './quiz.jsx'
 import TobyPage from './toby.jsx'
 import ColorsPage from './colors.jsx'
 import Garden from './garden.jsx'
+import BlocksPage from './blocks.jsx'
 import Leaderboard from './leaderboard.jsx'
 
 class ExtrasPage extends React.Component {
@@ -63,6 +64,12 @@ class ExtrasPage extends React.Component {
         titleClassName = "title-header hidden";
         showLeaderBoard = false;
         break;
+      case "blocks":
+        content = <BlocksPage/>;
+        showIndex = false;
+        titleClassName = "title-header hidden";
+        showLeaderBoard = false;
+        break;
       case "leaderboard":
         content = <Leaderboard/>;
         showIndex = false;
@@ -107,11 +114,12 @@ class ExtrasPage extends React.Component {
           <Panel className="extras-panel" bsStyle="primary">
             <Panel.Heading style={{height: "75px"}}>
               <Panel.Title className="extras-panel-title" componentClass="h4">
-                The Garden (Under Construction)
+                Blocks
               </Panel.Title>
             </Panel.Heading>
             <Panel.Body>
-              Please check back in later!
+              <img src={require('./../../assets/images/colors/blocks.png')} style={{width: "100%", height: "250px", border: "1px solid black"}}/>
+              <Button block onClick={this.__click.bind(this, "blocks")}>Play</Button>
             </Panel.Body>
           </Panel>
 

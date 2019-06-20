@@ -15,6 +15,7 @@ class Leaderboard extends React.Component {
       eugeneHighScores: [],
       latestTiedScores: [],
       tobyScores: [],
+      blocksScores: [],
     };
   }
 
@@ -62,6 +63,24 @@ class Leaderboard extends React.Component {
           tobyScores: result.responseJSON.high_scores
         });
       }
+    }
+  }
+
+  __fetchBlocksHighScores() {
+    $.ajax({
+      type: "GET",
+      url: "/blocks/high_scores",
+      data: {},
+      dataType: "json",
+      complete: this.__handleBlocksHighScoreSuccess.bind(this)
+    });
+  }
+
+  __handleBlocksHighScoreSuccess(result) {
+    if (result && result.responseJSON) {
+      this.setState({
+        blocksScores: result.responseJSON.high_scores
+      })
     }
   }
   //
@@ -189,6 +208,51 @@ class Leaderboard extends React.Component {
     )
   }
 
+  __blocksLeaderBoard() {
+    const {blocksScores} = this.state;
+
+    return (
+      <div className="div-center">
+        <div>
+          <h3 style={{textAlign: "center"}}>Top 10 Leaderboard</h3>
+        </div>
+        <div className="div-center" style={{width: "40%"}}>
+          <Table className="container" bordered style={{background: "white", width: "50%"}}>
+            <thead>
+            <tr>
+              <th>Placement</th>
+              <th>Name</th>
+              <th>Score</th>
+            </tr>
+            </thead>
+            <tbody>
+            {blocksScores.map((highScore, index) => {
+              return this.__blocksLeaderBoardEntries(highScore, index+1)
+            })}
+            </tbody>
+          </Table>
+        </div>
+
+      </div>
+    )
+  }
+
+  __blocksLeaderBoardEntries(entry, index) {
+    return (
+      <tr key={index}>
+        <td>
+          {index}
+        </td>
+        <td>
+          {entry.name}
+        </td>
+        <td>
+          {entry.score}
+        </td>
+      </tr>
+    )
+  }
+
   //
   __handleSelect(eventKey, event) {
     const { activeTab } = this.state;
@@ -211,6 +275,9 @@ class Leaderboard extends React.Component {
       case 2:
         this.__fetchTobyScores();
         break;
+      case 3:
+        this.__fetchBlocksHighScores();
+        break;
       default:
         break
     }
@@ -219,19 +286,22 @@ class Leaderboard extends React.Component {
   render() {
     const { activeTab } = this.state;
     let content;
-    let buttonName1;
-    let buttonName2;
+    let buttonName1 = "default";
+    let buttonName2 = "default";
+    let buttonName3 = "default";
 
     switch (activeTab) {
       case 1:
         content = this.__QuizScoresPage();
         buttonName1 = "primary";
-        buttonName2 = "default";
         break;
       case 2:
         content = this.__TobyScoresPage();
-        buttonName1 = "default";
         buttonName2 = "primary";
+        break;
+      case 3:
+        content = this.__blocksLeaderBoard();
+        buttonName3 = "primary";
         break;
       default:
         break;
@@ -252,6 +322,9 @@ class Leaderboard extends React.Component {
               </div>
               <div>
                 <Button bsStyle={buttonName2} style={{float: "left"}} onClick={this.__handleSelect.bind(this, 2)}>Toby Game Scores</Button>
+              </div>
+              <div>
+                <Button bsStyle={buttonName3} style={{float: "left"}} onClick={this.__handleSelect.bind(this, 3)}>Blocks Game Scores</Button>
               </div>
             </div>
           </div>

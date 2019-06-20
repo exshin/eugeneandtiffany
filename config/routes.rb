@@ -34,4 +34,9 @@ Rails.application.routes.draw do
     get :fetch_name
     post :progress
   end
+
+  namespace :blocks do
+    post :score
+    get :high_scores
+  end
 end

@@ -3,8 +3,6 @@ import { Button, Table, Row, Col, Label, FormGroup, FormControl, ControlLabel, P
 
 import $ from 'jquery'
 
-import ColorTile from './colors/colorTile.jsx'
-
 /*
 Colors Game
 

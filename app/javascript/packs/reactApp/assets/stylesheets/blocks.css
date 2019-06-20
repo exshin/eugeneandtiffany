@@ -1,0 +1,55 @@
+div.colors-board-blue_ladder_right {
+    cursor:url("./../../assets/images/colors/blue_ladder_right.png") 58 54,auto;
+}
+
+div.colors-board-blue_cross {
+    cursor:url("./../../assets/images/colors/blue_cross.png") 58 54,auto;
+}
+
+div.colors-board-blue_long_vertical {
+    cursor:url("./../../assets/images/colors/blue_long_vertical.png") 24 54,auto;
+}
+
+div.colors-board-blue_short_flat {
+    cursor:url("./../../assets/images/colors/blue_short_flat.png") 15 15,auto;
+}
+
+div.colors-board-green_corner_right {
+    cursor:url("./../../assets/images/colors/green_corner_right.png") 20 20,auto;
+}
+
+div.colors-board-green_diagnal_right {
+    cursor:url("./../../assets/images/colors/green_diagnal_right.png") 20 16,auto;
+}
+
+div.colors-board-green_half_cross {
+    cursor:url("./../../assets/images/colors/green_half_cross.png") 58 16,auto;
+}
+
+div.colors-board-orange_ladder_right {
+    cursor:url("./../../assets/images/colors/orange_ladder_right.png") 58 54,auto;
+}
+
+div.colors-board-orange_half_t {
+    cursor:url("./../../assets/images/colors/orange_half_t.png") 58 54,auto;
+}
+
+div.colors-board-red_corner_right {
+    cursor:url("./../../assets/images/colors/red_corner_right.png") 20 15,auto;
+}
+
+div.colors-board-red_long_flat {
+    cursor:url("./../../assets/images/colors/red_long_flat.png") 58 15,auto;
+}
+
+div.colors-board-red_single {
+    cursor:url("./../../assets/images/colors/red_single.png") 15 15,auto;
+}
+
+div.colors-board-yellow_diagnal_left {
+    cursor:url("./../../assets/images/colors/yellow_diagnal_left.png") 58 15,auto;
+}
+
+div.colors-board-yellow_half_cross {
+    cursor:url("./../../assets/images/colors/yellow_half_cross.png") 20 54,auto;
+}
