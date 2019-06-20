@@ -269,7 +269,7 @@ class BlocksPage extends React.Component {
 
     let width = "50%";
     if (screenWidth < 1200) {
-      width = "300px";
+      width = "320px";
     }
 
     cursorClassName = `div-center colors-board-${currentBlock}`;
