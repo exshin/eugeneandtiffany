@@ -41,11 +41,12 @@ class BlocksPage extends React.Component {
         "green_half_cross",
         "orange_ladder_right",
         "orange_half_t",
+        "orange_vertical",
         "red_corner_right",
         "red_long_flat",
         "yellow_diagnal_left",
         "yellow_half_cross",
-
+        "yellow_square",
       ],
       colorHash: {
         0: "white",
@@ -75,11 +76,13 @@ class BlocksPage extends React.Component {
         "green_diagnal_right": {"expand": ["downright"], "value": 2, "color": "green"},
         "green_half_cross": {"expand": ["downleft", "downright"], "value": 3, "color": "green"},
         "orange_ladder_right": {"expand": ["upleft", "downright"], "value": 3, "color": "orange"},
-        "orange_half_t": {"expand": ["up", "left", "right"], "value": 3, "color": "orange"},
+        "orange_half_t": {"expand": ["up", "left", "right"], "value": 4, "color": "orange"},
+        "orange_vertical": {"expand": ["up"], "value": 2, "color": "orange"},
         "red_corner_right": {"expand": ["down", "right"], "value": 3, "color": "red"},
         "red_long_flat": {"expand": ["left", "right"], "value": 3, "color": "red"},
         "yellow_diagnal_left": {"expand": ["downleft"], "value": 2, "color": "yellow"},
-        "yellow_half_cross": {"expand": ["upright", "downright"], "value": 3, "color": "yellow"}
+        "yellow_half_cross": {"expand": ["upright", "downright"], "value": 3, "color": "yellow"},
+        "yellow_square": {"expand": ["up", "left", "upleft"], "value": 4, "color": "yellow"}
       }
     };
   }
@@ -490,15 +493,10 @@ class BlocksPage extends React.Component {
   }
 
   __blocksGame() {
-    const { nextBlock, currentBlock, gameStart, rows, cols, gameOver } = this.state;
+    const { nextBlock, currentBlock, gameStart, gameOver } = this.state;
 
     let content;
     let gameFinishContent;
-    let cursorClassName;
-    let panelBackgroundColor = "white";
-    if (gameOver === true) {
-      panelBackgroundColor = "lightslategrey";
-    }
 
     if (!gameStart) {
       content = this.__gameDescription();
@@ -507,8 +505,6 @@ class BlocksPage extends React.Component {
     if (gameOver) {
       gameFinishContent = this.__gameFinish();
     }
-
-    cursorClassName = `div-center colors-board-${currentBlock}`;
 
     return (
       <div className="blocks container">

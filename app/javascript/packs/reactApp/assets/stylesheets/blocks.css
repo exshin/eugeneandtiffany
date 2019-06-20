@@ -34,6 +34,10 @@ div.colors-board-orange_half_t {
     cursor:url("./../../assets/images/colors/orange_half_t.png") 58 54,auto;
 }
 
+div.colors-board-orange_vertical {
+    cursor:url("./../../assets/images/colors/orange_vertical.png") 20 50,auto;
+}
+
 div.colors-board-red_corner_right {
     cursor:url("./../../assets/images/colors/red_corner_right.png") 20 15,auto;
 }
@@ -52,4 +56,8 @@ div.colors-board-yellow_diagnal_left {
 
 div.colors-board-yellow_half_cross {
     cursor:url("./../../assets/images/colors/yellow_half_cross.png") 20 54,auto;
+}
+
+div.colors-board-yellow_square {
+    cursor:url("./../../assets/images/colors/yellow_square.png") 58 50,auto;
 }
