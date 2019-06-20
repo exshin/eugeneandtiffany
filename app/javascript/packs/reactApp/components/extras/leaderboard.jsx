@@ -315,7 +315,7 @@ class Leaderboard extends React.Component {
         <br/>
 
         <div className="row">
-          <div className="col-md-6 col-md-offset-4">
+          <div className="col-md-7 col-md-offset-3">
             <div className="leaderboard-nav-buttons">
               <div>
                 <Button bsStyle={buttonName1} style={{float: "left"}} onClick={this.__handleSelect.bind(this, 1)}>Eugene Tiffany Quiz Scores</Button>
