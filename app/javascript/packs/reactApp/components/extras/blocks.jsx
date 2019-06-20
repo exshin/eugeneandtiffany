@@ -19,6 +19,7 @@ class BlocksPage extends React.Component {
     this.state = {
       gameStart: false,
       turnNumber: 0,
+      screenWidth: "",
       score: 0.0,
       score_message: "",
       showLeaderBoard: false,
@@ -92,7 +93,9 @@ class BlocksPage extends React.Component {
   }
 
   componentDidMount() {
-    // Pull game data
+    this.setState({
+      screenWidth: window.innerWidth
+    })
   }
 
   shuffleArray(array) {
@@ -234,7 +237,7 @@ class BlocksPage extends React.Component {
   }
 
   __board() {
-    const { currentBlock, gameStart, rows, cols, gameOver } = this.state;
+    const { currentBlock, gameStart, rows, cols, gameOver, screenWidth } = this.state;
 
     let cursorClassName;
     let panelBackgroundColor = "white";
@@ -242,11 +245,16 @@ class BlocksPage extends React.Component {
       panelBackgroundColor = "lightslategrey";
     }
 
+    let width = "50%";
+    if (screenWidth < 1200) {
+      width = "275px";
+    }
+
     cursorClassName = `div-center colors-board-${currentBlock}`;
 
     return (
       <div>
-        <Panel style={{background: {panelBackgroundColor}, boxShadow: "lightgrey 5px 1px 7px", padding: "5%", width: "50%"}} hidden={!gameStart}>
+        <Panel style={{background: panelBackgroundColor, boxShadow: "lightgrey 5px 1px 7px", padding: "5%", width: width}} hidden={!gameStart}>
           <Panel.Body className="" style={{fontSize: "26px", fontStyle: "italic"}}>
             <div className={cursorClassName} style={{}}>
               {rows.map((row, i) =>
@@ -497,7 +505,7 @@ class BlocksPage extends React.Component {
   }
 
   __blocksGame() {
-    const { nextBlock, currentBlock, gameStart, gameOver } = this.state;
+    const { nextBlock, screenWidth, gameStart, gameOver } = this.state;
 
     let content;
     let gameFinishContent;
@@ -510,54 +518,113 @@ class BlocksPage extends React.Component {
       gameFinishContent = this.__gameFinish();
     }
 
-    return (
-      <div className="blocks container">
-        <div className="blocks-panel container">
-          <Panel style={{width: "90%", background: "whitesmoke"}}>
-            <Panel.Heading style={{background: "lightblue"}}>
-              <Panel.Title componentClass="h3" style={{textAlign: "center", color: "white", fontSize: "24px"}}>Blocks!</Panel.Title>
-            </Panel.Heading>
-            <br/>
-            <Panel.Body>
-              <div className="">
-                <div className="message" hidden={!gameOver} style={{paddingLeft: "29%"}}>
-                  <Label style={{fontSize: "20px"}}>No more possible moves. Game Over!</Label>
-                </div>
-                <div className="" style={{width: "80%%"}} hidden={!gameStart}>
-                  <table>
-                    <tbody>
-                    <tr>
-                      <td style={{paddingLeft: "100px"}}>
-                        {this.__score()}
-                        <div className="next-block" style={{width: "170px", height: "170px"}}>
-                          <Panel style={{background: "white", boxShadow: "lightgrey 5px 1px 7px"}}>
-                            <Panel.Body className="" style={{fontSize: "26px", fontStyle: "italic"}}>
-                              <h4>Next Block</h4>
-                              <div className="tile-next-block">
-                                <img src={require(`./../../assets/images/colors/${nextBlock}.png`)}/>
-                              </div>
-                            </Panel.Body>
-                          </Panel>
-                        </div>
-                      </td>
-                      <td style={{width: "100%", paddingLeft: "5%", paddingRight: "5%"}}>
-                        {this.__board()}
-                      </td>
-                    </tr>
-                    </tbody>
-                  </table>
-                </div>
+    if (screenWidth > 1200) {
+      return (
+        <div className="blocks container">
+          <div className="blocks-panel container">
+            <Panel style={{width: "90%", background: "whitesmoke"}}>
+              <Panel.Heading style={{background: "lightblue"}}>
+                <Panel.Title componentClass="h3" style={{textAlign: "center", color: "white", fontSize: "24px"}}>Blocks!</Panel.Title>
+              </Panel.Heading>
+              <br/>
+              <Panel.Body>
+                <div className="">
+                  <div className="message" hidden={!gameOver} style={{paddingLeft: "29%"}}>
+                    <Label style={{fontSize: "20px"}}>No more possible moves. Game Over!</Label>
+                  </div>
+                  <div className="" style={{width: "80%%"}} hidden={!gameStart}>
+                    <table>
+                      <tbody>
+                      <tr>
+                        <td style={{paddingLeft: "100px"}}>
+                          {this.__score()}
+                          <div className="next-block" style={{width: "170px", height: "170px"}}>
+                            <Panel style={{background: "white", boxShadow: "lightgrey 5px 1px 7px"}}>
+                              <Panel.Body className="" style={{fontSize: "26px", fontStyle: "italic"}}>
+                                <h4>Next Block</h4>
+                                <div className="tile-next-block">
+                                  <img src={require(`./../../assets/images/colors/${nextBlock}.png`)}/>
+                                </div>
+                              </Panel.Body>
+                            </Panel>
+                          </div>
+                        </td>
+                        <td style={{width: "100%", paddingLeft: "5%", paddingRight: "5%"}}>
+                          {this.__board()}
+                        </td>
+                      </tr>
+                      </tbody>
+                    </table>
+                  </div>
 
-              </div>
-              <br/>
-              {content}
-              <br/>
-              {gameFinishContent}
-            </Panel.Body>
-          </Panel>
+                </div>
+                <br/>
+                {content}
+                <br/>
+                {gameFinishContent}
+              </Panel.Body>
+            </Panel>
+          </div>
         </div>
-      </div>
-    )
+      )
+    } else {
+      return (
+        <div className="blocks container">
+          <div className="blocks-panel container">
+            <Panel style={{width: "100%", background: "whitesmoke"}}>
+              <Panel.Heading style={{background: "lightblue"}}>
+                <Panel.Title componentClass="h3" style={{textAlign: "center", color: "white", fontSize: "24px"}}>Blocks!</Panel.Title>
+              </Panel.Heading>
+              <br/>
+              <Panel.Body>
+                <div className="">
+                  <div className="message" hidden={!gameOver} style={{paddingLeft: "5%"}}>
+                    <Label style={{fontSize: "14px"}}>No more possible moves. Game Over!</Label>
+                  </div>
+                  <div className="" style={{width: "100%"}} hidden={!gameStart}>
+                    <table style={{width: "100%"}}>
+                      <tbody>
+                        <tr>
+                          <td style={{width: "100%"}}>
+                            {this.__score()}
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>
+                            <div className="next-block" style={{width: "170px", height: "170px"}}>
+                              <Panel style={{background: "white", boxShadow: "lightgrey 5px 1px 7px"}}>
+                                <Panel.Body className="" style={{fontSize: "26px", fontStyle: "italic"}}>
+                                  <h4>Next Block</h4>
+                                  <div className="tile-next-block">
+                                    <img src={require(`./../../assets/images/colors/${nextBlock}.png`)}/>
+                                  </div>
+                                </Panel.Body>
+                              </Panel>
+                            </div>
+                          </td>
+                        </tr>
+                        <br/>
+                        <tr></tr>
+                        <tr>
+                          <td style={{width: "100%", paddingLeft: "5%", paddingRight: "5%"}}>
+                            {this.__board()}
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+
+                </div>
+                <br/>
+                {content}
+                <br/>
+                {gameFinishContent}
+              </Panel.Body>
+            </Panel>
+          </div>
+        </div>
+      )
+    }
   }
 
   __gameFinish() {

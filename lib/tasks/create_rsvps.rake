@@ -129,7 +129,7 @@ task create_rsvps: :environment do
           name: 'Hope & Mike',
           group: [
               {first: 'Hope', last: 'Nam Phung', email: 'nam.hope@gmail.com'},
-              {first: 'Mike', last: 'Phung', email: ''},
+              {first: 'Michael', last: 'Phung', email: ''},
               {first: 'Claire', last: 'Phung', email: '', no_drink: true},
           ]
       },      {
