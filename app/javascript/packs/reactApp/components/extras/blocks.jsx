@@ -70,7 +70,7 @@ class BlocksPage extends React.Component {
       },
       blockHash: {
         "red_single": {"expand": [], "value": 1, "color": "red"},
-        "blue_cross": {"expand": ["up", "down", "left", "right"], "value": 5, "color": "blue"},
+        "blue_cross": {"expand": ["up", "down", "left", "right"], "value": 8, "color": "blue"},
         "blue_ladder_right": {"expand": ["upright", "downleft"], "value": 3, "color": "blue"},
         "blue_long_vertical": {"expand": ["up", "down"], "value": 3, "color": "blue"},
         "blue_short_flat": {"expand": ["right"], "value": 2, "color": "blue"},
@@ -83,7 +83,7 @@ class BlocksPage extends React.Component {
         "orange_vertical": {"expand": ["up"], "value": 2, "color": "orange"},
         "red_corner_right": {"expand": ["down", "right"], "value": 3, "color": "red"},
         "red_long_flat": {"expand": ["left", "right"], "value": 3, "color": "red"},
-        "red_x": {"expand": ["upleft", "upright", "downleft", "downright"], "value": 5, "color": "red"},
+        "red_x": {"expand": ["upleft", "upright", "downleft", "downright"], "value": 10, "color": "red"},
         "yellow_diagnal_left": {"expand": ["downleft"], "value": 2, "color": "yellow"},
         "yellow_half_cross": {"expand": ["upright", "downright"], "value": 3, "color": "yellow"},
         "yellow_square": {"expand": ["up", "left", "upleft"], "value": 4, "color": "yellow"}
