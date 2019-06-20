@@ -247,7 +247,7 @@ class BlocksPage extends React.Component {
 
     let width = "50%";
     if (screenWidth < 1200) {
-      width = "275px";
+      width = "300px";
     }
 
     cursorClassName = `div-center colors-board-${currentBlock}`;
@@ -603,7 +603,7 @@ class BlocksPage extends React.Component {
                             </div>
                           </td>
                         </tr>
-                        <br/>
+                        <tr></tr>
                         <tr></tr>
                         <tr>
                           <td style={{width: "100%", paddingLeft: "5%", paddingRight: "5%"}}>
