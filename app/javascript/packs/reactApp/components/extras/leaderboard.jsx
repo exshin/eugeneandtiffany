@@ -216,7 +216,7 @@ class Leaderboard extends React.Component {
         <div>
           <h3 style={{textAlign: "center"}}>Top 10 Leaderboard</h3>
         </div>
-        <div className="div-center" style={{width: "40%"}}>
+        <div className="div-center" style={{width: "80%"}}>
           <Table className="container" bordered style={{background: "white", width: "50%"}}>
             <thead>
             <tr>
