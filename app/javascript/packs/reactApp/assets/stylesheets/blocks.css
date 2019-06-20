@@ -26,6 +26,10 @@ div.colors-board-green_half_cross {
     cursor:url("./../../assets/images/colors/green_half_cross.png") 58 16,auto;
 }
 
+div.colors-board-green_down_t {
+    cursor:url("./../../assets/images/colors/green_down_t.png") 58 16,auto;
+}
+
 div.colors-board-orange_ladder_right {
     cursor:url("./../../assets/images/colors/orange_ladder_right.png") 58 54,auto;
 }
@@ -48,6 +52,10 @@ div.colors-board-red_long_flat {
 
 div.colors-board-red_single {
     cursor:url("./../../assets/images/colors/red_single.png") 15 15,auto;
+}
+
+div.colors-board-red_x {
+    cursor:url("./../../assets/images/colors/red_x.png") 58 50,auto;
 }
 
 div.colors-board-yellow_diagnal_left {
