@@ -20,6 +20,7 @@ class BlocksPage extends React.Component {
       gameStart: false,
       turnNumber: 0,
       screenWidth: "",
+      screenHeight: "100vh",
       score: 0.0,
       score_message: "",
       showLeaderBoard: false,
