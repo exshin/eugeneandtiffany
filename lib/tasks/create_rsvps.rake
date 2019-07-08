@@ -246,7 +246,7 @@ task create_rsvps: :environment do
       {
           name: 'Evelyn & Jorge',
           group: [
-              {first: 'Evelyn', last: 'Saliga', email: 'Evelynma1011@gmail.con'},
+              {first: 'Evelyn', last: 'Saliga', email: 'Evelynma1011@gmail.com'},
               {first: 'Jorge', last: 'Saliga', email: ''},
           ]
       },
@@ -355,7 +355,7 @@ task create_rsvps: :environment do
           name: 'Byron & Robin',
           group: [
               {first: 'Byron', last: 'Cheng', email: 'byroncheng@gmail.com'},
-              {first: 'Robin', last: 'Lin', email: 'Rlin29@gmail'},
+              {first: 'Robin', last: 'Lin', email: 'Rlin29@gmail.com'},
           ]
       },
       {
@@ -423,8 +423,8 @@ task create_rsvps: :environment do
           name: 'The Maluths',
           group: [
               {first: 'Hannah', last: 'Maluth', email: 'hannahmmcsus@gmail.com'},
-              {first: 'Sharon', last: 'Maluth', email: 'smaluth@comcast'},
-              {first: 'Elliot', last: 'Maluth', email: ''},
+              {first: 'Sharon', last: 'Maluth', email: ''},
+              {first: 'Elliot', last: 'Maluth', email: 'emaluth@comcast.net'},
           ]},
       {
           name: 'Jim & Mai',
@@ -474,6 +474,12 @@ task create_rsvps: :environment do
           name: 'Boh',
           group: [
               {first: 'Boh', last: '', email: ''}
+          ]
+      },
+      {
+          name: 'Bryan Hudson',
+          group: [
+              {first: 'Bryan', last: 'Hudson', email: 'bryanhudsonphotography@gmail.com'}
           ]
       }
   ]
