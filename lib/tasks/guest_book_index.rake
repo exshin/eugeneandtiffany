@@ -38,9 +38,9 @@ task guest_book_index: :environment do
       ['Alex Sheu','Chang Lu','Lulu Qin','Sarah Sheu','Alice Sheu'],
       ['Amy Chen','Bradford Chong','Steven Lu','Sandra Shi','Lulu Qin','Chang Lu','Andrew Chen','Chiarng Lin','Byron Cheng'],
       ['Jenny Yoo','Sandra Shi','Lulu Qin','Tiffany Vo','Steven Lu','Phoebe Yu','John Yu','Byron Cheng','Jeremy Li','Calvin Kwan','Chiarng Lin','Wilmot Yeh','Lucy Liu'],
-      ['Vania Leung','Brian Lin','Lulu Qin','Sandra Shi','Steven Lu','Tiffany Vo','Nina Lu','Lulu Qin','Mike Neubauer'], #37
+      ['Vania Leung','Brian Lin','Sandra Shi','Steven Lu','Tiffany Vo','Nina Lu','Lulu Qin','Mike Neubauer'], #37
       ['Nina Lu','Lulu Qin','Vania Leung','Robin Lin','Steven Lu','Tiffany Vo','Chiarng Lin','Sandra Shi','Byron Cheng'],
-      ['Vania Leung','Brian Lin','Lulu Qin','Sandra Shi','Steven Lu','Tiffany Vo','Lulu Qin','Mike Neubauer','Chang Lu','Andrew Chen','Steve Cho','Calvin Kwan','John Yu','Phoebe Yu','Kellan Yu','Jon Hu','Byron Cheng','Chiarng Lin'],
+      ['Vania Leung','Brian Lin','Sandra Shi','Steven Lu','Tiffany Vo','Lulu Qin','Mike Neubauer','Chang Lu','Andrew Chen','Steve Cho','Calvin Kwan','John Yu','Phoebe Yu','Kellan Yu','Jon Hu','Byron Cheng','Chiarng Lin'],
       ['Chiarng Lin','Chang Lu','Andrew Chen','John Yu','Phoebe Yu','Kellan Yu','Steve Cho','Byron Cheng'],
       ['John Yu','Phoebe Yu','Kellan Yu','Bishun Zeng','Alan Diec'],
       ['John Yu','Phoebe Yu','Kellan Yu','Steve Cho','Byron Cheng','Tina Ho','Jeff Tang'],
@@ -59,12 +59,14 @@ task guest_book_index: :environment do
   guests_list.each_with_index do |guests, index|
     guests.each do |guest|
       if pages[guest]
-        pages[guest] << index
+        pages[guest] << index + 1
       else
-        pages[guest] = [index]
+        pages[guest] = [index + 1]
       end
     end
   end
+
+  byebug
 
 
 
