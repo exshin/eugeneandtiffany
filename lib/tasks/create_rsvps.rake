@@ -244,10 +244,10 @@ task create_rsvps: :environment do
           ]
       },
       {
-          name: 'Evelyn & Jorge',
+          name: 'Evelyn & George',
           group: [
               {first: 'Evelyn', last: 'Saliga', email: 'Evelynma1011@gmail.com'},
-              {first: 'Jorge', last: 'Saliga', email: ''},
+              {first: 'George', last: 'Saliga', email: ''},
           ]
       },
       {
@@ -480,6 +480,13 @@ task create_rsvps: :environment do
           name: 'Bryan Hudson',
           group: [
               {first: 'Bryan', last: 'Hudson', email: 'bryanhudsonphotography@gmail.com'}
+          ]
+      },
+      {
+          name: 'Kevin & Helen Fok',
+          group: [
+              {first: 'Kevin', last: 'Fok', email: 'kevinfok001@gmail.com'},
+              {first: 'Helen', last: 'Fok'}
           ]
       }
   ]
