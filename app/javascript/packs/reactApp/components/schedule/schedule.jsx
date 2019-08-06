@@ -49,7 +49,7 @@ class SchedulePage extends React.Component {
         <br/>
 
         <div className="schedule" style={{textAlign: "center"}}>
-          <Panel className="div-center" style={{width: "40%", background: "whitesmoke", boxShadow: "lightgrey 5px 1px 7px"}}>
+          <Panel className="div-center" style={{width: "50%", background: "whitesmoke", boxShadow: "lightgrey 5px 1px 7px"}}>
             <Panel.Body className="" style={{fontSize: "18px", fontStyle: "italic"}}>
               <div style={{marginBottom: "10px"}}>
                 <img src={require('./../../assets/images/headshots.jpg')} height="180px" width="180px" style={{borderRadius: "50%"}}/>
@@ -70,10 +70,19 @@ class SchedulePage extends React.Component {
         </div>
 
         <br/>
+
+        <div className="schedule-day" style={{textAlign: "center"}}>
+          <Panel className="div-center" style={{width: "50%", background: "whitesmoke", boxShadow: "lightgrey 5px 1px 7px"}}>
+            <Panel.Body className="" style={{fontSize: "18px", paddingBottom: "25px", paddingTop: "25px"}}>
+              <img src={require('./../../assets/images/wedding_day_timeline.png')} height="300px" />
+            </Panel.Body>
+          </Panel>
+        </div>
+
         <br/>
 
         <div className="schedule" style={{textAlign: "center"}}>
-          <Panel className="div-center" style={{width: "40%", background: "whitesmoke", boxShadow: "lightgrey 5px 1px 7px"}}>
+          <Panel className="div-center" style={{width: "50%", background: "whitesmoke", boxShadow: "lightgrey 5px 1px 7px"}}>
             <Panel.Body className="" style={{fontSize: "14px", fontStyle: "italic"}}>
               <div style={{fontFamily: "cursive", fontSize: "28px"}}>Menu</div>
               <br/>
