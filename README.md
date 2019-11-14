@@ -25,3 +25,6 @@
  - rails console -> heroku run rails console -a eugeneandtiffany
  - migrations -> heroku run rake db:migrate -a eugeneandtiffany
  - rake tasks -> heroku run rake rake_task -a eugeneandtiffany
+
+* Notes
+ - To load the santa pairer in console: `load "#{Rails.root}/lib/santa/santa_pairer.rb"`

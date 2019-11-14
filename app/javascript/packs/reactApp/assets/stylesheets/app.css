@@ -182,3 +182,8 @@ div.empty-square {
     margin: 0;
     height: 40px;
 }
+
+.invert-img {
+    -webkit-transform: scaleX(-1);
+    transform: scaleX(-1);
+}

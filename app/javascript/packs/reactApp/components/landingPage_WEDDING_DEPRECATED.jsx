@@ -1,9 +1,18 @@
 import React, { Component } from 'react'
 import { Navbar, Nav, NavItem, Modal, FormGroup, FormControl, Button, ControlLabel } from 'react-bootstrap'
 
-import SantaPage from './santa/santa.jsx'
+import HomePage from './home/home.jsx'
+import TravelPage from './travel/travel.jsx'
+import PhotosPage from './photos/photos.jsx'
+import AdminPage from './admin/admin.jsx'
+import RsvpPage from './rsvp/rsvp.jsx'
+import SchedulePage from './schedule/schedule.jsx'
+import RegistryPage from './registry/registry.jsx'
+import ExtrasPage from './extras/extras.jsx'
 
 import $ from 'jquery'
+
+// TO Reactivate: Rename this file back to "landingPage.jsx"
 
 class LandingPage extends React.Component {
   constructor(props) {
@@ -42,12 +51,12 @@ class LandingPage extends React.Component {
         admin: result.admin,
         incorrectPassword: !result.auth,
       });
-      localStorage.setItem('tiffanyandeugenesantaauthtoken', result.token);
+      localStorage.setItem('tiffanyandeugeneauthtoken', result.token);
     }
   }
 
   __checkToken() {
-    const token = localStorage.getItem('tiffanyandeugenesantaauthtoken');
+    const token = localStorage.getItem('tiffanyandeugeneauthtoken');
 
     if (token) {
       $.ajax({
@@ -170,10 +179,31 @@ class LandingPage extends React.Component {
       let content;
       switch (activeTab) {
         case 1:
-          content = <SantaPage key={uniqueId}/>;
+          content = <HomePage key={uniqueId}/>;
           break;
         case 2:
+          content = <TravelPage key={uniqueId}/>;
+          break;
+        case 3:
+          content = <SchedulePage key={uniqueId}/>;
+          break;
+        case 4:
+          content = <PhotosPage key={uniqueId}/>;
+          break;
+        case 5:
+          content = <RsvpPage key={uniqueId}/>;
+          break;
+        case 6:
+          content = <ExtrasPage key={uniqueId}/>;
+          break;
+        case 7:
           content = <AdminPage key={uniqueId}/>;
+          break;
+        case 8:
+          content = <PhotosPage key={uniqueId}/>;
+          break;
+        case 9:
+          content = <RegistryPage key={uniqueId}/>;
           break;
         default:
           break;
@@ -181,6 +211,39 @@ class LandingPage extends React.Component {
 
       return(
         <div id="landing-page">
+          <div className="navbar" style={{marginBottom: "0px"}}>
+            <Navbar collapseOnSelect fixedTop>
+              <Navbar.Header>
+                <Navbar.Toggle />
+              </Navbar.Header>
+              <Navbar.Collapse>
+                <Nav activeKey={activeTab} onSelect={this.__handleSelect.bind(this)}>
+                  <NavItem className="nav-item nav-home" eventKey={1} href="#">
+                    Welcome
+                  </NavItem>
+                  <NavItem className="nav-item nav-schedule" eventKey={3} href="#">
+                    Schedule
+                  </NavItem>
+                  <NavItem className="nav-item nav-rsvp" eventKey={5} href="#">
+                    RSVP
+                  </NavItem>
+                  <NavItem className="nav-item nav-travel" eventKey={2} href="#">
+                    Travel & Accommodations
+                  </NavItem>
+                  <NavItem className="nav-item nav-rsvp" eventKey={8} href="#">
+                    Photos
+                  </NavItem>
+                  <NavItem className="nav-item nav-rsvp" eventKey={9} href="#">
+                    Registry
+                  </NavItem>
+                  <NavItem className="nav-item nav-extras" eventKey={6} href="#">
+                    For Fun
+                  </NavItem>
+                  {this.__navAdmin()}
+                </Nav>
+              </Navbar.Collapse>
+            </Navbar>
+          </div>
           <div className="content">
             <div>
               {content}

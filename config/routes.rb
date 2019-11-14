@@ -39,4 +39,8 @@ Rails.application.routes.draw do
     post :score
     get :high_scores
   end
+
+  namespace :santa do
+    post :submit
+  end
 end
