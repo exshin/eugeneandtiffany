@@ -41,8 +41,11 @@ Rails.application.routes.draw do
     get :high_scores
   end
 
-  resources :santa do
+  namespace :santa do
     post :submit
+  end
+
+  resources :santa do
     root to: "santa#root"
   end
 

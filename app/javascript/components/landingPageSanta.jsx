@@ -181,7 +181,7 @@ class LandingPageSanta extends React.Component {
 
       return(
         <div id="landing-page">
-          <div className="content">
+          <div className="content" style={{background: "aliceblue", height: "100vh"}}>
             <div>
               {content}
             </div>
