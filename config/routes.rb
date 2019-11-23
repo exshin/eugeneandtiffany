@@ -6,6 +6,7 @@ Rails.application.routes.draw do
 
   namespace :required_password do
     get :password
+    get :santa_password
   end
 
   namespace :quiz do
@@ -43,4 +44,10 @@ Rails.application.routes.draw do
   namespace :santa do
     post :submit
   end
+
+  resources :santa do
+    root to: "santa#root"
+  end
+
+  #match '*path', to: 'pages#index', via: :all
 end

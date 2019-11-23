@@ -234,7 +234,7 @@ class SantaPage extends React.Component {
           <br/>
           <div className="container">
             <div className="container col-md-6" style={{float: "left"}}>
-              <img className={imageClass} src={require(`./../../assets/images/santa/santa.png`)} width="100%"/>
+              <img className={imageClass} src={require(`./../../packs/reactApp/assets/images/santa/santa.png`)} width="100%"/>
             </div>
             <div className="container col-md-6" style={{float: "left"}}>
               <div className="row">

@@ -33,7 +33,7 @@ module SantaPairer
       receiver = SantaParticipant.find(new_participants_list.sample)
       receiver_participant_ids.delete(receiver.id)
 
-      random_pairs << { santa: santa, receiver: receiver }
+      random_pairs << {santas: santa, receiver: receiver }
     end
 
     random_pairs
