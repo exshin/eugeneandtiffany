@@ -3,7 +3,7 @@ class RequiredPasswordController < ActionController::Base
   end
 
   def password
-    required_guest_password = ENV['GUEST_PASSWORD'] || 'guest'
+    required_guest_password = ENV['SANTA_PASSWORD'] || 'guest'
     required_admin_password = ENV['ADMIN_PASSWORD'] || 'admin'
 
     if params['password'] == required_guest_password
