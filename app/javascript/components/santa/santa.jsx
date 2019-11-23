@@ -26,8 +26,6 @@ class SantaPage extends React.Component {
     this.setState({
       name: name
     });
-
-    console.log(name);
   }
 
   __handleEmailTextChange(e) {
@@ -35,8 +33,6 @@ class SantaPage extends React.Component {
     this.setState({
       email: email
     });
-
-    console.log(email);
   }
 
   __handleAddressChange(e) {
@@ -44,8 +40,6 @@ class SantaPage extends React.Component {
     this.setState({
       address: address
     });
-
-    console.log(address);
   }
 
   __handleWishListTextChange(id, e) {
@@ -58,8 +52,6 @@ class SantaPage extends React.Component {
     this.setState({
       wishList: newWishList
     });
-
-    console.log(newWishList);
   }
 
 
