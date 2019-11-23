@@ -8,5 +8,9 @@ class SantaController < ActionController::Base
                                       wish_list: params['wishList'])
     render json: {record: record}
   end
+
+  def root
+    render template: "santas/root"
+  end
 end
 

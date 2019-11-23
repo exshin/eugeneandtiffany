@@ -16,5 +16,16 @@ class RequiredPasswordController < ActionController::Base
       render json: {auth: false, admin: false, token: nil}
     end
   end
+
+  def santa_password
+    required_santa_password = ENV['SANTA_PASSWORD'] || 'guest'
+
+    if params['password'] == required_santa_password
+      token = Token.create!(hexdigest: Digest::SHA1.hexdigest([Time.now, rand].join), admin: false)
+      render json: {auth: true, admin: false, token: token.hexdigest}
+    else
+      render json: {auth: false, admin: false, token: nil}
+    end
+  end
 end
 
