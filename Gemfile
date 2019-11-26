@@ -26,6 +26,9 @@ gem 'redis', '~> 4.0'
 gem 'bcrypt', '~> 3.1.7'
 
 gem 'react-rails'
+gem 'rest-client'
+
+gem 'mailgun-ruby', '~>1.1.6'
 
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'
