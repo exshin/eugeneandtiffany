@@ -17,7 +17,7 @@ class SantaMailer < ApplicationMailer
     mg_client.send_message MAILGUN_DOMAIN, message_params
   end
 
-  def send_all_mail
+  def self.send_all_mail
     SantaPair.all.each do |santa_pair|
       santa = SantaParticipant.find(santa_pair.santa_id)
       receiver = SantaParticipant.find(santa_pair.receiver_id)
